@@ -1,0 +1,179 @@
+page{
+  background:#fafafa;
+  width: 100%;
+}
+.buy-refund-list {
+  overflow: hidden;
+  padding-top: 40rpx;
+}
+.buy-refund-item {
+  min-height: 672rpx;
+  border: 1px solid #f1f1f1;
+  position: relative;
+  margin-bottom: 37rpx;
+}
+.item-key {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 74rpx;
+  width: 74rpx;
+  line-height: 60rpx;
+  color: #9e6f5d;
+  background-color: #d8c5be;
+  text-indent: 18rpx;
+  border-bottom-right-radius: 100%; 
+}
+.shop-info {
+  width: 650rpx;
+  margin: 0 auto;
+  padding: 30rpx 0 20rpx;
+  text-align: center;
+  border-bottom: 1px solid #f1f1f1;
+}
+.shop-pic {
+  width: 300rpx;
+  height: 300rpx;
+  margin: 0 auto;
+}
+.shop-name {
+  margin-top: 20rpx;
+  line-height: 48rpx;
+  color: #212124;
+  font-weight: bold;
+}
+.shop-specs {
+  line-height: 42rpx;
+  color: #b8babf;
+  font-size: 24rpx;
+}
+.shop-price {
+  display: flex;
+  height: 50rpx;
+  justify-content: center;
+  align-items: center;
+}
+.vip-icon {
+  width: 116rpx;
+  height: 30rpx;
+  padding-right: 6rpx;
+  line-height: 30rpx;
+  color: #ffffff;
+  font-size: 20rpx;
+  background: url('https://bht.liwushijian.com/library/img/xcx_img/vip_bg1.png') no-repeat center center/100% 100%;
+}
+.now-price {
+  color: #212124;
+  font-size: 38rpx;
+  font-weight: bold;
+  margin: 0 6rpx 0 9rpx;
+}
+.now-price text {
+  font-size: 26rpx;
+  font-weight: normal;
+}
+.old-price {
+  color: #b8babf;
+  font-size: 26rpx;
+  text-decoration: line-through;
+}
+
+.operate-session {
+  display: flex;
+  padding: 50rpx 0 30rpx;
+  height: 140rpx;
+  justify-content: center;
+}
+.operate-btn {
+  display: flex;
+  align-items: center;
+  color: #919499;
+}
+.no-btn {
+  margin-right: 100rpx;
+}
+.btn-icon {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  margin-right: 10rpx;
+}
+.no-btn .btn-icon {
+  background: #b8babf url('https://bht.liwushijian.com/library/img/xcx_img/no_01.png') no-repeat center center/100% 100%;
+}
+.yes-btn .btn-icon {
+  background: #b8babf url('https://bht.liwushijian.com/library/img/xcx_img/yes_01.png') no-repeat center center/100% 100%;
+}
+.operate-btn.cur .btn-icon {
+  background-color: #9e6f5d;
+}
+.no-tip {
+  height: 90rpx;
+  width: 650rpx;
+  margin: 0 auto 40rpx;
+  color: #f33f3f;
+  background-color: #f1f1f1;
+  border-radius: 45rpx;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.no-tip::before {
+  content: '';
+  position: absolute;
+  left: 144rpx;
+  bottom: 90rpx;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 12rpx 12rpx 12rpx;
+  border-color: transparent transparent #f1f1f1 transparent;
+}
+.no-tip view {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 12rpx 12rpx 0 12rpx;
+  border-color: #b8babf transparent transparent transparent;
+  margin-left: 20rpx;
+}
+
+.fixed-empty {
+  height: 158rpx;
+}
+.bottom-tip {
+  line-height: 60rpx;
+  color: #fff;
+  font-size: 26rpx;
+  background-color: #d5c2bb;
+  text-align: center;
+}
+.bottom-info {
+  display: flex;
+  height: 98rpx;
+}
+.bottom-num {
+  width: 360rpx;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #212124;
+  background-color: #fff;
+}
+.bottom-num view:first-child {
+  margin-right: 40rpx;
+}
+.bottom-num view text {
+  color: #f33f3f;
+}
+.bottom-btn {
+  height: 100%;
+  line-height: 98rpx;
+  width: 375rpx;
+  color: #ffffff;
+  background-color: #212124;
+  text-align: center;
+}
+

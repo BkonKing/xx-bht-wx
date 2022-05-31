@@ -1,0 +1,131 @@
+.renew-session {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 985;
+}
+.renew-block {
+  width: 600rpx;
+  height: 508rpx;
+  border-radius: 4rpx;
+  background-color: #fff;
+  font-size: 30rpx;
+}
+.renew-header {
+  height: 114rpx;
+  line-height: 114rpx;
+  text-align: center;
+  font-size: 34rpx;
+  color: #fefefe;
+  background: -webkit-linear-gradient(to right, #cd9681 , #9f705e);
+  background: linear-gradient(to right, #cd9681 , #9f705e);
+}
+.renew-txt {
+  line-height: 49rpx;
+  letter-spacing: 1.2rpx;
+  color: #60646b;
+  width: 490rpx;
+  margin: 36rpx auto 0;
+  height: 154rpx;
+}
+.renew-txt text {
+  color: #f33f3f;
+}
+.renew-radio {
+  height: 84rpx;
+  width: 560rpx;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid #f1f1f1;
+}
+.radio-block {
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.radio-icon {
+  width: 24rpx;
+  height: 24rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #b8babf;
+  margin: 0 10rpx;
+}
+.radio-icon image {
+  width: 20rpx;
+  height: 15rpx;
+  display: none;
+}
+.radio-icon.select image {
+  display: block;
+}
+.radio-label {
+  font-size: 24rpx;
+  color: #b8babf;
+  padding-right: 10rpx;
+}
+.renew-btn {
+  height: 120rpx;
+  padding: 32rpx 0 28rpx;
+  display: flex;
+  align-items: center;
+}
+.renew-btn view,
+.renew-btn navigator {
+  height: 100%;
+  line-height: 60rpx;
+  flex: 1;
+  text-align: center;
+}
+.renew-btn view {
+  color: #919499;
+  border-right: 1px solid #f1f1f1;
+}
+.renew-btn navigator {
+  color: #212124;
+}
+
+
+
+.modal-list {
+  width: 600rpx;
+  background-color: #fff;
+  border-radius: 4rpx;
+  animation: myfain 0.5s;
+  -webkit-animation: myfain 0.5s;
+}
+.modal-item {
+  height: 120rpx;
+  line-height: 120rpx;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  color: #60646b;
+  position: relative;
+}
+.modal-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 20rpx;
+  right: 20rpx;
+  height: 1px;
+  background-color: #f1f1f1;
+}
+.modal-item:last-child {
+  border-bottom: none;
+}
+@keyframes myfain
+{
+  from {opacity:0;}
+  to {opacity:1;}
+}
+
+@-webkit-keyframes myfain
+{
+  from {opacity:0;}
+  to {opacity:1;}
+}

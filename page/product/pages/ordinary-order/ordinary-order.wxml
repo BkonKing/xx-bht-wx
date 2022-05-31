@@ -1,0 +1,196 @@
+<topbar id="topbar" bar-obj="{{barObj}}"></topbar>
+
+<view class="nav-empty" hidden="{{nav_hidden}}"></view>
+<view class="nav-box" style="top:{{headerArr.height + 44 + 'px'}}" hidden="{{nav_hidden}}">
+  <view class="nav-item {{typeVal == 1 ? 'cur' : ''}}" bindtap="navFun" data-typeval="1">全部</view>
+  <view class="nav-item {{typeVal == 2 ? 'cur' : ''}}" bindtap="navFun" data-typeval="2">待付款</view>
+  <view class="nav-item {{typeVal == 3 ? 'cur' : ''}}" bindtap="navFun" data-typeval="3">待发货</view>
+  <view class="nav-item {{typeVal == 4 ? 'cur' : ''}}" bindtap="navFun" data-typeval="4">待收货</view>
+  <view class="nav-item {{typeVal == 5 ? 'cur' : ''}}" bindtap="navFun" data-typeval="5">退换</view>
+</view>
+
+<view class="empty-none" hidden="{{noneHidden}}"><image src="https://bht.liwushijian.com/library/img/xcx_img/empty_01.png"></image><view>您还没有相关订单，快去逛逛吧</view></view>
+
+<block wx:for="{{orderList}}" wx:key="index">
+  <!-- <block wx:if="{{item.order_status == 0||item.order_status == 1||item.order_status == 2||item.order_status == 4}}"> -->
+    <!-- 待付款/待发货/待收货 -->
+    <view class="bht-session list-session">
+      <navigator hover-class="none" url="{{typeVal == 5 ? item.url : '/page/product/pages/ordinary-order-details/ordinary-order-details?ordinary_id='+item.id}}">
+        <view class="list-tit">
+          <view>订单编号：{{typeVal == 5 ? item.order_numb : item.common_numb}}</view>
+          <view wx:if="{{item.order_status == 0}}">待付款</view>
+          <view wx:elif="{{item.order_status == 1}}">待发货</view>
+          <view wx:elif="{{item.order_status == 2}}">待收货</view>
+          <view wx:else>{{item.order_status_name}}</view>
+        </view>
+        <view class="shop-list">
+          <block wx:for="{{item.common_goods_list}}" wx:for-item="items" wx:key="index">
+            <view class="shop-item">
+              <view class="shop-pic"><image class="width-100" mode="aspectFill" src="{{items.specs_img}}"></image></view>
+              <view class="shop-info">
+                <view class="shop-name">
+                  <view class="p-nowrap">{{items.goods_name}}</view>
+                  <view><text>X </text>{{typeVal == 5 ? 1 : items.sku_num}}</view>
+                </view>
+                <view class="shop-specs p-nowrap">
+                  <view class="p-nowrap">{{items.specs_name}}</view>
+                </view>
+                <view class="shop-list-tip">
+                  <view class="{{items.order_goods_status_text ? 'item-tip2' : 'item-tip'}}">{{items.order_goods_status_text ? items.order_goods_status_text : '七天退换'}}</view>
+                  <!-- <view class="item-tip" wx:else>七天退换</view> -->
+                  <view class="shop-price" wx:if="{{items.vip_status==1}}"><text>￥{{items.s_price}}</text>￥{{items.vip_price}}</view>
+                  <view class="shop-price" wx:elif="{{items.vip_status==2}}"><text>￥{{items.s_price}}</text>￥{{items.e_price}}</view>
+                  <view class="shop-price" wx:else><text></text>￥{{items.s_price}}</view>
+                </view>
+              </view>
+            </view>
+          </block>
+        </view>
+        <view wx:if="{{item.common_goods_list.length > 4}}" class="toggle-btn"><image mode="heightFix" src="/resource/images/toggle_down.png"></image></view>
+        <view class="item-total">共 {{typeVal == 5 ? item.common_goods_list.length : item.goods_num}} 件<view>合计￥<text>{{typeVal == 5 ? item.goods_price : item.pay_price}}</text></view></view>
+      </navigator>
+      <block wx:if="{{typeVal == 5}}">
+        <block wx:if="{{item.distribution_type == 1}}">
+          <view class="btn-block">
+            <navigator wx:if="{{item.order_type == 1}}" class="item-btn" hover-class="none" url="/page/product/pages/logistics/logistics?logistics_id={{item.logistice_id}}&order_id={{item.common_id}}&logistice_type=3&order_mark=1">查看物流</navigator>
+            <navigator wx:else class="item-btn" hover-class="none" url="/page/product/pages/logistics/logistics?logistics_id={{item.logistice_id}}&order_id={{item.common_id}}&logistice_type=2&order_mark=1">查看物流</navigator>
+          </view>
+        </block>
+        <block wx:else>
+          <view class="btn-block" wx:if="{{item.logistice_id && item.order_type !=2}}">
+            <navigator class="item-btn" hover-class="none" url="/page/product/pages/logistics/logistics?logistics_id={{item.logistice_id}}&order_id={{item.common_id}}">查看物流</navigator>
+          </view>
+        </block>
+      </block>
+      <block wx:else>
+        <view class="btn-block" wx:if="{{item.order_status == 0}}">
+          <view class="item-btn" bindtap="cancelOrder" data-id="{{item.id}}">取消订单</view>
+          <view class="item-btn pay-btn" bindtap="payFunc" data-id="{{item.id}}">付款({{countDownList[index].hou}}:{{countDownList[index].min}}:{{countDownList[index].sec}})</view>
+        </view>
+        <view class="btn-block" wx:if="{{item.order_status == 1 && item.btn_quxiao2}}">
+          <view class="item-btn" bindtap="cancelPay" data-id="{{item.id}}">取消订单</view>
+        </view>
+        <view class="btn-block" wx:if="{{item.order_status == 2}}">
+          <navigator class="item-btn" hover-class="none" url="/page/product/pages/logistics/logistics?logistics_id={{item.logistice_id}}&order_id={{item.id}}&logistice_type=1&order_mark=1">查看物流</navigator>
+        </view>
+        <view class="btn-block" wx:if="{{item.order_status > 2 && item.order_status < 5}}">
+          <navigator class="item-btn" hover-class="none" url="/page/product/pages/logistics/logistics?logistics_id={{item.logistice_id}}&order_id={{item.id}}&logistice_type=1&order_mark=1">查看物流</navigator>
+          <navigator class="item-btn" hover-class="none" wx:if="{{item.btn_refund_details}}" url="/page/product/pages/ordinary-refund-details/ordinary-refund-details?ordinary_id={{item.id}}&refund_id={{item.refund_id}}">退款详情</navigator>
+          <navigator class="item-btn" hover-class="none" wx:if="{{item.btn_returnrefund_details}}" url="/page/product/pages/ordinary-refund-details/ordinary-refund-details?ordinary_id={{item.id}}&returnrefund_id={{item.returnrefund_id}}">退货详情</navigator>
+          <navigator class="item-btn" hover-class="none" wx:if="{{item.btn_barter_details}}" url="/page/product/pages/ordinary-exchange-details/ordinary-exchange-details?ordinary_id={{item.id}}&barter_id={{item.barter_id}}">换货详情</navigator>
+        </view>
+      </block>
+      
+    </view>
+  <!-- </block> -->
+
+</block>
+
+<!-- 交易完成 -->
+<view class="bht-session list-session" hidden="true">
+  <view class="list-tit">
+    <view>订单编号：20201212020212120202</view>
+    <view>交易完成</view>
+  </view>
+  <view class="shop-list">
+    <view class="shop-item">
+      <view class="shop-pic"><image class="width-100" mode="aspectFill" src="https://bht.liwushijian.com/library/uploads/image/20190319/20190319100054_31375.jpg"></image></view>
+      <view class="shop-info">
+        <view class="shop-name">
+          <view class="p-nowrap">肆时风物 悟源涧肉桂悟源涧肉桂</view>
+          <view><text>X </text>1</view>
+        </view>
+        <view class="shop-specs p-nowrap">
+          <view class="p-nowrap">礼盒/360g</view>
+        </view>
+        <view class="shop-list-tip">
+          <view class="item-tip">七天退换</view>
+          <view class="shop-price"><text>￥160</text>￥140</view>
+        </view>
+      </view>
+    </view>
+    <view class="shop-item">
+      <view class="shop-pic"><image class="width-100" mode="aspectFill" src="https://bht.liwushijian.com/library/uploads/image/20190319/20190319100054_31375.jpg"></image></view>
+      <view class="shop-info">
+        <view class="shop-name">
+          <view class="p-nowrap">肆时风物 悟源涧肉桂悟源涧肉桂</view>
+          <view><text>X </text>1</view>
+        </view>
+        <view class="shop-specs p-nowrap">
+          <view class="p-nowrap">礼盒/360g</view>
+        </view>
+        <view class="shop-list-tip">
+          <view class="item-tip">七天退换</view>
+          <view class="shop-price"><text>￥160</text> ￥140</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="item-total">共 1 件<view>合计￥<text>140</text></view></view>
+  <view class="btn-block">
+    <navigator class="item-btn" hover-class="none">申请退换</navigator>
+  </view>
+</view>
+
+<!-- 退换中 -->
+<view class="bht-session list-session" hidden="true">
+  <view class="list-tit">
+    <view>订单编号：20201212020212120202</view>
+    <view>待付款</view>
+  </view>
+  <view class="shop-list">
+    <view class="shop-item">
+      <view class="shop-pic"><image class="width-100" mode="aspectFill" src="https://bht.liwushijian.com/library/uploads/image/20190319/20190319100054_31375.jpg"></image></view>
+      <view class="shop-info">
+        <view class="shop-name">
+          <view class="p-nowrap">肆时风物 悟源涧肉桂悟源涧肉桂</view>
+          <view><text>X </text>1</view>
+        </view>
+        <view class="shop-specs p-nowrap">
+          <view class="p-nowrap">礼盒/360g</view>
+        </view>
+        <view class="shop-list-tip">
+          <view class="item-tip2">换货中</view>
+          <view class="shop-price"><text>￥160</text>￥140</view>
+        </view>
+      </view>
+    </view>
+    <view class="shop-item">
+      <view class="shop-pic"><image class="width-100" mode="aspectFill" src="https://bht.liwushijian.com/library/uploads/image/20190319/20190319100054_31375.jpg"></image></view>
+      <view class="shop-info">
+        <view class="shop-name">
+          <view class="p-nowrap">肆时风物 悟源涧肉桂悟源涧肉桂</view>
+          <view><text>X </text>1</view>
+        </view>
+        <view class="shop-specs p-nowrap">
+          <view class="p-nowrap">礼盒/360g</view>
+        </view>
+        <view class="shop-list-tip">
+          <view class="item-tip">七天退换</view>
+          <view class="shop-price"><text>￥160</text>￥140</view>
+        </view>
+      </view>
+    </view>
+    <view class="shop-item">
+      <view class="shop-pic"><image class="width-100" mode="aspectFill" src="https://bht.liwushijian.com/library/uploads/image/20190319/20190319100054_31375.jpg"></image></view>
+      <view class="shop-info">
+        <view class="shop-name">
+          <view class="p-nowrap">肆时风物 悟源涧肉桂悟源涧肉桂</view>
+          <view><text>X </text>1</view>
+        </view>
+        <view class="shop-specs p-nowrap">
+          <view class="p-nowrap">礼盒/360g</view>
+        </view>
+        <view class="shop-list-tip">
+          <view class="item-tip2">退货退款中</view>
+          <view class="shop-price"><text>￥160</text>￥140</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="item-total">共 1 件<view>合计￥<text>140</text></view></view>
+  <view class="btn-block">
+    <navigator class="item-btn" hover-class="none">退款详情</navigator>
+    <navigator class="item-btn" hover-class="none">换货详情</navigator>
+  </view>
+</view>

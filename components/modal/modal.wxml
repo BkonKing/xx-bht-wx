@@ -1,0 +1,6 @@
+<view class="~modal-bg modal-session" wx:if="{{modalShow}}" catchtouchmove="true" catchtap="modalFunc">
+  <view class="modal-list fain">
+    <view class="modal-item" wx:for="{{modalArr}}" wx:key="id" catchtap="modalSelect" data-index="{{index}}">{{item.modalStr}}</view>
+  </view>
+  <slot></slot>
+</view>

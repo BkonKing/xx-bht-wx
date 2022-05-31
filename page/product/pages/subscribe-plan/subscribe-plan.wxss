@@ -1,0 +1,184 @@
+@import '/resource/css/modal.wxss';
+page {
+  background-color: #fafafa;
+}
+.plan-header {
+  height: 98rpx;
+  padding: 0 30rpx;
+  display: flex;
+  justify-content: space-between;
+  line-height: 98rpx;
+  font-size: 26rpx;
+  color: #919499;
+}
+
+/* 轮播 start */
+.swiper-block {
+  width: 100%;
+  height: 753rpx;
+  position: relative;
+}
+.swiper-block-small.swiper-block {
+  height: 290rpx;
+}
+.shop-swiper {
+  width: 100%;
+  height: 100%;
+}
+.shop-swiper swiper-item {
+  overflow-y: auto;
+}
+.plan-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 15rpx;
+}
+.plan-item {
+  width: 50%;
+  padding: 0 15rpx;
+  height: 210rpx;
+  margin-bottom: 25rpx;
+  position: relative;
+}
+.plan-time {
+  position: absolute;
+  top: 0;
+  left: 25rpx;
+  right: 25rpx;
+  height: 94rpx;
+  background-color: #fff;
+  line-height: 80rpx;
+  color: #919499;
+  text-align: center;
+  border-radius: 4rpx;
+  z-index: 3;
+}
+.plan-get .plan-time::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border: 3rpx solid #b8babf;
+  border-bottom: none;
+}
+.plan-send .plan-time {
+  color: #ffffff;
+  background: -webkit-linear-gradient(to right, #cd9681 , #9e6f5d);
+  background: linear-gradient(to right, #cd9681 , #9e6f5d);
+}
+.plan-nosend .plan-time,.plan-default .plan-time {
+  background-color: #b8babf;
+  color: #ffffff;
+}
+.plan-over .plan-time {
+  background-color: #212124;
+  color: #fff;
+}
+.plan-default .plan-status,.plan-over .plan-status {
+  color: #f33f3f;
+}
+.plan-status {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 145rpx;
+  line-height: 145rpx;
+  text-align: center;
+  color: #60646b;
+  background: url('https://bht.liwushijian.com/library/img/xcx_img/plan_01.png') no-repeat center center/100% 145rpx;
+  z-index: 5;
+}
+
+.shop-swiper .wx-swiper-dots.wx-swiper-dots-horizontal {
+  position: absolute;
+  top: 706rpx;
+  z-index: 88;
+}
+.shop-swiper .wx-swiper-dot {
+  width: 22rpx;
+  display: inline-flex;
+  height: 6rpx;
+  margin-left: 6rpx;
+  justify-content: space-between;
+  border-radius: 2rpx;
+}
+.shop-swiper .wx-swiper-dot::before {
+  content: '';
+  flex-grow: 1;
+  background-color: #e0e0e2;
+  border-radius: 2rpx;
+}
+.shop-swiper .wx-swiper-dot-active::before {
+  background: #212124;
+}
+.shop-swiper .wx-swiper-dot.wx-swiper-dot-active {
+  width: 32rpx;
+  background: #212124;
+}
+/* 轮播 end */
+
+.link-item {
+  height: 120rpx;
+  position: relative;
+  line-height: 120rpx;
+  color: #60646b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.link-item:last-child::after{
+  display: none;
+}
+.link-item::after,.modal-item::after {
+  left: 20rpx;
+  right: 20rpx;
+  background-color: #f1f1f1;
+}
+.link-left {
+  width: 160rpx;
+  text-align: right;
+}
+.link-middle {
+  width: 200rpx;
+  flex-grow: 1;
+  text-align: right;
+}
+.link-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 26rpx 0 12rpx;
+  min-width: 50rpx;
+}
+.link-icon image {
+  width: 12rpx;
+  height: 22rpx;
+}
+
+button.kf-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64rpx;
+  width: 220rpx;
+  font-size: 26rpx;
+  padding: 10rpx 0;
+  box-sizing: border-box;
+  margin: 50rpx auto 0;
+  font-weight: normal;
+  color: #b8babf;
+}
+.kf-btn::after {
+  border: none;
+}
+.kf-btn image {
+  width: 44rpx;
+  height: 44rpx;
+  margin-right: 10rpx;
+}
+.bottom-kong {
+  height: 60rpx;
+}

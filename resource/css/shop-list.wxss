@@ -1,0 +1,74 @@
+/* 商品列表start */
+.product-list {
+  width: 690rpx;
+  margin: 0 auto;
+  padding-bottom: 60rpx;
+  margin-top: 19rpx;
+}
+.product-item {
+  width: 100%;
+  height: 300rpx;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40rpx;
+}
+.product-item:last-child{
+  margin-bottom: 0;
+}
+.product-pic {
+  width: 300rpx;
+  height: 100%;
+  position: relative;
+  display: flex;
+  border-radius: 4rpx;
+  overflow: hidden;
+}
+.product-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+}
+.product-cont {
+  width: 368rpx;
+}
+.product-name {
+  line-height: 68rpx;
+  color: #212124;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+.product-words {
+  line-height: 42rpx;
+  color: #b8babf;
+  font-size: 26rpx;
+  margin-bottom: 23rpx;
+}
+.product-line {
+  height: 3rpx;
+  background: url('https://bht.liwushijian.com/library/img/xcx_img/store_01.png') repeat-x left center / auto 100%;
+  margin-bottom: 34rpx;
+}
+.product-vprice {
+  line-height: 66rpx;
+  color: #212124;
+  font-size: 26rpx;
+}
+.product-vprice text {
+  font-size: 48rpx;
+  font-weight: bold;
+  /* font-weight: 400; */
+}
+.product-price {
+  line-height: 56rpx;
+  color: #919499;
+  font-size: 26rpx;
+}
+.product-price text {
+  font-size: 34rpx;
+  font-weight: bold;
+}
+.product-vip-item .product-vprice {
+  color: #f33f3f;
+}
+/* 商品列表end */

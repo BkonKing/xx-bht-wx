@@ -1,0 +1,5 @@
+<topbar id="topbar" customtitle="invitation-topbar-title" bar-obj="{{barObj}}"></topbar>
+
+<image class="poster-image" mode="widthFix" src="{{posterSrc}}"></image>
+
+<button class="poster-btn" bindtap="savePic">保存海报</button>

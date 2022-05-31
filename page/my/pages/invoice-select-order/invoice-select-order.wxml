@@ -1,0 +1,137 @@
+<!--page/my/pages/invoice-select-order/invoice-select-order.wxml-->
+<topbar id="topbar" bar-obj="{{barObj}}"></topbar>
+
+<view class="filter-container">
+  <view class="filter-box">
+    <view class="type-view" bindtap="showMenu">
+      <text lines="1" class="type-title">{{order_type_text}}</text>
+      <image src="/resource/images/bottom.png" class="type-icon-down" />
+    </view>
+    <view class="menu-list" hidden="{{typeHidden}}">
+      <view wx:for="{{typeList}}" wx:key="index" class="menu-row" bindtap="selectType" data-type="{{item.value}}"
+        data-label="{{item.label}}">
+        <text lines="1" class="menu-shop-title">{{item.label}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="search-view">
+    <image src="/resource/images/search_icon2.png" class="search-icon-search" />
+    <input name="phone" model:value="{{order_numb}}" class="search-num" placeholder-class="placeholder"
+      placeholder="订单编号" bindconfirm="getOrderData" />
+  </view>
+</view>
+
+<view class="title-list">
+  <view class="title-item" wx:for="{{orderList}}" wx:key="index" bindtap="goDetail" data-active="{{index}}"
+    data-error="{{item.error_text}}" bindtap="selectOrder">
+    <!-- VIP会员 -->
+    <view wx:if="{{item.order_type === 1}}" class="vip-order">
+      <view class="vip-body">
+        <view class="vip-view">
+          <image src="/resource/images/vip_card.png" class="vip-logo" />
+        </view>
+        <view class="vip-view-1">
+          <text lines="1" class="vip-title">不荒唐VIP会员</text>
+          <text lines="1"
+            class="vip-date {{item.order_status === '3' || item.order_status === '2' ? 'red-text' : ''}}">{{item.order_status_name}}</text>
+        </view>
+        <view class="vip-view-2">
+          <text lines="1" class="vip-buy">购买会员</text>
+        </view>
+      </view>
+      <view class="vip-footer">
+        <view class="vip-horizontal-line" />
+        <view class="vip-price-wrapper">
+          <text lines="1" class="vip-label">实付</text>
+          <text lines="1" class="vip-yuan">￥</text>
+          <text lines="1" class="vip-price">{{item.z_order_price}}</text>
+        </view>
+      </view>
+    </view>
+    <!-- 商品订单 -->
+    <view wx:else class="goods-order">
+      <view class="goods-body">
+        <view class="goods-wrapper">
+          <text lines="1" class="goods-title">订单编号：{{item.order_numb}}</text>
+          <view class="goods-wrapper-inner">
+            <text lines="1" class="goods-subscribe">{{item.order_type_name}}</text>
+          </view>
+        </view>
+        <view wx:for="{{item.child}}" wx:for-item="goods" wx:for-index="i" wx:key="i" class="goods-wrapper-i-0">
+          <view class="goods-group">
+            <image mode="aspectFill" src="{{goods.specs_img}}" class="goods-picture" />
+          </view>
+          <view class="goods-group-1">
+            <text lines="1" class="goods-caption">{{goods.goods_name}}</text>
+            <view class="goods-model-wrapper">
+              <text lines="1" class="goods-title-1">{{goods.spece_name}}</text>
+              <text wx:if="{{item.order_type !== 1}}" lines="1" class="goods-money">￥{{goods.z_price}}</text>
+            </view>
+            <view class="goods-benifit-wrapper">
+              <wxs module="filter">
+                var typeText = {
+                  '2': {
+                    '0': {
+                      '0': '',
+                      '1': '退货中',
+                      '2': '换货中',
+                    },
+                    '1': {
+                      '0': '',
+                      '1': '已退货',
+                      '2': '已换货',
+                    }
+                  },
+                  '3': {
+                    '0': {
+                      '1': '',
+                      '2': '退款中',
+                      '3': '退货退款中',
+                      '4': '换货中',
+                    },
+                    '1': {
+                      '1': '',
+                      '2': '已退款',
+                      '3': '已退货退款',
+                      '4': '已换货',
+                    }
+                  }
+                }
+                var format = function (orderType, isOk, orderStatus) {
+                  return typeText[orderType][isOk][orderStatus]
+                }
+                module.exports = {
+                  format: format
+                }
+              </wxs>
+              <text wx:if="{{goods.s_type == 1}}" lines="1" class="goods-benifit">试喝</text>
+              <text wx:elif="{{item.order_type === 2}}" lines="1"
+                class="goods-buy {{goods.s_status == 1 || goods.s_status == 2 ? 'red-text' : ''}}">{{filter.format(item.order_type
+                + '', goods.is_ok, goods.s_status)}}</text>
+              <text wx:else lines="1"
+                class="goods-buy {{goods.order_status == 2 || goods.order_status == 3 || goods.order_status == 4 ? 'red-text' : ''}}">{{filter.format(item.order_type
+                + '', goods.is_ok,
+                goods.order_status)}}</text>
+              <text lines="1" class="goods-caption-1">x1</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="goods-footer">
+        <view class="goods-horizontal-line" />
+        <view class="goods-wrapper-1">
+          <text lines="1" class="goods-title-7">共{{item.goods_count}}件</text>
+          <text lines="1" class="goods-price-info">实付￥</text>
+          <text lines="1" class="goods-price-1">{{item.z_order_price}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="empty-none" hidden="{{orderList.length}}">
+  <image class="no-data-image" src="/resource/images/invoice-no-data-1.png"></image>
+  <text>暂无内容</text>
+</view>
+
+<view class="mask" hidden="{{typeHidden}}" bindtap="hideMenu"></view>

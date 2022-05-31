@@ -1,0 +1,12 @@
+<view class="~modal-bg alert-session" wx:if="{{alertShow}}" catchtouchmove="true" catchtap="modalHide">
+  <view class="alert-block" catchtap="modalShow">
+    <view class="close-btn" catchtap="modalHide"><image src="/resource/images/close.png"></image></view>
+    <view class="alert-header">提醒</view>
+    <view class="alert-txt">取消退货申请后，本次退货退款将关闭。您还可以再次发起退货/退款。</view>
+    <view class="alert-line"></view>
+    <view class="alert-btn">
+      <view catchtap="modalHide">我再想想</view>
+      <view class="color-212124" catchtap="sureFunc">确定</view>
+    </view>
+  </view>
+</view>

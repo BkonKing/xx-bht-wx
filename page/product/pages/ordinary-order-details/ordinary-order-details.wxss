@@ -1,0 +1,75 @@
+@import '/resource/css/order.wxss';
+
+/* 商品列表 start */
+.shop-name,.shop-specs,.shop-list-tip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.shop-name view:nth-child(1) {
+  max-width: 420rpx;
+}
+.shop-name view:nth-child(2),.shop-specs view:nth-child(2) {
+  color: #b8babf;
+}
+.shop-name view:nth-child(2) text {
+  font-size: 26rpx;
+}
+.shop-specs view:nth-child(1) {
+  max-width: 360rpx;
+}
+.shop-specs view:nth-child(2) {
+  text-decoration: line-through;
+}
+.item-tip {
+  height: 30rpx;
+  width: 100rpx;
+  line-height: 26rpx;
+  color: #bd8975;
+  font-size: 20rpx;
+  text-align: center;
+  border: 2rpx solid #bd8975;
+  border-radius: 2rpx;
+}
+.item-tip2 {
+  color: #f33f3f;
+  font-size: 24rpx;
+}
+.vip-label {
+  color: #212124;
+  font-size: 24rpx;
+}
+.toggle-btn {
+  height: 60rpx;
+  display: flex;
+  justify-content: center;
+  padding: 22rpx 0;
+  margin-bottom: 20rpx;
+}
+.toggle-btn image {
+  height: 100%;
+}
+.shop-list.shop-list-long {
+  padding-bottom: 0;
+}
+.shop-list {
+  /* height: 690rpx; */
+  max-height: 710rpx;
+  overflow: hidden;
+}
+.shop-list.list-auto {
+  height: auto;
+}
+.shop-list.list-auto + .toggle-btn image {
+  transform: rotate(180deg);
+}
+/* 商品列表 end */
+.bottom-link view.pay-btn {
+  width: 220rpx;
+  border-color: #9e6f5d;
+  color: #fefefe;
+  background-color: #9e6f5d;
+}
+.bottom-link view,.bottom-link navigator {
+  margin-left: 20rpx;
+}

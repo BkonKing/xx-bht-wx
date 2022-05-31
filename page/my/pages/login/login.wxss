@@ -1,0 +1,60 @@
+.logon-root {
+  padding: 0 36rpx;
+  color: #000000;
+  font-size: 30rpx;
+}
+.login-top {
+  height: 393rpx;
+  border-bottom: 1px solid #e5e5e5;
+  overflow: hidden;
+  text-align: center
+}
+.login-logo {
+  font-size: 0;
+  width: 180rpx;
+  height: 180rpx;
+  margin: 80rpx auto 0;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.login-name {
+  line-height: 74rpx;
+  font-size: 36rpx;
+  font-weight: bold;
+}
+.logon-action {
+  margin-top: 65rpx;
+  line-height: 64rpx;
+  font-size: 36rpx;
+  font-weight: bold;
+}
+.logon-word {
+  line-height: 58rpx;
+}
+.btn-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 66rpx;
+}
+.btn-block .login-btn {
+  width: 324rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  font-weight: bold;
+  padding: 0;
+  margin: 0;
+  font-size: 30rpx;
+  border-radius: 5rpx;
+  text-align: center;
+}
+.btn-block view {
+  background-color: #ededed;
+}
+.btn-block button {
+  background-color: #04c160;
+  color: #fff;
+}
+.btn-block button::after {
+  border: none;
+}

@@ -1,0 +1,57 @@
+/* components/topbar/topbar.wxss */
+/* header */
+.top-title {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  color: #000;
+  z-index: 885;
+  background-color: #ffffff;
+  text-align: center;
+  border-bottom: 1rpx solid #efefef;
+  overflow: hidden;
+}
+.top-title.noboreder {
+  border-bottom: 0;
+}
+.title-txt {
+  font-size: 34rpx;
+  font-weight: bold;
+}
+navigator.navigator-hover {
+  background-color: #fff;
+  opacity: 1;
+}
+.header-back {
+  position: absolute;
+  width: 100rpx;
+  left: 10rpx;
+  box-sizing: border-box;
+  padding: 15rpx 15rpx;
+}
+.header-back image {
+  width: 100%;
+  height: 100%;
+}
+.header-back-icon {
+  display: block;
+  width: 18rpx;
+  height: 18rpx;
+  border-top: 4rpx solid #333; 
+  border-right: 4rpx solid #333; 
+  position: absolute;
+  right: 33rpx;
+  top: 50%;
+  margin-top: -13rpx;
+  transform: rotate(-135deg);
+}
+.top-sjx {
+  display: inline-block;
+  vertical-align: middle;
+  height: 0;
+  width: 0;
+  border-right: 14rpx  solid transparent;
+  border-top: 17rpx solid #000000;
+  border-left: 14rpx  solid transparent;
+  margin-left: 10rpx;
+}

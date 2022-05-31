@@ -1,0 +1,258 @@
+page {
+  background: #fafafa;
+}
+.form-list {
+  background-color: #fff;
+}
+.form-list:nth-child(2) {
+  margin-top: 30rpx;
+}
+.form-item {
+  display: flex;
+  min-height: 121rpx;
+  padding: 0 30rpx;
+  position: relative;
+}
+.form-item::after {
+  left: 30rpx;
+  right: 30rpx;
+}
+.item-name {
+  width: 158rpx;
+  line-height: 120rpx;
+  color: #60646b;
+}
+.itemt-text {
+  /* width: 532rpx; */
+  flex-grow: 1;
+  padding: 30rpx 0;
+}
+.address-choose.form-item::after {
+  left: 188rpx;
+}
+.address-choose .itemt-text {
+  width: 488rpx;
+  flex-grow: 0;
+  display: flex;
+  align-items: center;
+}
+.address-choose .itemt-text.two-text {
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 38rpx;
+}
+.two-text view {
+  max-width: 488rpx;
+}
+.itemt-icon {
+  width: 44rpx;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  height: 121rpx;
+}
+.itemt-icon image {
+  width: 44rpx;
+  height: 44rpx;
+}
+.itemt-text input {
+  width: 100%;
+  height: 100%;
+  font-size: 30rpx;
+  color: #212124;
+  float: left;
+}
+
+.label-session {
+  justify-content: space-between;
+  padding-right: 0;
+}
+.label-list-session {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+}
+.label-list-session.label-list-right {
+  justify-content: flex-end;
+}
+.label-list {
+  display: flex;
+  padding-top: 28rpx;
+  height: 88rpx;
+}
+.label-item {
+  margin-right: 20rpx;
+  border: 2rpx solid #b8babf;
+  line-height: 58rpx;
+  height: 58rpx;
+  color: #919499;
+  padding: 0 24rpx;
+  border-radius: 30rpx;
+}
+.label-item.cur {
+  background-color: #b8babf;
+  color: #ffffff;
+}
+.label-item:last-child {
+  margin-right: 0;
+}
+.custom-session {
+  float: right;
+  display: flex;
+  align-items: center;
+  color: #919499;
+  padding-right: 30rpx;
+}
+.custom-session image {
+  width: 12rpx;
+  height: 22rpx;
+  margin: 0 6rpx 0 17rpx;
+}
+.form-item.default-item {
+  align-items: center;
+  justify-content: space-between;
+}
+.default-item .item-name {
+  width: 250rpx;
+}
+.default-switch {
+  position: relative;
+  width: 110rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  background: #f1f1f1;
+  border-radius: 30px;
+  transition: all 0.3s linear;
+}
+.default-switch::before {
+  position: absolute;
+  left: 5rpx;
+  right: 55rpx;
+  top: 5rpx;
+  bottom: 5rpx;
+  content: '';
+  border-radius: 50%;
+  background: #b8babf;
+  transition: all 0.3s linear;
+}
+.default-switch.checked {
+  background: #9e6f5d;
+}
+.default-switch.checked::before {
+  left: 55rpx;
+  right: 5rpx;
+  background: #ffffff;
+}
+.synchronous-btn {
+  overflow: hidden;
+}
+.synchronous-btn view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20rpx 0;
+  margin-top: 17rpx;
+}
+.synchronous-btn image {
+  width: 34rpx;
+  height: 34rpx;
+  margin-right: 10rpx;
+}
+
+.btn-kong {
+  height: 168rpx;
+}
+.btn-box {
+  height: 168rpx;
+  padding: 40rpx 30rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.btn-box view {
+  border-radius: 1px;
+  width: 335rpx;
+}
+.btn-box view.btn-100 {
+  width: 100%;
+}
+.del-btn {
+  background-color: #b8babf;
+}
+.sure-btn.disabled-btn {
+  background-color: #919499;
+}
+
+.swal-session {
+  animation: translateMove 0.5s;
+  -webkit-animation: translateMove 0.5s;
+  background-color: #fff;
+  height: 689rpx;
+  z-index: 188;
+  padding: 0 30rpx;
+}
+.close-btn {
+  position: absolute;
+  width: 88rpx;
+  height: 88rpx;
+  top: -88rpx;
+  right: 10rpx;
+  z-index: 66;
+  padding: 20rpx;
+  display: flex;
+}
+.swal-tit {
+  height: 110rpx;
+  line-height: 110rpx;
+  text-align: center;
+  font-size: 34rpx;
+  color: #60646b;
+}
+.swal-item {
+  height: 80rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.swal-label {
+  width: 80rpx;
+  height: 100%;
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 24rpx;
+  color: #ffffff;
+  background-color: #b8babf;
+}
+.swal-tick {
+  width: 44rpx;
+  height: 100%;
+  padding: 18rpx 0;
+}
+.swal-input {
+  height: 79rpx;
+  width: 524rpx;
+  border-bottom: 1px solid #f1f1f1;
+  padding: 20rpx 0;
+}
+.swal-input input {
+  font-size: 30rpx;
+  color: #212124;
+  width: 100%;
+  height: 100%;
+  line-height: 39rpx;
+}
+.swal-sure {
+  margin-top: 40rpx;
+}
+
+@keyframes translateMove
+{
+  from {transform:translateY(100%);}
+  to {transform:translateY(0);}
+}
+
+@-webkit-keyframes translateMove
+{
+  from {transform:translateY(100%);}
+  to {transform:translateY(0);}
+}

@@ -1,0 +1,72 @@
+<topbar id="topbar" bar-obj="{{barObj}}"></topbar>
+
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class="form-list">
+    <view class="form-item">
+      <view class="item-name">抬头类型</view>
+      <view class="itemt-text line text-right">
+        <radio-group class="radio-group" bindchange="radioChange">
+          <label class="item-radio">
+            <radio value="1" checked="{{rise_type === '1'}}" color="#000" />个人或事业单位
+          </label>
+          <label class="item-radio">
+            <radio value="2" checked="{{rise_type === '2'}}"  color="#000" />企业
+          </label>
+        </radio-group>
+      </view>
+    </view>
+    <view class="form-item">
+      <view class="item-name required-after">发票抬头</view>
+      <view class="itemt-text {{rise_type !== '1' ? 'line' : ''}}">
+        <input model name="rise" model:value="{{rise}}" placeholder-class="placeholder"
+          placeholder="{{rise_type === '1' ? '填写需要开具发票的姓名' : '填写需要开具发票的企业名称'}}" maxlength="50" bindinput="judgeSumbit" />
+      </view>
+    </view>
+    <view wx:if="{{rise_type === '2'}}" class="form-item">
+      <view class="item-name required-after">税号</view>
+      <view class="itemt-text">
+        <input name="duty_paragraph" model:value="{{duty_paragraph}}" placeholder-class="placeholder" maxlength="20" placeholder="纳税人识别号"  bindinput="formatNumberLetter" />
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{rise_type === '2'}}" class="form-list">
+    <view class="form-item">
+      <view class="item-name">开户银行</view>
+      <view class="itemt-text line">
+        <input model:value="{{bank}}" maxlength="25" placeholder-class="placeholder" placeholder="选填" />
+      </view>
+    </view>
+    <view class="form-item">
+      <view class="item-name">银行账号</view>
+      <view class="itemt-text line">
+        <input name="number" model:value="{{bank_card}}" placeholder-class="placeholder" maxlength="23" placeholder="选填" bindinput="formatCardNumber" />
+      </view>
+    </view>
+    <view class="form-item">
+      <view class="item-name">企业地址</view>
+      <view class="itemt-text line">
+        <input model:value="{{address}}" maxlength="50" placeholder-class="placeholder" placeholder="选填" />
+      </view>
+    </view>
+    <view class="form-item">
+      <view class="item-name">企业电话</view>
+      <view class="itemt-text">
+        <input name="phone" model:value="{{phone}}" placeholder-class="placeholder" maxlength="15" placeholder="选填" bindinput="formatNumber" />
+      </view>
+    </view>
+  </view>
+  <view class="form-list">
+    <view class="form-item default-item">
+      <view class="item-name">设为默认抬头</view>
+      <label class="item-checkbox">
+        <checkbox value="1" model:checked="{{is_default}}" color="#fff" />
+      </label>
+    </view>
+  </view>
+</form>
+
+<view class="btn-kong"></view>
+<view class="btn-box bottom-fixed">
+  <view class="sure-btn btn-d {{addrId ? '' : 'btn-100'}} {{btnDisabled ? 'disabled-btn' : ''}}"
+    catchtap="{{!btnDisabled ? 'formSubmit' : ''}}">完成</view>
+</view>

@@ -1,0 +1,6 @@
+<view class="top-title customtitle {{barObj.isBorder ? '' : 'noboreder'}} ~bar-bg" style='height: {{barHeight + 44}}px;'>
+  <view class="title-txt customtitletext ~title-color" style='padding-top: {{barHeight}}px; line-height: 44px;'>
+    <view wx:if="{{barObj.goback_pic}}" class="header-back" catchtap="goback" style="top: {{barHeight}}px;height: 44px;"><image mode="aspectFit" src="{{barObj.goback_pic}}"></image></view>{{barObj.titName}}
+  </view>
+</view>
+<view class="header-block" style='height: {{barHeight + 44}}px;'></view>

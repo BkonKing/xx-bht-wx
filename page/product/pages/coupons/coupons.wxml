@@ -1,0 +1,79 @@
+<topbar id="topbar" bar-obj="{{barObj}}"></topbar>
+
+<view class="nav-empty"></view>
+<view class="nav-box" style="top:{{headerArr.height + 44+ 'px'}}">
+  <view class="nav-item {{typeVal == 1 ? 'cur' : ''}}" bindtap="navFun" data-typeval="1">未使用</view>
+  <view class="nav-item {{typeVal == 2 ? 'cur' : ''}}" bindtap="navFun" data-typeval="2">已使用</view>
+  <view class="nav-item {{typeVal == 3 ? 'cur' : ''}}" bindtap="navFun" data-typeval="3">已过期</view>
+</view>
+<view class="coupon-list">
+  <navigator wx:if="{{userVip && bannerSrc}}" class="coupon-banner-navigator" hidden="{{typeVal != 1}}"
+    url="/page/product/pages/invitation/invitation">
+    <image class="coupon-banner" src="{{bannerSrc}}"></image>
+  </navigator>
+  <block wx:for="{{couponList}}" wx:key="index">
+    <view class="coupon-item {{typeVal==2||typeVal==3 ? 'coupon-invalid' : ''}}">
+      <view class="coupon-block">
+        <view class="coupon-icon" wx:if="{{item.i_img}}">
+          <image class="width-100" src="{{item.i_img}}"></image>
+        </view>
+        <view class="item-header">
+          <view class="coupon-info">
+            <block wx:if="{{item.type==1}}">
+              <view class="coupon-price"><text>￥</text>{{item.reduce_price}}</view>
+            </block>
+            <block wx:else>
+              <view class="coupon-price">{{item.discount_num}}<text>折</text></view>
+            </block>
+            <view class="coupon-line"></view>
+            <view class="coupon-time">{{item.coupon_name}}<text>\n{{typeVal==1 ? item.term_of_validity :
+                item.g_time}}</text></view>
+          </view>
+        </view>
+        <view class="coupon-btn" wx:if="{{typeVal == 1}}" bindtap="linkFunc" data-type="{{item.order_type}}">
+          <text>立\n即\n使\n用</text>
+        </view>
+        <view class="coupon-btn" wx:elif="{{typeVal == 2}}"><text>已\n使\n用</text></view>
+        <view class="coupon-btn" wx:else><text>已\n过\n期</text></view>
+        <view class="linear-bg"></view>
+      </view>
+      <view class="coupon-down">
+        <view class="toggle-btn {{item.is_down ? 'toggle-btn-down' : ''}}" bindtap="contToggle" data-id="{{index}}">
+        </view>
+        <view class="toggle-box p-nowrap" hidden="{{item.is_down}}">
+          {{item.coupon_explain}}
+        </view>
+        <view class="coupon-detail" hidden="{{!item.is_down}}">
+          <text>券编号：{{item.coupon_code}}</text>
+          <view>优惠说明：{{item.coupon_explain}}</view>
+          <block wx:if="{{item.zd_goods != ''}}">
+            <view>指定商品：{{item.zd_goods}}</view>
+          </block>
+          <view>有效期：{{item.g_time2}}</view>
+          <view>使用须知：</view>
+          <view class="point-bg">
+            <text>{{item.coupon_rule}}</text>
+          </view>
+          <view>
+            <text>领取时间：{{item.ctime}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>
+
+<view class="empty-none" hidden="{{noneHidden || (typeVal == 1 && userVip && bannerSrc)}}">
+  <image src="https://bht.liwushijian.com/library/img/xcx_img//empty_01.png"></image>
+  <view>您还没有优惠券，快去领取吧</view>
+</view>
+
+<!-- 授权登录 -->
+<view class="loginModel" hidden="{{loginModelHidden}}" catchtouchmove="true">
+  <image src="https://bht.liwushijian.com/library/img/xcx_img/login.png" class="loginImg"></image>
+  <view class="loginText">我们需要获得您的授权，以继续操作</view>
+  <button class="loginBtn" bindtap="updateUserInfo">
+    <image src="https://bht.liwushijian.com/library/img/xcx_img/weixin.png" class="loginBtnimg"></image>微信授权登录
+  </button>
+</view>
+<view class="loginBg" hidden="{{loginModelHidden}}" catchtouchmove="true"></view>

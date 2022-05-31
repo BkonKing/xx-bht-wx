@@ -1,0 +1,137 @@
+@import '/resource/css/order.wxss';
+@import '/resource/css/modal.wxss';
+
+.shop-refund-tip {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  font-size: 26rpx;
+  color: #f33f3f;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.express-kong {
+  height: 30rpx;
+}
+
+/* view.bottom-link navigator {
+  color: #212124;
+  border: 2rpx solid #212124;
+} */
+view.bottom-link::before {
+  display: none;
+}
+
+.edit-submit {
+  margin-bottom: 30rpx;
+}
+
+.bottom-link view {
+  margin-right: 20rpx;
+}
+.swal-session {
+  animation: translateMove 0.5s;
+  -webkit-animation: translateMove 0.5s;
+  background-color: #fff;
+  z-index: 188;
+  padding-bottom: 30rpx;
+}
+.close-btn {
+  position: absolute;
+  width: 88rpx;
+  height: 88rpx;
+  top: -88rpx;
+  right: 10rpx;
+  z-index: 66;
+  padding: 20rpx;
+  display: flex;
+}
+.swal-tit {
+  height: 100rpx;
+  line-height: 88rpx;
+  padding-top: 12rpx;
+  text-align: center;
+  font-size: 34rpx;
+  color: #212124;
+}
+.swal-cont {
+  padding: 0 30rpx;
+  line-height: 44rpx;
+  font-size: 26rpx;
+  color: #212124;
+  margin-bottom: 30rpx;
+}
+.swal-cont text {
+  font-weight: bold;
+}
+.swal-tip {
+  width: 690rpx;
+  height: 66rpx;
+  line-height: 66rpx;
+  font-size: 24rpx;
+  text-align: center;
+  color: #f33f3f;
+  background-color: #feebeb;
+  margin: 0 auto 40rpx;
+}
+.swal-goods {
+  margin-bottom: 40rpx;
+}
+.swal-goods .shop-item {
+  height: 190rpx;
+}
+.swal-goods .modal-item {
+  height: 190rpx;
+  line-height: 190rpx;
+  padding-right: 20rpx;
+}
+.swal-goods .modal-checkbox {
+  margin-right: 0;
+}
+.checkbox-empty {
+  width: 30rpx;
+}
+.swal-goods .shop-pic {
+  width: 190rpx;
+}
+.swal-goods .shop-name {
+  line-height: 46rpx;
+  padding-top: 11rpx;
+}
+.swal-goods .shop-specs {
+  line-height: 44rpx;
+  margin-bottom: 0;
+}
+.swal-goods .shop-specs {
+  line-height: 44rpx;
+  margin-bottom: 5rpx;
+}
+.swal-goods .vip-icon {
+  color: #ffffff;
+  width: 110rpx;
+  height: 36rpx;
+  padding-right: 0;
+  background: url('https://bht.liwushijian.com/library/img/xcx_img/cart_02.png') no-repeat left center/auto 100%;
+}
+.swal-goods .shop-price {
+  height: 44rpx;
+}
+.swal-btn {
+  height: 88rpx;
+  width: 690rpx;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+.swal-btn view {
+  border-radius: 4rpx;
+}
+.swal-btn view:nth-child(1) {
+  margin-right: 20rpx;
+  line-height: 84rpx;
+  border: 2rpx solid #212124;
+  color: #212124;
+  background-color: #fff;
+}

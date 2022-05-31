@@ -1,0 +1,43 @@
+<topbar id="topbar" bar-obj="{{barObj}}"></topbar>
+  
+<view class="logistics-block">
+  <view class="logistics-section logistics-header">
+    <view class="logistics-pic">
+      <view class="logistics-num">共{{logisticsInfo.goods_num}}件</view>
+      <image class="width-100" mode="aspectFill" src="{{logisticsInfo.goods_img}}"></image>
+    </view>
+    <block wx:if="{{logistics_id}}">
+      <view class="logistics-info"><view>物流配送：{{logisticsInfo.kuaidi_name}}</view><view>运单编号：{{logisticsInfo.kuaidi_numb}}</view></view>
+      <view class="logistics-copy" bindtap="copyNo">复制</view>
+    </block>
+    <block wx:else>
+      <view class="logistics-info">上门自提</view>
+    </block>
+  </view>
+  <view wx:if="{{logistics_id}}" class="logistics-section logistics-body">
+    <view class="logistics-list">
+      <block wx:for="{{listData}}" wx:key="index">
+        <view class="logistics-item">
+          <view class="item-icon-box"><view class="item-icon"></view><view class="item-line"></view></view>
+          <view class="item-msg">{{item.context}}</view>
+          <view class="item-time">{{item.ftime}}</view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view wx:else class="logistics-section logistics-self">
+    <view class="address-cont">
+      <view class="address-left"><image src="/resource/images/address_04.png"></image>提货地址：</view>
+      <view class="address-right">{{logisticsInfo.pick_up_type_name || '--'}}</view>
+    </view>
+    <view class="logistics-status">
+      <image src="https://bht.liwushijian.com/library/img/xcx_img/vicon_09.png"></image>
+      <view class="status-txt">提货成功</view>
+      <view class="status-time">{{logisticsInfo.receiving_time}}</view>
+    </view>
+  </view>
+</view>
+
+
+
+

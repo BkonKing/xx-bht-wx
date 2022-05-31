@@ -1,0 +1,14 @@
+<view class="~modal-bg modal-session" wx:if="{{modalShow}}" catchtouchmove="true" catchtap="modalFunc">
+  <view class="cont" catchtap="showModal">
+    <view class="close" catchtap="hideModal"><image src="/resource/images/close.png"></image></view>
+    <view class="txt-block">
+      <!-- <view class="cont-txt">尊敬的不荒唐用户，您的<text>优惠券</text>即将<text>到期</text>，请尽快使用！</view> -->
+      <view class="cont-txt">
+        <import src="/resource/wxParse/wxParse.wxml"/> <template is="wxParse" data="{{wxParseData:articleContent.nodes}}"/>
+      </view>
+    </view>
+    <view class="line-block"></view>
+    <view catchtap="goLink" class="go-link">立即使用</view>
+  </view>
+  <slot></slot>
+</view>

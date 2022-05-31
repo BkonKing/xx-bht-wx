@@ -1,0 +1,23 @@
+@import '/page/product/pages/ordinary-apply-exchange/ordinary-apply-exchange.wxss';
+.money-item {
+  height: 154rpx;
+  padding-bottom: 44rpx;
+}
+.money-tip {
+  width: 100%;
+  position: absolute;
+  bottom: 36rpx;
+  line-height: 36rpx;
+  color: #b8babf;
+  font-size: 24rpx;
+}
+.money-item .link-middle input {
+  height: 1.4rem;
+  padding: 0;
+}
+.money-item .link-middle input,.money-item .link-middle text {
+  color: #f33f3f;
+}
+/* .link-item {
+  flex-wrap: wrap;
+} */

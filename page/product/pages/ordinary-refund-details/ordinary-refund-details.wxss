@@ -1,0 +1,70 @@
+@import '/resource/css/order.wxss';
+
+.shop-refund-tip {
+  /* width: 95rpx; */
+  font-size: 26rpx;
+  color: #f33f3f;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  top: 0;
+  line-height: 148rpx;
+
+}
+
+view.bottom-link::before {
+  display: none;
+}
+
+
+.shop-name,.shop-specs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.shop-name view:nth-child(1) {
+  max-width: 420rpx;
+}
+.shop-name view:nth-child(2) {
+  color: #b8babf;
+}
+.shop-name view:nth-child(2) text {
+  font-size: 26rpx;
+}
+.shop-specs view:nth-child(1) {
+  max-width: 360rpx;
+}
+.shop-specs view:nth-child(2) {
+  color: #f33f3f;
+}
+.item-tip {
+  height: 30rpx;
+  width: 100rpx;
+  line-height: 26rpx;
+  color: #bd8975;
+  font-size: 20rpx;
+  text-align: center;
+  border: 2rpx solid #bd8975;
+  border-radius: 2rpx;
+}
+
+.express-kong {
+  height: 30rpx;
+}
+.logistics-item .link-middle {
+  color: #b8babf;
+  text-align: left;
+}
+.padding-zero.link-item {
+  padding: 0;
+}
+.select-item.padding-zero::after {
+  left: 0;
+  right: 0;
+}
+
+.edit-submit {
+  margin-bottom: 30rpx;
+}

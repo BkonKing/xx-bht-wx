@@ -1,0 +1,73 @@
+<!--page/product/pages/special/special.wxml-->
+<topbar id="topbar" customtitle="{{barObj.titName.length > 8 ? 'left-title-bar' : ''}}"
+  customtitletext="{{barObj.titName.length > 8 ? 'left-title-txt' : ''}}" bar-obj="{{barObj}}"></topbar>
+
+<!-- 商品组 -->
+<view wx:if="{{type === 1}}" class="scroll-block">
+  <image wx:if="{{topicUrl}}" mode='widthFix' src="{{topicUrl}}" class="topic-image"></image>
+  <view class="special-content">
+    <view wx:if="{{topicTitle || topicContent}}" class="topic-box">
+      <view wx:if="{{topicTitle}}" class="topic-title">{{topicTitle}}</view>
+      <view wx:if="{{topicContent}}" class="topic-content">{{topicContent}}</view>
+    </view>
+    <view wx:for="{{list}}" wx:key="index" class="group">
+      <image wx:if="{{item.combination_pic}}" mode='widthFix' src="{{item.combination_pic}}" class="group-image">
+      </image>
+      <view wx:if="{{item.combination_content}}" class="group-title">- {{item.combination_content}} -<text
+          class="underline"></text></view>
+      <view class="{{arrange === 1 ? 'goods-one-container' : 'goods-two-container'}}">
+        <view wx:for="{{item.list}}" wx:key="i" wx:for-index="i" wx:for-item="goods" bindtap="jump"
+          data-id="{{goods.goods_id}}" data-type="1" class="goods-container">
+          <image mode='aspectFill' src="{{goods.thumb}}" class="goods-image"></image>
+          <view class="goods-info">
+            <view>
+              <view wx:if="{{goods.vip_status == 2}}" class="enjoy-tag">会员优享</view>
+              <view class="goods-title p-nowrap">{{goods.goods_name}}</view>
+              <view class="goods-sub-title p-nowrap">{{goods.sub_title}}</view>
+            </view>
+            <view>
+              <block wx:if="{{goods.vip_status == 3}}">
+                <view class="member-price enjoy-member-price only-price">{{goods.buying_roles == 1 ? '仅限会员：' :
+                  '仅限非会员：'}}￥<text class="member-price-number">{{goods.sell_price}}</text></view>
+              </block>
+              <block wx:else>
+                <view wx:if="{{goods.vip_status == 2}}" class="member-price enjoy-member-price">会员优享<text>￥</text><text
+                    class="member-price-number">{{goods.enjoy_price}}</text></view>
+                <view wx:else class="member-price">会员 <text>￥</text><text
+                    class="member-price-number">{{goods.vip_price}}</text></view>
+                <view class="nonmember-price">非会员 <text>￥{{goods.sell_price}}</text></view>
+              </block>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 图文组 -->
+<view wx:if="{{type === 2}}" class="scroll-block">
+  <view wx:for="{{list}}" wx:key="index" class="special-image-box">
+    <image class="special-image image-width-{{item.length}}" mode="widthFix" wx:for="{{item}}" wx:key="i"
+      wx:for-index="i" wx:for-item="img" src="{{img.image_url}}" bindtap="jump" data-id="{{img.jump_id}}"
+      data-type="{{img.jump_type}}"></image>
+  </view>
+</view>
+
+<!-- 授权 -->
+<view class="loginModel" hidden="{{loginModelHidden}}" catchtouchmove="true">
+  <image src="https://bht.liwushijian.com/library/img/xcx_img/login.png" class="loginImg"></image>
+  <view class="loginText">我们需要获得您的授权，以继续操作</view>
+  <button class="loginBtn" bindtap="updateUserInfo">
+    <image src="https://bht.liwushijian.com/library/img/xcx_img/weixin.png" class="loginBtnimg"></image>微信授权登录
+  </button>
+</view>
+<view class="loginBg" hidden="{{loginModelHidden}}" catchtouchmove="true"></view>
+
+<view class="modal-bg" wx:if="{{errorShow}}" catchtap="goBack">
+  <view class="modal-body" catchtap="showErrorModal" style="height: 360rpx;">
+    <view class="modal-body-text" style="margin-top: 90rpx;">页面已不存在</view>
+    <button class="open-btn" catchtap="goBack">我知道了</button>
+    <image class="modal-close-btn" src="/resource/images/close.png" catchtap="goBack"></image>
+  </view>
+</view>

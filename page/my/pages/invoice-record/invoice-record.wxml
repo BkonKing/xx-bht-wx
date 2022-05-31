@@ -1,0 +1,52 @@
+<topbar id="topbar" bar-obj="{{barObj}}"></topbar>
+
+<view class="nav-box">
+  <view>
+    <view class="nav-item {{type == 1 ? 'cur' : ''}}" bindtap="navFun" data-type="1">已开具</view>
+    <view class="nav-item {{type == 2 ? 'cur' : ''}}" bindtap="navFun" data-type="2">申请中</view>
+  </view>
+  <view>
+    <navigator hover-class="none" class="nav-btn nav-btn-1" url="/page/my/pages/invoice-apply/invoice-apply">+申请
+    </navigator>
+    <navigator hover-class="none" class="nav-btn" url="/page/my/pages/invoice-title/invoice-title">抬头</navigator>
+  </view>
+</view>
+
+<view class="all-list-box">
+  <block wx:for="{{invoiceList}}" wx:key="index">
+    <view class="list-container">
+      <view class="wrapper" bindtap="goInvoice" data-id="{{item.id}}">
+        <view class="body">
+          <view class="group">
+            <view wx:if="{{item.i_state === '0' || item.i_state === '1'}}" class="button-wrapper">
+              <text lines="1" class="button">申请中</text>
+            </view>
+            <text lines="1" class="location">{{item.rise}}</text>
+          </view>
+          <view class="group-1">
+            <view class="btn-wrapper">
+              <text lines="1" class="btn">{{item.i_type_name}}</text>
+            </view>
+            <view class="price-wrapper">
+              <text lines="1" class="yuan">￥</text>
+              <text lines="1" class="price">{{item.invoice_money}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="footer">
+          <view class="horizontal-line" />
+          <view class="group-2">
+            <view class="view" catchtap="goOrderDetail" data-id="{{item.order_id_text}}" data-type="{{item.order_type_text}}">
+              <text lines="1" class="detail">订单详情</text>
+              <image src="/resource/images/right.png" class="icon-right"></image>
+            </view>
+            <text lines="1" class="tag">{{item.ctime}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <view class="empty-none" hidden="{{invoiceList && invoiceList.length}}">
+    <image src="/resource/images/invoice-no-data.png"></image>
+  </view>
+</view>

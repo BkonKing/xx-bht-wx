@@ -1,0 +1,41 @@
+<topbar id="topbar" bar-obj="{{barObj}}"></topbar>
+<view class="buy-refund-list">
+  <view class="buy-refund-item bht-session" wx:for="{{listData}}" wx:key="index">
+    <view class="item-key">{{index+1}}</view>
+    <view class="shop-info">
+      <view class="shop-pic" hover-class="none"><image class="width-100" mode="aspectFill" src="{{item.specs_img}}"></image></view>
+      <view class="shop-name p-nowrap" hover-class="none" url="/page/product/pages/goods-details/goods-details?goods_id={{item.goods_id}}">{{item.goods_name}}</view>
+      <view class="shop-specs p-nowrap">{{item.spece_name}}</view>
+      <view class="shop-price">
+        <view class="vip-icon">会员优享价</view>
+        <view class="now-price"><text>￥</text>{{item.e_price}}</view>
+        <view class="old-price"><text>￥</text>{{item.s_price}}</view>
+      </view>
+    </view>
+    <view class="operate-session">
+      <view class="no-btn operate-btn {{item.select_status==1 ? 'cur' : ''}}" catchtap="{{item.tip_hidden ? 'modalFunc' : ''}}" data-index="{{index}}"><view class="btn-icon"></view>这款不太满意诶</view>
+      <view class="yes-btn operate-btn {{item.select_status==2 ? 'cur' : ''}}" catchtap="yesFunc" data-index="{{index}}"><view class="btn-icon"></view>这款我要了</view>
+    </view>
+    <view wx:if="{{!item.tip_hidden}}" class="no-tip" catchtap="modalFunc" data-index="{{index}}">{{item.no_val}}<view></view></view>
+  </view>
+</view>
+<view class="fixed-empty"></view>
+<view class="bottom-fixed buy-refund-bottm">
+  <view class="bottom-tip">本次购买可享受会员优享价</view>
+  <view class="bottom-info">
+    <view class="bottom-num">
+      <view>购买<text>{{buyNum}}</text>件</view>
+      <view>退货<text>{{refundNum}}</text>件</view>
+    </view>
+    <view class="bottom-btn" catchtap="sureFunc">确定</view>
+  </view>
+</view>
+
+<modal id="modal" modal-arr="{{modalArr}}" modal-show="{{modalShow}}" bind:modal="modalCall"></modal>
+  
+
+
+
+
+
+

@@ -1,0 +1,156 @@
+<!--page/my/pages/invoice-detail/invoice-detail.wxml-->
+<topbar id="topbar" bar-obj="{{barObj}}"></topbar>
+
+<view class="body">
+  <view class="schedule">
+    <view class="schedule-container">
+      <view class="schedule-box">
+        <image class="schedule-tag" src="/resource/images/step_wancheng.png"></image>
+      </view>
+      <view class="schedule-box">
+        <view class="{{info.i_state > 0 ? 'schedule-line' : 'schedule-line-un'}}" />
+        <image wx:if="{{info.i_state > 0}}" class="schedule-tag" src="/resource/images/step_wancheng.png"></image>
+        <view wx:else class="schedule-tag-un"></view>
+      </view>
+      <view class="schedule-box">
+        <view class="{{info.i_state > 1 ? 'schedule-line' : 'schedule-line-un'}}" />
+        <image wx:if="{{info.i_state > 1}}" class="schedule-tag" src="/resource/images/step_wancheng.png"></image>
+        <view wx:else class="schedule-tag-un"></view>
+      </view>
+    </view>
+    <view class="schedule-label-box">
+      <text lines="1" class="schedule-label">已申请</text>
+      <text lines="1" class="schedule-label">开具中</text>
+      <text lines="1" class="schedule-label">{{info.i_state === 3 ? '已取消' : '已开具'}}</text>
+    </view>
+    <view class="coupon-tag coupon-tag-left"></view>
+    <view class="coupon-tag coupon-tag-right"></view>
+  </view>
+  <view class="info {{isCompany ? '' : 'info-personage'}}">
+    <view class="info-title">{{info.i_type_name}}</view>
+    <view class="info-date info-label">- {{info.ctime}} -</view>
+    <view class="flex">
+      <view class="left-1">
+        <view class="info-label">发票抬头</view>
+        <view class="info-text">{{info.rise}}</view>
+      </view>
+      <view>
+        <view class="info-label">发票金额</view>
+        <view class="info-text">{{info.invoice_money}}元</view>
+      </view>
+    </view>
+    <view class="flex">
+      <view wx:if="{{isCompany}}" class="left-1">
+        <view class="info-label">税号</view>
+        <view class="info-text">{{info.duty_paragraph}}</view>
+      </view>
+      <view wx:else class="left-1">
+        <view class="info-label">邮箱地址</view>
+        <view class="info-text">{{info.mail}}</view>
+      </view>
+      <view>
+        <view class="info-label">发票内容</view>
+        <view class="info-text">{{info.c_type_name}}</view>
+      </view>
+    </view>
+    <block wx:if="{{isCompany && !isFold}}">
+      <view class="one-box">
+        <view class="info-label">邮箱地址</view>
+        <view class="info-text">{{info.mail}}</view>
+      </view>
+      <view class="one-box">
+        <view class="info-label">开户银行</view>
+        <view class="info-text">{{info.bank}}</view>
+      </view>
+      <view class="one-box">
+        <view class="info-label">银行账户</view>
+        <view class="info-text">{{info.bank_card}}</view>
+      </view>
+      <view class="one-box">
+        <view class="info-label">企业地址</view>
+        <view class="info-text">{{info.address}}</view>
+      </view>
+      <view class="one-box">
+        <view class="info-label">企业电话</view>
+        <view class="info-text">{{info.phone}}</view>
+      </view>
+    </block>
+    <view wx:if="{{isCompany}}" class="shrink-box {{isFold ? 'fold-btn' : 'unfold-btn' }}" bindtap="changeFold">
+      <view class="shrink-btn">
+        <image src="{{isFold ? '/resource/images/bottom.png' : '/resource/images/top.png'}}"></image>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{info.image_arr && info.image_arr.length}}" class="image-list">
+    <view class="image-list-box">
+      <view class="image-list-view">
+        <view wx:for="{{info.image_arr}}" wx:key="index" class="image-box" bindtap="openBigPic" data-index="{{index}}">
+          <image class="image" src="{{item}}"></image>
+          <image class="upload-image" src="/resource/images/upload.png" catchtap="saveImage" data-src="{{item}}"></image>
+        </view>
+      </view>
+    </view>
+    <view class="coupon-tag coupon-tag-left-1"></view>
+    <view class="coupon-tag coupon-tag-right-1"></view>
+  </view>
+  <view wx:if="{{info.i_type === '2' && info.kd_numb}}" class="box">
+    <view class="box-item b-line">
+      <view class="box-item-label">快递单号</view>
+      <view class="box-item-right">
+        {{info.kd_numb}}<image src="/resource/images/right.png"></image>
+      </view>
+    </view>
+    <view class="box-item">
+      <view class="box-item-label">收票地址</view>
+      <view class="box-item-right">
+        <view class="flex-acenter">
+          <view class="tag">公司
+          </view>{{info.rece_realname}} {{info.rece_mobile}} <image src="/resource/images/right.png"></image>
+        </view>
+        <view class="address">{{info.rece_address}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="box">
+    <view class="box-item">
+      <view class="box-item-label">订单编号{{info.order_arr.length}}</view>
+      <view class="box-item-right order-number-right">
+        <view>
+          <view wx:for="{{info.order_arr}}" wx:key="index" bindtap="goOrderDetail" data-id="{{item.order_id}}" data-type="{{item.type}}">{{item.order_numb}}</view>
+        </view>
+        <image wx:if="{{orderLength}}" src="/resource/images/right.png"></image>
+      </view>
+    </view>
+  </view>
+</view>
+<view wx:if="{{info.i_state < 2}}" class="fixed-btn-box">
+  <view class="fixed-btn">
+    <view class="btn btn-1" bindtap="openCancel">取消申请</view>
+    <view class="btn" bindtap="editApply">修改申请</view>
+  </view>
+</view>
+
+<view class="~modal-bg alert-session image-preview" wx:if="{{imageShow}}" catchtouchmove="true" catchtap="imagePreviewHide">
+  <swiper class="image-swiper" current="{{imageIndex}}" bindchange="bindImageChange">
+    <swiper-item wx:for="{{info.image_arr}}" class="image-swiper-item" wx:key="index">
+      <image src="{{item}}" mode="aspectFill"></image>
+    </swiper-item>
+  </swiper>
+  <view class="image-perview-info">
+    <view class="image-perview-text">{{imageIndex + 1}} / {{info.image_arr.length}}</view>
+    <button class="save-image-btn" catchtap="saveImg">保存图片(共{{info.image_arr.length}}张)</button>
+  </view>
+</view>
+
+<view class="~modal-bg alert-session" wx:if="{{alertShow}}" catchtouchmove="true" catchtap="modalHide">
+  <view class="alert-block" catchtap="modalShow">
+    <view class="close-btn" catchtap="modalHide">
+      <image src="/resource/images/close_02.png"></image>
+    </view>
+    <view class="alert-header">确定取消申请发票？</view>
+    <view class="alert-btn">
+      <view catchtap="modalHide" catchtap="modalHide">取消</view>
+      <view class="alert-btn-bg" catchtap="cancelApply">确定</view>
+    </view>
+  </view>
+</view>

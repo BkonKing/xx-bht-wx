@@ -1,0 +1,73 @@
+/* page/my/pages/invoice-title-detail/invoice-title-detail.wxss */
+
+page {
+  background: #fafafa;
+  line-height: 1;
+}
+
+.form-list {
+  position: relative;
+  margin: 30rpx 30rpx 0;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.form-item {
+  display: flex;
+  align-items: top;
+  min-height: 86rpx;
+  padding: 0 30rpx;
+  position: relative;
+}
+
+.form-item::after {
+  left: 30rpx;
+  right: 30rpx;
+}
+
+.item-name {
+  width: 140rpx;
+  padding-top: 30rpx;
+  color: #212124;
+}
+
+.itemt-text {
+  /* width: 532rpx; */
+  flex: 1;
+  flex-grow: 1;
+  min-height: 86rpx;
+  padding: 30rpx 0;
+  margin-left: 10rpx;
+  text-align: right;
+}
+
+.line {
+  border-bottom: 2rpx solid #EEEEEE;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.btn-kong {
+  height: 148rpx;
+}
+
+.btn-box {
+  width: 686rpx;
+  position: fixed;
+  bottom: 30rpx;
+  left: 32rpx;
+  right: 0;
+  z-index: 20;
+}
+
+.sure-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 686rpx;
+  height: 88rpx;
+  background: #FFFFFF;
+  border-radius: 44rpx;
+}

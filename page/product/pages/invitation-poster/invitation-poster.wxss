@@ -1,0 +1,31 @@
+#topbar .invitation-topbar-title {
+  background-color: initial;
+}
+
+page {
+  background: #212124;
+}
+
+.poster-image {
+  position: fixed;
+  width: 750rpx;
+  height: 1334rpx;
+  top: 0;
+}
+
+.poster-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 225rpx;
+  bottom: 50rpx;
+  width: 300rpx !important;
+  height: 88rpx;
+  background: linear-gradient(90deg, #DFB68D, #C4855E);
+  box-shadow: 0px 1rpx 0px 0px rgba(255, 255, 255, 0.5);
+  border-radius: 44rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #FFFFFF;
+}

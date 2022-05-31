@@ -1,0 +1,59 @@
+<!--page/my/pages/vip-detail/vip-detail.wxml-->
+<topbar id="topbar" bar-obj="{{barObj}}"></topbar>
+
+<view class="info-container">
+  <view>
+    <view class="info-status-name">{{infoData.order_status_name}}</view>
+    <view class="vip-order">
+      <view class="vip-body">
+        <view class="vip-view">
+          <image src="../../../../resource/images/vip_card.png" class="vip-logo" />
+        </view>
+        <view class="vip-view-1">
+          <text lines="1" class="vip-title">{{infoData.tip_name}}</text>
+          <text lines="1" class="vip-date">{{infoData.vip_time}}</text>
+        </view>
+      </view>
+      <view class="vip-footer">
+        <view class="vip-horizontal-line" />
+        <view class="vip-price-wrapper">
+          <text lines="1" class="vip-label">实付</text>
+          <text lines="1" class="vip-yuan">￥</text>
+          <text lines="1" class="vip-price">{{infoData.pay_price}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="info-content">
+    <view class="info-row">
+      <text>订单编号</text>
+      <view class="flex-align-center"><text>{{infoData.vip_numb}}</text>
+        <image class="icon" src="/resource/images/copy.png" bindtap="copyOrderNum"></image>
+      </view>
+    </view>
+    <view class="info-row">
+      <text>下单时间</text>
+      <text>{{infoData.ctime}}</text>
+    </view>
+    <view class="info-row">
+      <text>支付方式</text>
+      <text>{{infoData.pay_type_name}}</text>
+    </view>
+    <view class="info-row">
+      <text>支付时间</text>
+      <text>{{infoData.ptime}}</text>
+    </view>
+  </view>
+  <view
+    wx:if="{{infoData.is_retreat_btn || infoData.is_apply_invoive_btn || infoData.is_see_retreat_btn || infoData.is_see_invoive_btn}}"
+    class="fixed-btn-box">
+    <navigator wx:if="{{infoData.is_retreat_btn}}" hover-class="none" class="fixed-btn"
+      url="/page/my/pages/vip-refund/vip-refund?vip_id={{infoData.id}}">申请退款</navigator>
+    <navigator wx:if="{{infoData.is_apply_invoive_btn}}" hover-class="none" class="fixed-btn"
+      url="/page/my/pages/invoice-apply/invoice-apply?order_id={{infoData.wxpay_id}}">申请开票</navigator>
+    <navigator wx:if="{{infoData.is_see_retreat_btn}}" hover-class="none" class="fixed-btn"
+      url="/page/my/pages/vip-refund/vip-refund?vip_id={{infoData.id}}">退款详情</navigator>
+    <navigator wx:if="{{infoData.is_see_invoive_btn}}" hover-class="none" class="fixed-btn"
+      url="/page/my/pages/invoice-detail/invoice-detail?id={{infoData.invoice_id}}">发票详情</navigator>
+  </view>
+</view>

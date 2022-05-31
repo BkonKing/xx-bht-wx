@@ -1,0 +1,17 @@
+@import "/resource/wxParse/wxParse.wxss";
+page {
+  background-color: #fafafa;
+}
+/* .pic-cont {
+  display: flex;
+  flex-wrap: wrap;
+} */
+.pic-cont {
+  padding: 0 30rpx;
+}
+.pic-cont image {
+  width: 100% !important;
+}
+/* .pic-cont .wxParse-p {
+  width: 100%;
+} */

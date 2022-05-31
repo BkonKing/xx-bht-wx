@@ -1,0 +1,67 @@
+@import '/resource/css/order.wxss';
+
+.shop-refund-tip {
+  width: 100rpx;
+  font-size: 26rpx;
+  color: #f33f3f;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  white-space: nowrap;
+  position: relative;
+}
+.shop-refund-tip image {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.sh-bg image {
+  width: 107rpx;
+  height: 82rpx;
+}
+.buy-refund-bg image {
+  width: 104rpx;
+  height: 82rpx;
+}
+.bottom-link navigator {
+  margin-left: 20rpx;
+}
+
+.zz-shop {
+  width: 650rpx;
+  height: 296rpx;
+  margin: 40rpx auto 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px dashed #aaaaaa;
+}
+.zz-tip {
+  width: 100%;
+  height: 65rpx;
+  line-height: 65rpx;
+  text-align: center;
+  color: #212124;
+  font-size: 24rpx;
+  border-bottom: 1px dashed #aaaaaa;
+}
+.zz-list {
+  display: flex;
+  justify-content: space-between;
+  height: 150rpx;
+  width: 330rpx;
+  margin: 40rpx auto 0;
+}
+.zz-list-center.zz-list {
+  justify-content: center;
+}
+.zz-item {
+  width: 150rpx;
+  height: 100%;
+  display: flex;
+}
+.zz-item image {
+  width: 100%;
+  height: 100%;
+  border-radius: 4rpx;
+}

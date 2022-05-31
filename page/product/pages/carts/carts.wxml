@@ -1,0 +1,86 @@
+<view bindtap="couponFunc" data-hide="1" class="index-body">
+  <topbar id="topbar" bar-obj="{{barObj}}"></topbar>
+  <view class="bht-body {{discountInfo.ve_discount_total&&discountInfo.ve_discount_total!='0.00' ? 'bht-body-s' : ''}}">
+    <view class="cart-list">
+      <view class="cart-item" wx:for="{{carts}}" wx:key="index">
+        <view class="cart-checkbox {{item.is_checked ? 'cur' : ''}}" bindtap="checkboxOne" data-index="{{index}}">
+          <view class="checkbox-session"></view>
+        </view>
+        <navigator class="cart-cont" url="/page/product/pages/goods-details/goods-details?goods_id={{item.goods_id}}"
+          hover-class="none">
+          <view class="product-pic">
+            <image class="product-sign width-100" src="{{item.sign_url}}"></image>
+            <image class="width-100" mode="aspectFill" src="{{item.specs_img}}"></image>
+          </view>
+          <view class="product-info">
+            <view class="product-name p-nowrap">{{item.goods_name}}</view>
+            <view class="product-specs">{{item.specs_name}}</view>
+            <view class="product-icon" wx:if="{{item.vip_status === 0}}"></view>
+            <view class="product-icon product-vip" wx:elif="{{item.vip_status === 1}}">会员价</view>
+            <view class="product-icon product-yxvip" wx:elif="{{item.vip_status === 2}}">会员优享价</view>
+            <view class="product-price"><text>￥</text>{{item.pay_price}}</view>
+          </view>
+        </navigator>
+        <view class="cart-operate">
+          <view class="operate-btn product-sub" data-types="-1" data-index="{{index}}" bindtap="countTab"></view>
+          <view class="shop-btn-block">
+            <view class="shop-num">{{item.count}}</view>
+          </view>
+          <view class="operate-btn product-add {{item.count >= item.stock ? 'not-add' : ''}}" data-types="1"
+            data-index="{{index}}" bindtap="{{item.count >= item.stock ? 'notAdd' : 'countTab'}}"></view>
+        </view>
+        <view class="product-del" catchtap="delCarts" data-index="{{index}}">
+          <image class="width-100" mode="aspectFill" src="/resource/images/close_02.png"></image>
+        </view>
+      </view>
+    </view>
+
+    <view class="cart-bottom bottom-fixed" wx:if="{{carts.length > 0}}">
+      <view class="cart-coupon" wx:if="{{discountInfo.ve_discount_total&&discountInfo.ve_discount_total!='0.00'}}">
+        <view class="coupon-info {{!couponHidden ? 'cur' : ''}}">
+          <view class="coupon-list" style="display:flex;flex-direction:column;">
+            <view class="coupon-item" wx:if="{{discountInfo.total_vip_money&&discountInfo.total_vip_money!='0.00'}}">
+              会员折扣 -￥{{discountInfo.total_vip_money}}</view>
+            <view class="coupon-item" wx:if="{{discountInfo.total_e_money&&discountInfo.total_e_money!='0.00'}}">会员优享
+              -￥{{discountInfo.total_e_money}}</view>
+            <view class="coupon-item"
+              wx:if="{{discountInfo.total_reduce_money&&discountInfo.total_reduce_money!='0.00'}}"
+              style="order: {{listOrder[3]}}">
+              <text>满件优惠</text><text>-￥{{discountInfo.total_reduce_money}}</text>
+            </view>
+            <view class="coupon-item" wx:if="{{discountInfo.activity_money&&discountInfo.activity_money!='0.00'}}"
+              style="order: {{listOrder[2]}}">
+              <text>满额优惠</text><text>-￥{{discountInfo.activity_money}}</text>
+            </view>
+            <view class="coupon-item" wx:if="{{discountInfo.coupon_money&&discountInfo.coupon_money!='0.00'}}"
+              style="order: {{listOrder[1]}}">
+              <text>优惠券</text><text>-￥{{discountInfo.coupon_money}}</text>
+            </view>
+          </view>
+          <view class="coupon-close" catchtap="couponFunc" data-hide="1">
+            <image class="width-100" mode="aspectFill" src="/resource/images/close_03.png"></image>
+          </view>
+        </view>
+        <view class="cart-coupon-one  {{!couponHidden ? 'cur' : ''}}" catchtap="couponFunc" data-hide="0">
+          已减￥{{discountInfo.ve_discount_total}}<image class="coupon-more" src="/resource/images/right_02.png"></image>
+        </view>
+      </view>
+      <view class="cart-data">
+        <view class="all-checkbox {{allSelected ? 'cur' : ''}}" catchtap="checkboxAll">
+          <view class="all-checkbox-session"></view>全选
+        </view>
+        <view class="all-price">￥{{priceTotal}}</view>
+        <view class="all-go" catchtap="payFunc" wx:if="{{userData.mobile}}">结算({{numTotal}})</view>
+        <button class="all-go" wx:else hover-class="none" open-type="getPhoneNumber"
+          bindgetphonenumber="getPhoneNumber">结算({{numTotal}})</button>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty-none" hidden="{{carts.length!=0}}">
+    <image src="https://bht.liwushijian.com/library/img/xcx_img/empty_03.png"></image>
+    <view>快去添加商品吧~</view>
+  </view>
+
+
+</view>

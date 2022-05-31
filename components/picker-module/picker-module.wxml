@@ -1,0 +1,14 @@
+<!-- <view>{{selectArr[0]}}年{{month}}月{{day}}日</view> -->
+<view class="picker-session" wx:if="{{pickerShow}}">
+  <view class="picker-title">{{pickerTit}}</view>
+  <picker-view indicator-style="" indicator-class="selected-item" value="{{selectVal}}" bindchange="bindChange" mask-style="">
+    <picker-view-column wx:for="{{pickerObj}}" wx:key="index" wx:for-item="cloItem">
+      <view class="picker-item" wx:for="{{cloItem}}" wx:key="index">{{item.value}}</view>
+    </picker-view-column>
+  </picker-view>
+  <view class="picker-operation">
+    <view catchtap="cancelFunc">取消</view>
+    <view bindtap="suerFunc">确认</view>
+  </view>
+</view>
+<view class="~maskbg" wx:if="{{pickerShow}}" catchtap="cancelFunc"></view>

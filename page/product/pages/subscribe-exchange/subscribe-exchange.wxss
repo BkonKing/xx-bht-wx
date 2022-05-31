@@ -1,0 +1,38 @@
+@import '/resource/css/order.wxss';
+
+.shop-refund-tip {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  font-size: 26rpx;
+  color: #f33f3f;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.express-kong {
+  height: 30rpx;
+}
+
+/* view.bottom-link navigator {
+  color: #212124;
+  border: 2rpx solid #212124;
+} */
+view.bottom-link::before {
+  display: none;
+}
+.logistics-item .link-middle {
+  color: #b8babf;
+  text-align: left;
+}
+.logistics-item.bottom-line::after {
+  background-color: #f1f1f1;
+}
+.padding-zero.link-item {
+  padding: 0;
+}
+
+.edit-submit {
+  margin-bottom: 30rpx;
+}

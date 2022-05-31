@@ -1,0 +1,82 @@
+<topbar id="topbar" bar-obj="{{barObj}}"></topbar>
+
+<block hidden="{{!bodyShow}}">
+  <view class="plan-header">
+    <view>{{etimeTip}}</view>
+    <view>{{serverTip}}</view>
+  </view>
+
+  <view class="swiper-block">
+    <swiper class="shop-swiper" indicator-dots="true"  interval="5000" duration="500" bindchange="swiperChange" current="{{swiperIndex}}">
+      <swiper-item wx:for="{{planList}}" wx:key="index">
+        <view class="plan-list">
+          <block wx:for="{{item.list}}" wx:for-item="itemName" wx:key="index">
+            <block wx:if="{{itemName.is_default == 1}}">
+              <navigator wx:if="{{itemName.subscribe_id > 0}}" class="plan-item {{itemName.status==2 ? 'plan-over' : 'plan-default'}}" hover-class="none" url="/page/product/pages/dorder-details/dorder-details?subscribe_id={{itemName.subscribe_id}}">
+                <view class="plan-time">{{itemName.year_month}}</view>
+                <view class="plan-status">{{itemName.status_txt}}</view>
+              </navigator>
+              <view wx:else class="plan-item {{itemName.status==2 ? 'plan-over' : 'plan-default'}}">
+                <view class="plan-time">{{itemName.year_month}}</view>
+                <view class="plan-status">{{itemName.status_txt}}</view>
+              </view>
+            </block>
+            <block wx:else>
+              <navigator wx:if="{{itemName.subscribe_id > 0}}" class="plan-item {{itemName.status==0 && itemName.is_effective==0 ? 'plan-nosend' : ''}} {{itemName.status==1 ? 'plan-send' : ''}} {{itemName.status==2 ? 'plan-get' : ''}} {{itemName.status==0 && itemName.is_effective==1 ? 'plan-send' : ''}}" hover-class="none" url="/page/product/pages/dorder-details/dorder-details?subscribe_id={{itemName.subscribe_id}}">
+                <view class="plan-time">{{itemName.year_month}}</view>
+                <view class="plan-status">{{itemName.status_txt}}</view>
+              </navigator>
+              <view wx:else class="plan-item {{itemName.status==0 && itemName.is_effective==0 ? 'plan-nosend' : ''}} {{itemName.status==1 ? 'plan-send' : ''}} {{itemName.status==2 ? 'plan-get' : ''}} {{itemName.status==0 && itemName.is_effective==1 ? 'plan-send' : ''}}">
+                <view class="plan-time">{{itemName.year_month}}</view>
+                <view class="plan-status">{{itemName.status_txt}}</view>
+              </view>
+            </block>
+          </block>
+        </view>
+      </swiper-item>
+    </swiper>
+  </view>
+
+  <view class="bht-session link-list">
+    <view wx:if="{{isSet}}" class="link-item bottom-line" bindtap="{{isAbleSet ? 'modalFunc' : ''}}">
+      <view class="link-left">收茶设置</view>
+      <view class="link-middle">{{modalList[planIndex]}}</view>
+      <view class="link-icon"><image wx:if="{{isAbleSet}}" src="/resource/images/right.png"></image></view>
+    </view>
+    <navigator class="link-item bottom-line" hover-class="none" wx:if="{{nowPlan}}" url="/page/product/pages/subscribe-order/subscribe-order">
+      <view class="link-left">订阅订单</view>
+      <view class="link-middle">{{nowPlan.year_month}}</view>
+      <view class="link-icon"><image src="/resource/images/right.png"></image></view>
+    </navigator>
+    <navigator class="link-item bottom-line" hover-class="none" url="/page/my/pages/vip/vip">
+      <view class="link-left">会员中心</view>
+      <view class="link-icon"><image src="/resource/images/right.png"></image></view>
+    </navigator>
+    <navigator class="link-item bottom-line" hover-class="none" url="/page/article/pages/help-center/help-center">
+      <view class="link-left">常见问题</view>
+      <view class="link-icon"><image src="/resource/images/right.png"></image></view>
+    </navigator>
+  </view>
+  <button class="kf-btn" open-type="contact" hover-class="none">
+    <image src="/resource/images/my_15.png"></image>联系客服
+  </button>
+  <view class="bottom-kong"></view>
+
+
+  <view class="modal-bg" wx:if="{{modalHidden}}" catchtouchmove="true">
+    <view class="modal-session">
+      <view class="modal-list">
+        <block wx:for="{{modalList}}" wx:key="index">
+          <view class="modal-item {{modalIndex == index ? 'cur' : ''}} bottom-line" catchtap="modalSelect" data-index="{{index}}"><view class="modal-checkbox"></view>{{item}}<block wx:if="{{index==0 && planIndex==1}}">{{modalTip}}</block><block wx:if="{{index==1}}">{{modalTip}}</block></view>
+        </block>
+      </view>
+      <view class="modal-operation">
+        <view catchtap="modalFunc">取消</view>
+        <view catchtap="modalSure">确认</view>
+      </view>
+    </view>
+  </view>
+</block>
+
+
+

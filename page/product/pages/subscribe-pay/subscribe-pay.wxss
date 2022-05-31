@@ -1,0 +1,108 @@
+@import '/resource/css/order.wxss';
+@import '/resource/css/modal.wxss';
+page{
+  background:#fafafa;
+  width: 100%;
+}
+.shop-item navigator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 140rpx;
+  z-index: 5;
+}
+.item-key {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 38rpx;
+  width: 38rpx;
+  line-height: 30rpx;
+  font-size: 24rpx;
+  color: #fff;
+  background-color: #9e6f5d;
+  text-indent: 9rpx;
+  border-bottom-right-radius: 100%; 
+}
+.select-list {
+  height: 80rpx;
+  width: 160rpx;
+  position: absolute;
+  top: 30rpx;
+  right: -20rpx;
+  font-size: 24rpx;
+  color: #f33f3f;
+  padding: 20rpx;
+  z-index: 9;
+}
+.select-list view {
+  background-color: #f1f1f1;
+  border-radius: 2rpx;
+  padding-left: 25rpx;
+  position: relative;
+}
+.select-list image {
+  position: absolute;
+  right: 24rpx;
+  top: 13rpx;
+  height: 18rpx;
+  width: 9rpx;
+  transform: rotate(90deg);
+}
+
+/* 底部 start */
+.pay-bottm {
+  height: 98rpx;
+  display: flex;
+  background-color: #fff;
+}
+.pay-total {
+  width: 470rpx;
+  flex-grow: 1;
+  line-height: 98rpx;
+  text-align: right;
+  padding-right: 40rpx;
+  color: #212124;
+}
+.pay-total text {
+  font-size: 48rpx;
+  font-weight: bold;
+}
+.pay-bottm .btn-d {
+  width: 240rpx;
+  height: 98rpx;
+  line-height: 98rpx;
+}
+/* 底部 end */
+
+/* modal弹窗 start */
+
+.modal-item::after {
+  left: 20rpx;
+  right: 20rpx;
+  background-color: #f1f1f1;
+}
+.modal-item:last-child::after {
+  display: none;
+}
+.reason-list {
+  width: 500rpx;
+  margin: 0 auto 40rpx;
+  border: 1px solid #f1f1f1;
+  border-radius: 4rpx;
+  background-color: #fafafa;
+  padding: 38rpx 30rpx 10rpx;
+  overflow: hidden;
+}
+.reason-item {
+  width: 100%;
+  margin-bottom: 30rpx;
+}
+.reason-item.cur {
+  border-color: #212124;
+  background-color: #212124;
+  color: #fff;
+}
+/* modal弹窗 end */
+

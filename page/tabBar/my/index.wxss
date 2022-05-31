@@ -1,0 +1,549 @@
+page {
+  min-height: 100%;
+  width: 100%;
+  background: #fafafa;
+  /* padding-bottom: 30rpx; */
+}
+
+.bar-bg {
+  background-color: #212124 !important;
+  color: #ffffff !important;
+  padding: 0 30rpx;
+}
+
+
+/* header start */
+.my-header {
+  overflow: hidden;
+  /* height: 425rpx; */
+  background: url('https://bht.liwushijian.com/library/img/xcx_img/store_02.png') no-repeat center top / 100% auto;
+  /* margin-bottom: 40rpx; */
+  padding-bottom: 40rpx;
+}
+
+.user-session {
+  display: flex;
+  height: 190rpx;
+  padding: 40rpx 30rpx;
+  position: relative;
+}
+
+.user-photo {
+  width: 110rpx;
+  height: 100%;
+  margin-right: 20rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.user-info {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.user-name {
+  line-height: 60rpx;
+  font-size: 34rpx;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+}
+
+.user-name view {
+  max-width: 300rpx;
+  margin-right: 15rpx;
+}
+
+.user-name image {
+  width: 23rpx;
+  height: 27rpx;
+}
+
+.user-vip-time {
+  line-height: 42rpx;
+  font-size: 24rpx;
+  color: #ffffff;
+}
+
+.user-link {
+  width: 174rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  line-height: 60rpx;
+  font-size: 30rpx;
+  color: #ffffff;
+  text-align: center;
+  background: -webkit-linear-gradient(to right, #cd9681, #9e6f5d);
+  background: linear-gradient(to right, #cd9681, #9e6f5d);
+  margin-left: 20rpx;
+}
+
+.user-vip-go {
+  width: 203rpx;
+  height: 66rpx;
+  border-radius: 33rpx 0 0 33rpx;
+  line-height: 66rpx;
+  font-size: 26rpx;
+  color: #ffffff;
+  background: -webkit-linear-gradient(to right, #cd9681, #9e6f5d);
+  background: linear-gradient(to right, #cd9681, #9e6f5d);
+  position: absolute;
+  right: 0;
+  top: 62rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-vip-go image {
+  width: 34rpx;
+  height: 34rpx;
+  margin-left: 10rpx;
+}
+
+.vip-session {
+  width: 690rpx;
+  /* height: 195rpx; */
+  margin: 0 auto;
+  border-radius: 4rpx;
+  overflow: hidden;
+  -moz-box-shadow: 0px 8rpx 14rpx rgba(150, 168, 187, 0.4);
+  -webkit-box-shadow: 0px 8rpx 14rpx rgba(150, 168, 187, 0.4);
+  box-shadow: 0px 8rpx 14rpx rgba(150, 168, 187, 0.4);
+}
+
+.is-vip.vip-session {
+  background-color: #fff;
+  padding: 0 20rpx;
+  /* margin-bottom: 40rpx; */
+}
+
+.vip-dy,
+.my-tit {
+  display: flex;
+  justify-content: space-between;
+  line-height: 97rpx;
+  border-bottom: 1px solid #efefef;
+}
+
+.vip-dy-left,
+.my-tit-left {
+  font-size: 34rpx;
+  color: #212124;
+  font-weight: bold;
+}
+
+.vip-dy-right,
+.my-tit-right {
+  font-size: 24rpx;
+  color: #919499;
+  display: flex;
+  align-items: center;
+}
+
+.vip-dy-right image,
+.my-tit-right image {
+  width: 12rpx;
+  height: 22rpx;
+  margin-left: 10rpx;
+}
+
+.vip-info {
+  display: flex;
+  line-height: 97rpx;
+  align-items: center;
+}
+
+.vip-dy-time {
+  color: #919499;
+  font-weight: bold;
+  font-size: 28rpx;
+}
+
+.vip-dy-hr {
+  width: 18rpx;
+  height: 34rpx;
+  margin: 0 14rpx 0 16rpx;
+}
+
+.vip-dy-status {
+  color: #212124;
+  font-weight: bold;
+  font-size: 28rpx;
+}
+
+.vip-dy-tip {
+  color: #f33f3f;
+  font-size: 22rpx;
+  margin-left: 16rpx;
+}
+
+.vip-dy-tip.tip-color-919499 {
+  color: #919499;
+}
+
+.vip-info-other {
+  height: 160rpx;
+  padding-top: 20rpx;
+}
+
+.vip-info-other>view {
+  line-height: 58rpx;
+  color: #919499;
+}
+
+/* 订阅计划开始 */
+.vip_card {
+  padding: 0 30rpx;
+}
+
+.vip_card .vip_middle {
+  
+  background-color: #fdebdf;
+  display: flex;
+  align-items: center;
+  border-radius: 8rpx;
+}
+
+.vip_card .vip_middle .left {
+  display: flex;
+  padding: 40rpx 0;
+  flex-shrink: 0;
+}
+.vip_card .vip_middle .right {
+  padding: 40rpx 0;
+  flex-grow: 1;
+}
+
+.vip_card .vip_middle .left .t1 {
+  width: 92rpx;
+  height: 98rpx;
+  background-color: pink;
+  font-size: 30rpx;
+  font-family: IdeaFonts;
+  font-weight: 600;
+  color: #FFFFFF;
+  line-height: 36rpx;
+  padding: 17rpx;
+  background: linear-gradient(to right, #fc6c5d, #ff946b);
+}
+
+.vip_card .vip_middle .left .t2 {
+  width: 0;
+  height: 0;
+  border-width: 50rpx;
+  border-style: solid;
+  border-color: transparent transparent transparent #ff946b;
+}
+
+.vip_card .vip_middle .right .time {
+  font-size: 34rpx;
+  font-family: PingFangSC;
+  font-weight: 600;
+  color: #9E6F5D;
+  line-height: 36rpx;
+}
+
+.vip_card .vip_middle .right .line {
+  width: 300rpx;
+  height: 2rpx;
+  margin: 16rpx 0;
+  background: linear-gradient(to right, #9e6f5d,#e7cfc1);
+  /* background-color: red; */
+}
+.vip_card .vip_middle .right .txt{
+font-size: 30rpx;
+font-family: PingFangSC;
+font-weight: 400;
+color: #9E6F5D;
+line-height: 36rpx;
+}
+.vip_card .vip_middle .right .txt text{
+  color: #f33f3f;
+  font-size: 24rpx;
+}
+
+.vip_card .vip_middle .right .time2 {
+  font-size: 30rpx;
+  font-family: PingFangSC;
+  font-weight: 600;
+  color: #9E6F5D;
+  line-height: 36rpx;
+}
+.vip_card .vip_middle .right .t1,.vip_card .vip_middle .right .t2{
+  color: #9e6f5d;
+}
+/* 订阅计划结束 */
+
+
+
+.server-action view {
+  display: inline;
+}
+
+.server-action view:nth-child(1) {
+  padding-right: 30rpx;
+}
+
+.vip-info-other view text {
+  color: #212124;
+  font-weight: bold;
+}
+
+.no-vip {
+  background: url('https://bht.liwushijian.com/library/img/xcx_img/my_01.png') center center/100% 100%;
+  padding-top: 125rpx;
+}
+
+.no-vip-dy {
+  display: flex;
+  justify-content: space-between;
+  line-height: 70rpx;
+  padding: 0 40rpx;
+  color: #ffffff;
+}
+
+.no-vip-dy-right {
+  display: flex;
+  align-items: center;
+}
+
+.no-vip-dy-right image {
+  width: 34rpx;
+  height: 34rpx;
+  margin-left: 10rpx;
+}
+
+/* header end */
+
+/* 商店订单 start */
+.my-session {
+  width: 690rpx;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 4rpx;
+  overflow: hidden;
+  border: 1px solid #efefef;
+}
+
+.store-session {
+  height: 266rpx;
+  margin-bottom: 37rpx;
+}
+
+.my-tit {
+  line-height: 98rpx;
+  padding: 0;
+  width: 650rpx;
+  margin: 0 auto;
+}
+
+.order-list,
+.service-list {
+  display: flex;
+  height: 166rpx;
+}
+
+.order-item,
+.service-item {
+  width: 25%;
+  text-align: center;
+  position: relative;
+}
+
+.order-pic,
+.service-pic {
+  height: 92rpx;
+  padding: 30rpx 0 4rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.order-pic image,
+.service-pic image {
+  width: 58rpx;
+  height: 58rpx;
+}
+
+.order-item-name,
+.service-item-name {
+  font-size: 26rpx;
+  color: #60646b;
+  line-height: 44rpx;
+}
+
+.order-num {
+  position: absolute;
+  top: 13rpx;
+  left: 50%;
+  margin-left: 12rpx;
+  min-width: 34rpx;
+  height: 34rpx;
+  line-height: 30rpx;
+  border-radius: 17rpx;
+  background-color: #f33f3f;
+  text-align: center;
+  color: #fff;
+  font-size: 24rpx;
+  padding: 0 5rpx;
+}
+
+/* 商店订单 end */
+.my-btn {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.my-btn.no-vip-dy {
+  padding: 0 40rpx;
+}
+
+.my-btn::after {
+  outline: none;
+}
+
+button.my-btn:not([size='mini']) {
+  margin: inherit;
+  margin-bottom: 0;
+  width: auto;
+  font-size: 30rpx;
+  font-weight: normal;
+}
+
+button.my-btn.user-link:not([size='mini']) {
+  width: 174rpx;
+  margin-left: 20rpx;
+}
+
+button.my-btn.user-photo:not([size='mini']) {
+  width: 110rpx;
+}
+
+button.my-btn.my-tit:not([size='mini']) {
+  width: 650rpx;
+}
+
+button.my-btn.order-item:not([size='mini']) {
+  width: 25%;
+}
+
+button.my-btn.service-item:not([size='mini']) {
+  width: 33.3333%;
+}
+
+
+/* 我的服务 start */
+.service-session {
+  height: 563rpx;
+  margin-bottom: 30rpx;
+}
+
+.service-list {
+  height: 444rpx;
+  flex-wrap: wrap;
+}
+
+.service-item {
+  height: 148rpx;
+  width: 33.3333%;
+}
+
+.service-pic {
+  height: 94rpx;
+  padding: 40rpx 0 6rpx;
+}
+
+.service-pic image {
+  width: 48rpx;
+  height: 48rpx;
+}
+
+button.kf-btn {
+  background-color: #fff;
+  /* height: 100%; */
+  width: 33.3333%;
+  font-size: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+}
+
+.kf-btn::after {
+  border: none;
+}
+
+button.kf-btn:not([size='mini']) {
+  width: 33.3333% !important;
+  margin: 0 !important;
+}
+
+/* 我的服务 end */
+
+/* login */
+.loginModel {
+  background: #fff;
+  width: 500rpx;
+  height: 410rpx;
+  margin: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin: -205rpx 0 0 -250rpx;
+  z-index: 185;
+  border-radius: 16rpx;
+  text-align: center;
+  opacity: 1;
+  padding: 40rpx 20rpx 30rpx;
+}
+
+.loginText {
+  font-size: 13px;
+  margin: 20rpx 0 18rpx;
+}
+
+.loginBtn {
+  background: #269c22;
+  margin: 0 auto;
+  color: #fff;
+  padding: 10rpx 0;
+  margin-top: 26rpx;
+  height: 90rpx;
+  line-height: 70rpx;
+  border-radius: 10rpx;
+  font-size: 14px;
+}
+
+button.loginBtn:not([size='mini']) {
+  width: 420rpx !important;
+}
+
+.loginBtnimg {
+  width: 46rpx;
+  height: 46rpx;
+  vertical-align: middle;
+  margin-right: 16rpx;
+}
+
+.loginBtn::after {
+  border: 0
+}
+
+.loginImg {
+  width: 130rpx;
+  height: 130rpx;
+}
+
+.my-banner {
+  width: 100%;
+  height: 100%;
+}
+
+.invite-navigator {
+  width: 690rpx;
+  height: 200rpx;
+  margin: 0 30rpx 30rpx;
+}

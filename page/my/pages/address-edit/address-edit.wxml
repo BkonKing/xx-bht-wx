@@ -1,0 +1,102 @@
+<topbar id="topbar" bar-obj="{{barObj}}"></topbar>
+
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class="form-list">
+    <view class="form-item bottom-line">
+      <view class="item-name">收货人</view>
+      <view class="itemt-text">
+        <input type="text" name="name" value='{{uname}}' placeholder="姓名" bindinput="nameFunc" />
+      </view>
+    </view>
+    <view class="form-item bottom-line">
+      <view class="item-name">手机号码</view>
+      <view class="itemt-text">
+        <input type="number" name="phone" value="{{utel}}" placeholder="11位手机号" maxlength='11' bindinput="telFunc" />
+      </view>
+    </view>
+    <view class="form-item address-choose bottom-line" bindtap="chooseAddress">
+      <view class="item-name">收货地址</view>
+      <block wx:if="{{uaddress_detail}}">
+        <view class="itemt-text two-text" wx:if="{{uaddress_name}}">
+          <view class="p-nowrap">{{uaddress_name}}</view>
+          <view class="p-nowrap" hidden="true">{{uaddress_detail}}</view>
+        </view>
+        <view class="itemt-text" wx:else>
+          <view class="p-nowrap">{{uaddress_detail}}</view>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="itemt-text">
+          <input type="text" disabled name="ucity" placeholder="小区/写字楼等"/>
+        </view>
+      </block>
+      <view class="itemt-icon"><image src="/resource/images/address_04.png"></image></view>
+    </view>
+    <view class="form-item">
+      <view class="item-name"></view>
+      <view class="itemt-text">
+        <input type="text" name="uaddress_house" value="{{uaddress_house}}" bindinput="houseFunc" placeholder="楼号/单元/门牌号" />
+      </view>
+    </view>
+  </view>
+  <view class="form-list">
+    <view class="form-item label-session bottom-line">
+      <view class="item-name">地址标签</view>
+      <view class="label-list-session {{isLabel ? 'label-list-right' : ''}}" bindtap="{{isLabel ? 'swalFunc' : ''}}">
+        <view class="label-list">
+          <block wx:if="{{isLabel}}">
+            <view class="label-item cur">{{labelVal}}</view>
+          </block>
+          <block wx:else>
+            <view bindtap="labelSelect" data-index="1" class="label-item {{labelIndex == 1 ? 'cur' : ''}}" data-val="家">家</view>
+            <view bindtap="labelSelect" data-index="2" class="label-item {{labelIndex == 2 ? 'cur' : ''}}" data-val="公司">公司</view>
+            <view bindtap="labelSelect" data-index="3" class="label-item {{labelIndex == 3 ? 'cur' : ''}}" data-val="学校">学校</view>
+          </block>
+        </view>
+        <view class="custom-session" bindtap="{{isLabel ? '' : 'swalFunc'}}"><block wx:if="{{!isLabel}}">自定义</block><image src="/resource/images/right.png"></image></view>
+      </view>
+    </view>
+    <view class="form-item default-item">
+      <view class="item-name">设置为默认地址</view>
+      <view class="default-switch {{switchChecked ? 'checked' : ''}}" bindtap="defaultFunc"></view>
+    </view>
+  </view>
+</form>
+<!-- <view class="synchronous-btn" bindtap="GetWechatAdr">
+  <view><image src="/resource/images/address_03.png" class="getadrico"></image><text class="getadrtext">同步微信收货地址</text></view>
+</view> -->
+
+<view class="btn-kong"></view>
+<view class="btn-box bottom-fixed">
+  <view class="del-btn btn-d" wx:if="{{addrId}}" catchtap="delAddress">删除</view>
+  <view class="sure-btn btn-d {{addrId ? '' : 'btn-100'}} {{btnDisabled ? 'disabled-btn' : ''}}" catchtap="{{!btnDisabled ? 'formSubmit' : ''}}">保存</view>
+</view>
+
+
+<view class="swal-session bottom-fixed" hidden="{{swalHidden}}" data-nohide="true" catchtap="swalFunc">
+  <view class="close-btn" catchtap="swalFunc"><image src="/resource/images/close.png" class="width-100"></image></view>
+  <view class="swal-tit">选择地址标签</view>
+  <view class="swal-list">
+    <view class="swal-item" data-index="0" catchtap="selectLabel">
+      <view class="swal-label">自定</view>
+      <view class="swal-input">
+        <input type="text" name="name" value="{{customVal}}" placeholder="默认显示前两个字，可输入自定义标签" maxlength='10' bindinput="getCustomVal" />
+      </view>
+      <view class="swal-tick"><image wx:if="{{swalIndex == 0}}" src="/resource/images/tick.png" class="width-100"></image></view>
+    </view>
+    <view class="swal-item" data-index="1" catchtap="selectLabel">
+      <view class="swal-label">家</view>
+      <view class="swal-tick"><image wx:if="{{swalIndex == 1}}" src="/resource/images/tick.png" class="width-100"></image></view>
+    </view>
+    <view class="swal-item" data-index="2" catchtap="selectLabel">
+      <view class="swal-label">公司</view>
+      <view class="swal-tick"><image wx:if="{{swalIndex == 2}}" src="/resource/images/tick.png" class="width-100"></image></view>
+    </view>
+    <view class="swal-item" data-index="3" catchtap="selectLabel">
+      <view class="swal-label">学校</view>
+      <view class="swal-tick"><image wx:if="{{swalIndex == 3}}" src="/resource/images/tick.png" class="width-100"></image></view>
+    </view>
+  </view>
+  <view class="swal-sure btn-d" catchtap="sureFunc">完成</view>
+</view>
+<view class="maskbg" catchtouchmove="true" hidden="{{swalHidden}}" catchtap="swalFunc"></view>

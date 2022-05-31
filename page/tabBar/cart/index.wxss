@@ -1,0 +1,287 @@
+page {
+  background-color: #fafafa;
+  height: 100%;
+}
+.index-body {
+  min-height: 100%;
+}
+.bht-body-s {
+  padding-bottom: 60rpx;
+}
+/* 购物车商品列表 start */
+.cart-list {
+  margin: 40rpx auto 0;
+  width: 690rpx;
+  padding-bottom: 128rpx;
+}
+.cart-list.bht-body-s {
+  padding-bottom: 188rpx;
+}
+.cart-item {
+  display: flex;
+  background-color: #fff;
+  position: relative;
+  border: 1px solid #efefef;
+  padding: 19rpx 19rpx 19rpx 0;
+  margin-bottom: 20rpx;
+}
+.cart-item:last-child {
+  margin-bottom: 0;
+}
+.cart-checkbox {
+  width: 71rpx;
+  height: 190rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.checkbox-session {
+  width: 32rpx;
+  height: 32rpx;
+  border-radius: 50%;
+  border: 2rpx solid #b8babf;
+}
+.cart-checkbox.cur .checkbox-session,.all-checkbox.cur .all-checkbox-session {
+  border: none;
+  background: #212124 url('https://bht.liwushijian.com/library/img/xcx_img/cart_03.png') no-repeat center center/100% 100%;
+}
+.cart-cont {
+  height: 190rpx;
+  width: 480rpx;
+  flex-grow: 1;
+  overflow: hidden;
+  display: flex;
+}
+.product-pic {
+  width: 190rpx;
+  height: 100%;
+  display: flex;
+  position: relative;
+}
+.product-sign {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
+.product-info {
+  flex-grow: 1;
+  padding-left: 25rpx;
+  width: 400rpx;
+}
+.product-name {
+  margin-top: 10rpx;
+  line-height: 48rpx;
+  color: #212124;
+  width: 346rpx;
+}
+.product-specs {
+  line-height: 42rpx;
+  font-size: 26rpx;
+  color: #b8babf;
+}
+.product-icon {
+  padding-bottom: 10rpx;
+  height: 36rpx;
+  line-height: 30rpx;
+  font-size: 20rpx;
+  text-align: center;
+}
+.product-vip {
+  text-align: left;
+  color: #212124;
+  font-size: 24rpx;
+}
+.product-yxvip {
+  color: #ffffff;
+  width: 109rpx;
+  background: url('https://bht.liwushijian.com/library/img/xcx_img/cart_02.png') no-repeat left center/auto 100%;
+}
+.product-price {
+  padding-top: 8rpx;
+  line-height: 40rpx;
+  font-size: 38rpx;
+  color: #212124;
+  font-weight: bold;
+}
+.product-price text {
+  font-size: 26rpx;
+  font-weight: normal;
+}
+.cart-operate {
+  position: absolute;
+  right: 0;
+  bottom: 4rpx;
+  width: 198rpx;
+  height: 82rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.operate-btn {
+  width: 87rpx;
+  height: 100%;
+  z-index: 5;
+  position: relative;
+}
+.product-sub {
+  background: url('https://bht.liwushijian.com/library/img/xcx_img/sub.png') no-repeat center center/16rpx 16rpx;
+}
+.product-add {
+  background: url('https://bht.liwushijian.com/library/img/xcx_img/add.png') no-repeat center center/16rpx 16rpx;
+}
+.not-add {
+  opacity: 0.6;
+}
+.operate-btn::after {
+  position: absolute;
+  content: '';
+  width: 49rpx;
+  height: 44rpx;
+  top: 19rpx;
+  bottom: 19rpx;
+  border: 1px solid #b8babf;
+  box-sizing: border-box;
+}
+.product-sub::after {
+  left: 19rpx;
+}
+.product-add::after {
+  right: 19rpx;
+}
+.shop-num {
+  position: absolute;
+  top: 19rpx;
+  left: 67rpx;
+  right: 67rpx;
+  height: 44rpx;
+  z-index: 3;
+  line-height: 82rpx;
+  font-size: 26rpx;
+  color: #212124;
+  text-align: center;
+  border-top: 1px solid #b8babf;
+  border-bottom: 1px solid #b8babf;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.product-del,.coupon-close {
+  position: absolute;
+  top: 17rpx;
+  right: 0;
+  width: 72rpx;
+  height: 72rpx;
+  padding: 19rpx;
+  display: flex;
+  z-index: 5;
+}
+/* 购物车商品列表 end */
+
+/* 底部 start */
+.cart-bottom {
+  
+  
+}
+.cart-coupon {
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 26rpx;
+  color: #ffffff;
+  position: relative;
+}
+
+.cart-coupon-one {
+  width: 100%;
+  height: 60rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s;
+  -webkit-transition: transform 0.3s;
+  background-color: #d5c2bb;
+}
+.cart-coupon-one.cur {
+  background-color: #bfa195;
+}
+.coupon-more {
+  width: 13rpx;
+  height: 22rpx;
+  margin-left: 10rpx;
+}
+.coupon-info {
+  position: absolute;
+  bottom: 60rpx;
+  left: 0;
+  right: 0;
+  background-color: #d5c2bb;
+  padding: 40rpx 0 45rpx;
+  transform: translateY(100%);
+  -webkit-transform: translateY(100%);
+  /* display: none; */
+  z-index: -1;
+  transition: transform 0.3s;
+  -webkit-transition: transform 0.3s;
+}
+.coupon-info.cur {
+  transform: translateY(0);
+  -webkit-transform: translateY(0);
+  display: block;
+}
+.coupon-info::after {
+  content: '';
+  width: 690rpx;
+  height: 4rpx;
+  position: absolute;
+  bottom: 1rpx;
+  left: 30rpx;
+  background: url('https://bht.liwushijian.com/library/img/xcx_img/cart_04.png') repeat 5rpx center/16rpx 16rpx;
+}
+.coupon-item {
+  height: 44rpx;
+  line-height: 44rpx;
+  text-align: center;
+}
+.coupon-close {
+  top: 11rpx;
+  right: 11rpx;
+}
+.cart-data {
+  display: flex;
+  height: 98rpx;
+  background-color: #fff;
+  color: #212124;
+  line-height: 98rpx;
+}
+.all-checkbox {
+  width: 140rpx;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 30rpx;
+  align-items: center;
+}
+.all-checkbox-session {
+  width: 32rpx;
+  height: 32rpx;
+  border-radius: 50%;
+  border: 3rpx solid #96a8bb;
+}
+.all-price {
+  width: 300rpx;
+  flex-grow: 1;
+  font-weight: bold;
+  color: #212124;
+  font-size: 48rpx;
+  text-align: right;
+  padding-right: 40rpx;
+}
+.all-go {
+  width: 240rpx !important;
+  text-align: center;
+  color: #ffffff;
+  background-color: #212124;
+  font-weight: bold;
+  padding: 0;
+  line-height: 98rpx;
+  font-size: 30rpx;
+}
+/* 底部 end */

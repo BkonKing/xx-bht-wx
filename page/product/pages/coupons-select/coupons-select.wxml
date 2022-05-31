@@ -1,0 +1,89 @@
+<topbar id="topbar" bar-obj="{{barObj}}"></topbar>
+
+<view class="coupons-tit">可用优惠券（{{ableNum}}张）</view>
+<view class="coupon-list" wx:if="{{couponAbleList.length > 0}}">
+  <block wx:for="{{couponAbleList}}" wx:key="index">
+    <view class="coupon-item">
+
+      <view class="coupon-block">
+        <view class="coupon-icon" wx:if="{{item.i_img}}"><image class="width-100" src="{{item.i_img}}"></image></view>
+        <view class="item-header">
+          <view class="coupon-info">
+            <view class="coupon-price"><text>￥</text>{{item.coupon_pay}}</view>
+            <!-- <block wx:else>
+              <view class="coupon-price">{{item.discount_num}}<text>折</text></view>
+            </block> -->
+            <view class="coupon-line"></view>
+            <view class="coupon-time">{{item.coupon_text}}<text>\n{{item.term_of_validity}}</text></view>
+          </view>
+        </view>
+        <view class="coupon-btn {{item.coupon_id == coupon_id}}" bindtap="selectCoupon" data-index="{{index}}"><text>立\n即\n使\n用</text></view>
+        <view class="linear-bg"></view>
+      </view>
+      <view class="coupon-down">
+        <view class="toggle-btn" bindtap="contToggle" data-id="{{index}}" data-type="able"></view>
+        <view class="toggle-box p-nowrap" hidden="{{item.is_down}}">
+          {{item.coupon_explain}}
+        </view>
+        <view class="coupon-detail" hidden="{{!item.is_down}}">
+          <text>券编号：{{item.coupon_code}}</text>
+          <view>优惠说明：{{item.coupon_explain}}</view>
+          <block wx:if="{{item.zd_goods != ''}}">
+              <view>指定商品：{{item.zd_goods}}</view>
+          </block>
+          <view>有效期：{{item.g_time}}</view>
+          <view>使用须知：</view>
+          <view class="point-bg">
+            <text>{{item.coupon_rule}}</text>
+          </view>
+          <view>
+            <text>领取时间：{{item.ctime}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>
+<block wx:if="{{unableNum}}">
+  <view class="coupons-tit">不可用优惠券（{{unableNum}}张）</view>
+  <view class="coupon-list">
+    <block wx:for="{{couponUnableList}}" wx:key="index">
+      <view class="coupon-item coupon-invalid">
+        <view class="coupon-block">
+          <view class="coupon-icon" wx:if="{{item.i_img}}"><image class="width-100" src="{{item.i_img}}"></image></view>
+          <view class="item-header">
+            <view class="coupon-info">
+              <view class="coupon-price"><text>￥</text>{{item.coupon_pay}}</view>
+              <view class="coupon-line"></view>
+              <view class="coupon-time">{{item.coupon_text}}<text>\n{{item.term_of_validity}}</text></view>
+            </view>
+          </view>
+          <view class="coupon-btn"><text>立\n即\n使\n用</text></view>
+          <view class="linear-bg"></view>
+        </view>
+        <view class="coupon-down">
+          <view class="toggle-btn" bindtap="contToggle" data-id="{{index}}" data-type="unable"></view>
+          <view class="toggle-box p-nowrap" hidden="{{item.is_down}}">
+            {{item.coupon_explain}}
+          </view>
+          <view class="coupon-detail" hidden="{{!item.is_down}}">
+            <text>券编号：{{item.coupon_code}}</text>
+            <view>优惠说明：{{item.coupon_explain}}</view>
+            <block wx:if="{{item.zd_goods != ''}}">
+              <view>指定商品：{{item.zd_goods}}</view>
+            </block>
+            <view>有效期：{{item.g_time}}</view>
+            <view>使用须知：</view>
+            <view class="point-bg">
+              <text>{{item.coupon_rule}}</text>
+            </view>
+            <view>
+              <text>领取时间：{{item.ctime}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</block>
+

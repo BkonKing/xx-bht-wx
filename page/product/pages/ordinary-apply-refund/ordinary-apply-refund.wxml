@@ -1,0 +1,43 @@
+<topbar id="topbar" bar-obj="{{barObj}}"></topbar>
+
+<view class="list-tip">请选择商品</view>
+<view class="shop-list {{ordinaryData.goods_list.length > 4 ? 'shop-list-long' : ''}} {{isShow ? 'list-auto' : ''}}">
+
+  <view class="shop-item" wx:for="{{ordinaryData.goods_list}}" wx:key="index">
+    <view bindtap="{{item.order_status==1 ? 'checkboxFunc' : ''}}" data-index="{{index}}" class="shop-checkbox {{item.order_status>1 ? 'nocur' : ''}} {{item.is_checked ? 'cur' : ''}}">
+      <view class="checkbox-session"></view>
+    </view>
+    <view class="shop-cont">
+      <view class="product-pic"><image class="width-100" mode="aspectFill" src="{{item.specs_img}}"></image></view>
+      <view class="product-info">
+        <view class="product-name">
+          <view class="p-nowrap">{{item.goods_name}}</view>
+          <view><text>X </text>1</view>
+        </view>
+        <view class="product-specs">{{item.specs_name}}</view>
+        <view class="product-price">
+          <view>{{item.type_txt}}</view>
+          <view><text>￥</text>{{item.z_price}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="toggle-btn" bindtap="toggleFunc" wx:if="{{ordinaryData.goods_list.length > 4}}"><image mode="heightFix" src="/resource/images/toggle_down.png"></image></view>
+</view>
+
+<view class="list-tip">请选择退换</view>
+<view class="bht-session select-session">
+  <view class="link-item" wx:if="{{!ordinaryData.is_barter}}" bindtap="linkFunc" data-url="/page/product/pages/ordinary-apply-exchange/ordinary-apply-exchange?ordinary_id={{ordinaryData.id}}">
+    <view class="link-left"><image src="/resource/images/refund_icon_01.png"></image>我要换货</view>
+    <view class="link-icon"><image src="/resource/images/right.png"></image></view>
+  </view>
+  <view class="link-item" wx:if="{{!ordinaryData.is_refund}}" bindtap="linkFunc" data-url="/page/product/pages/ordinary-apply-refunds/ordinary-apply-refunds?ordinary_id={{ordinaryData.id}}&type=2">
+    <view class="link-left"><image src="/resource/images/refund_icon_01.png"></image>我要退款(无需退货）</view>
+    <view class="link-icon"><image src="/resource/images/right.png"></image></view>
+  </view>
+  <view class="link-item" wx:if="{{!ordinaryData.is_retreat}}" bindtap="linkFunc" data-url="/page/product/pages/ordinary-apply-refunds/ordinary-apply-refunds?ordinary_id={{ordinaryData.id}}&type=3">
+    <view class="link-left"><image src="/resource/images/refund_icon_01.png"></image>我要退货退款</view>
+    <view class="link-icon"><image src="/resource/images/right.png"></image></view>
+  </view>
+</view>

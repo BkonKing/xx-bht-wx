@@ -1,0 +1,94 @@
+<topbar id="topbar" bar-obj="{{barObj}}"></topbar>
+
+<block wx:if="{{bodyShow}}">
+  <view class="bg-block">
+    <view class="vip-header no-vip" wx:if="{{!userId || vipData.is_vip==0}}">
+      <view wx:if="{{vipData.dy_old_price}}" class="year-fee year-fee-old">￥<text
+          class="now-price">{{vipData.dy_price}}</text><text class="line-through">￥</text><text
+          class="line-through old-price">{{vipData.dy_old_price}}</text>/{{vipData.cycle}}</view>
+      <view wx:else class="year-fee {{moreLong ? 'year-fee-s' : ''}}">￥<text
+          class="now-price">{{vipData.dy_price}}</text>/{{vipData.cycle}}</view>
+      <view class="vip-tip">先试后买+订阅计划</view>
+      <!-- <view class="header-tip">先试后买+订阅计划</view> -->
+    </view>
+
+    <view class="vip-header is-vip" wx:if="{{vipData.is_vip !=0}}">
+      <view class="user-info {{vipData.is_renewal==1 ? 'user-info-top' : ''}}"
+        wx:if="{{vipData.is_vip ==1 || vipData.is_vip ==2}}">
+        <image class="user-photo" src="{{userData.avatarUrl}}"></image>
+        <view class="vip-name">
+          <view class="user-name p-nowrap">{{userData.nickName}}</view>
+          <image wx:if="{{vipData.is_vip ==1}}" class="vip-icon"
+            src="https://bht.liwushijian.com/library/img/xcx_img/vip_bg4.png"></image>
+        </view>
+      </view>
+      <view class="header-tip" wx:if="{{vipData.is_vip ==1}}">{{vipData.vip_etime}}</view>
+      <view wx:if="{{vipData.is_renewal==1}}" class="vip-link vip-tip" catchtap="sureFunc">
+        续费<text>(￥{{vipData.dy_price}}/{{vipData.cycle}}）</text></view>
+      <!-- 会员终止 -->
+      <view wx:if="{{vipData.is_vip ==2}}" class="header-tip over-tip">会员终止 (违约)</view>
+    </view>
+  </view>
+
+  <view class="vip-cont">
+    <import src="/resource/wxParse/wxParse.wxml" /> <template is="wxParse"
+      data="{{wxParseData:articleContent.nodes}}" />
+  </view>
+
+  <!-- 非会员/未登录 -->
+  <block wx:if="{{!userId || vipData.is_vip==0}}">
+    <view class="read-checkbox">
+      <view catchtap="agreeFunc" class="checkbox-box {{agreeChecked ? 'cur' : ''}}">阅读并同意</view>
+      <navigator hover-class="none" url="/page/article/pages/agreement/agreement">《会员协议》</navigator>
+    </view>
+    <view class="vip-empty"></view>
+    <view class="vip-footer bottom-fixed">
+      <button class="kf-btn" open-type="contact" hover-class="none">
+        <image src="/resource/images/kf_01.png"></image>
+        <view>客服</view>
+      </button>
+      <navigator wx:if="{{!userId}}" class="vip-btn" hover-class="none" url="/page/my/pages/login/login">立即开通
+      </navigator>
+      <button wx:if="{{userId && !userData.mobile}}" class="my-btn no-vip-dy vip-btn" hover-class="none"
+        open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+        立即开通
+      </button>
+      <view wx:if="{{userId && userData.mobile && vipData.is_vip==0}}" class="vip-btn" catchtap="sureFunc">立即开通</view>
+    </view>
+  </block>
+
+  <!-- 会员 -->
+  <view class="link-list" wx:if="{{vipData.is_vip !=0}}">
+    <navigator hover-class="none" url="/page/product/pages/subscribe-plan/subscribe-plan">订阅计划</navigator>丨
+    <navigator hover-class="none" url="/page/my/pages/vip-record/vip-record">购买记录</navigator>丨
+    <navigator hover-class="none" url="/page/article/pages/agreement/agreement">会员协议</navigator>
+    <block wx:if="{{vipData.is_retreat_vip}}">丨
+      <navigator hover-class="none" url="/page/my/pages/vip-refund/vip-refund?vip_id={{vipData.vip_id}}">试用退款</navigator>
+    </block>
+  </view>
+</block>
+
+<view class="swal-session bottom-fixed" hidden="{{swalHidden}}" data-nohide="true">
+  <view class="close-btn" catchtap="closeSwal">
+    <image src="/resource/images/close.png" class="width-100"></image>
+  </view>
+  <view class="swal-tit">不荒唐</view>
+  <view class="swal-cont">
+    <view class="swal-li">
+      <image src="/resource/images/vip_card.png"></image>
+      <view>
+        <view class="swal-li-title">不荒唐VIP会员</view>
+        <view class="swal-li-text">会员服务可试用一个月</view>
+      </view>
+    </view>
+    <view class="swal-li swal-li-coupon">
+      <view>优惠券抵扣</view>
+      <view class="coupon-number">{{couponInfo.coupon_text}}</view>
+    </view>
+  </view>
+  <view class="swal-btn btn-d" catchtap="couponPay">
+    ￥{{couponInfo.new_vip_price}} <text>￥{{couponInfo.vip_price}}</text>
+  </view>
+</view>
+<view class="maskbg" catchtouchmove="true" hidden="{{swalHidden}}" catchtap="closeSwal"></view>
+<renew-remind id="renew-remind" bind:modal="modalCall"></renew-remind>

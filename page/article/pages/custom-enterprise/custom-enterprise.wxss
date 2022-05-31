@@ -1,0 +1,46 @@
+@import "/resource/wxParse/wxParse.wxss";
+page {
+  background-color: #fafafa;
+}
+.pic-cont {
+  display: flex;
+  flex-wrap: wrap;
+}
+.pic-cont image {
+  width: 100% !important;
+}
+.pic-cont .wxParse-p {
+  width: 100%;
+}
+.download-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 68rpx;
+  line-height: 68rpx;
+  color: #9e6f5d;
+  margin: 20rpx auto 10rpx;
+  width: 300rpx;
+}
+.download-btn image {
+  width: 26rpx;
+  height: 28rpx;
+  margin-right: 20rpx;
+}
+.kf-block {
+  height: 148rpx;
+  padding: 30rpx;
+}
+.kf-btn {
+  width: 100% !important;
+  padding: 0;
+  border-radius: 0;
+}
+
+
+.index-link {
+  width: 630rpx;
+  height: 141rpx;
+  margin: 0 auto;
+  display: flex;
+}

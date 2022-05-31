@@ -1,0 +1,13 @@
+@import '/page/product/pages/coupons/coupons.wxss';
+.coupons-tit {
+  line-height: 86rpx;
+  color: #60646b;
+  font-size: 26rpx;
+  padding-left: 30rpx;
+}
+.coupon-item:first-child {
+  margin-top: 0;
+}
+.coupon-invalid .coupon-btn {
+  background: none;
+}

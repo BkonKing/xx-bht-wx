@@ -1,0 +1,18 @@
+<view class="~modal-bg renew-session" wx:if="{{modalShow}}" catchtouchmove="true">
+  <view class="renew-block">
+    <view class="renew-header">会员到期提示</view>
+    <view class="renew-txt">尊敬的不荒唐会员，您的会员将于<text>{{vipEndtime}}</text>，请提前续费，确保会员权益！</view>
+    <view class="renew-radio">
+      <view class="radio-block" catchtap="radioSelect">
+        <view class="radio-icon {{isSelect ? 'select' : ''}}">
+          <image src="/resource/images/tick2.png"></image>
+        </view>
+        <view class="radio-label">不再提示</view>
+      </view>
+    </view>
+    <view class="renew-btn">
+      <view catchtap="modalHide">我知道了</view>
+      <view catchtap="goRenew">立即续费</view>
+    </view>
+  </view>
+</view>

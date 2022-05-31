@@ -1,0 +1,12 @@
+<topbar id="topbar" bar-obj="{{barObj}}"></topbar>
+<view class="help-tit">常见问题</view>
+<view class="help-list">
+  <view class="help-item" wx:for="{{listData}}" wx:key="index">
+    <view class="help-question bottom-line {{item.up ? 'answer-hide' : ''}}" data-index="{{index}}" bindtap="toggleFunc">
+      <view class="question-left">Q{{index+1}}</view>
+      <view class="question-middle">{{item.question}}</view>
+      <view class="question-right"><view></view></view>
+    </view>
+    <view class="help-answer"><text>{{item.answer}}</text></view>
+  </view>
+</view>

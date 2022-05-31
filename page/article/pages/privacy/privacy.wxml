@@ -1,0 +1,5 @@
+<topbar id="topbar" bar-obj="{{barObj}}"></topbar>
+
+<view class="pic-cont">
+  <import src="/resource/wxParse/wxParse.wxml"/> <template is="wxParse" data="{{wxParseData:articleContent.nodes}}"/>
+</view>

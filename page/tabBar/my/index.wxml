@@ -1,0 +1,429 @@
+<topbar id="topbar" bar-obj="{{barObj}}"></topbar>
+<block wx:if="{{bodyShow}}">
+  <block wx:if="{{userId&&userData.mobile}}">
+    <view class="my-header">
+      <view class="user-session">
+        <navigator class="user-photo" hover-class="none" url="/page/my/pages/information/information?prev_page=my">
+          <image class="width-100"
+            src="{{userData ? userData.avatarUrl : 'https://bht.liwushijian.com/library/img/xcx_img/photo_01.png'}}">
+          </image>
+        </navigator>
+        <view class="user-info">
+          <block wx:if="{{myData.is_vip == 1 }}">
+            <navigator class="user-name" hover-class="none" url="/page/my/pages/information/information?prev_page=my">
+              <view class="p-nowrap">{{userData.nickName}}</view>
+              <image src="/resource/images/my_01.png"></image>
+            </navigator>
+            <view class="user-vip-time">{{myData.vip_etime}}</view>
+          </block>
+          <block wx:if="{{myData.is_vip == 0}}">
+            <view class="user-name">
+              <view class="p-nowrap">{{userData.nickName}}</view>
+            </view>
+          </block>
+        </view>
+        <navigator hover-class="none" url="/page/my/pages/vip/vip" wx:if="{{myData.is_vip == 1}}" class="user-vip-go">
+          VIP会员<image src="/resource/images/my_02.png"></image>
+        </navigator>
+      </view>
+      <view wx:if="{{myData.is_vip == 1}}">
+        <view class="vip_card">
+          <view class="vip_middle">
+            <navigator class="left" hover-class="none" url="/page/product/pages/subscribe-plan/subscribe-plan">
+              <view class="t1">订阅计划</view>
+              <view class="t2"></view>
+            </navigator>
+            <navigator wx:if="{{planData.status==2 && planData.is_other}}" class="right" hover-class="none"
+              url="/page/product/pages/subscribe-plan/subscribe-plan">
+              <view class="time2">{{planData.dy_time_tip}}</view>
+              <view class="line"></view>
+              <view class="t1">{{planData.server_num_txt + planData.server_num}}</view>
+              <view class="t2">{{planData.next_month_txt + planData.next_month}}</view>
+            </navigator>
+            <block wx:else>
+              <navigator wx:if="{{planData.subscribe_id&&planData.subscribe_id>0}}" class="right" hover-class="none"
+                url="/page/product/pages/dorder-details/dorder-details?subscribe_id={{planData.subscribe_id}}">
+                <view class="time">{{planData.year_month}}</view>
+                <view class="line"></view>
+                <view class="txt">{{planData.status_string}} <text>{{planData.status_tip}}</text></view>
+              </navigator>
+              <view wx:else class="right">
+                <view class="time">{{planData.year_month}}</view>
+                <view class="line"></view>
+                <view class="txt">{{planData.status_string}} <text>{{planData.status_tip}}</text></view>
+              </view>
+            </block>
+          </view>
+        </view>
+      </view>
+      <navigator wx:if="{{myData.is_vip == 0}}" class="vip-session no-vip" hover-class="none"
+        url="/page/my/pages/vip/vip">
+        <view class="no-vip-dy">
+          <view class="no-vip-dy-left">先试后买+订阅计划</view>
+          <view class="no-vip-dy-right">去看看<image src="/resource/images/my_02.png"></image>
+          </view>
+        </view>
+      </navigator>
+    </view>
+    <view class="my-session store-session">
+      <navigator class="my-tit" hover-class="none" url="/page/product/pages/ordinary-order/ordinary-order">
+        <view class="my-tit-left">商店订单</view>
+        <view class="my-tit-right">全部<image src="/resource/images/right.png"></image>
+        </view>
+      </navigator>
+      <view class="order-list">
+        <navigator class="order-item" hover-class="none"
+          url="/page/product/pages/ordinary-order/ordinary-order?typeVal=2">
+          <view class="order-pic">
+            <image src="/resource/images/my_04.png"></image>
+          </view>
+          <view class="order-item-name">待付款</view>
+          <view class="order-num" wx:if="{{myData.common_count.pay_count>0}}">{{myData.common_count.pay_count}}</view>
+        </navigator>
+        <navigator class="order-item" hover-class="none"
+          url="/page/product/pages/ordinary-order/ordinary-order?typeVal=3">
+          <view class="order-pic">
+            <image src="/resource/images/my_05.png"></image>
+          </view>
+          <view class="order-item-name">待发货</view>
+          <view class="order-num" wx:if="{{myData.common_count.send_count>0}}">{{myData.common_count.send_count}}</view>
+        </navigator>
+        <navigator class="order-item" hover-class="none"
+          url="/page/product/pages/ordinary-order/ordinary-order?typeVal=4">
+          <view class="order-pic">
+            <image src="/resource/images/my_06.png"></image>
+          </view>
+          <view class="order-item-name">待收货</view>
+          <view class="order-num" wx:if="{{myData.common_count.get_count>0}}">{{myData.common_count.get_count}}</view>
+        </navigator>
+        <navigator class="order-item" hover-class="none"
+          url="/page/product/pages/ordinary-order/ordinary-order?typeVal=5">
+          <view class="order-pic">
+            <image src="/resource/images/my_07.png"></image>
+          </view>
+          <view class="order-item-name">退换</view>
+          <view class="order-num" wx:if="{{myData.common_count.refund_count>0}}">{{myData.common_count.refund_count}}
+          </view>
+        </navigator>
+      </view>
+    </view>
+
+    <navigator wx:if="{{myData.is_vip && bannerSrc}}" class="invite-navigator"
+      url="/page/product/pages/invitation/invitation">
+      <image class="my-banner" src="{{bannerSrc}}"></image>
+    </navigator>
+
+    <view class="my-session service-session">
+      <view class="my-tit">
+        <view class="my-tit-left">我的服务</view>
+      </view>
+      <view class="service-list">
+        <navigator class="service-item" hover-class="none" url="/page/my/pages/information/information?prev_page=my">
+          <view class="service-pic">
+            <image src="/resource/images/my_08.png"></image>
+          </view>
+          <view class="service-item-name">个人资料</view>
+        </navigator>
+        <navigator class="service-item" hover-class="none" url="/page/my/pages/address/address">
+          <view class="service-pic">
+            <image src="/resource/images/my_09.png"></image>
+          </view>
+          <view class="service-item-name">收货地址</view>
+        </navigator>
+        <navigator class="service-item" hover-class="none" url="/page/product/pages/coupons/coupons">
+          <view class="service-pic">
+            <image src="/resource/images/my_10.png"></image>
+          </view>
+          <view class="service-item-name">优惠券</view>
+        </navigator>
+        <navigator class="service-item" hover-class="none" url="/page/product/pages/ordinary-order/ordinary-order">
+          <view class="service-pic">
+            <image src="/resource/images/my_11.png"></image>
+          </view>
+          <view class="service-item-name">商店订单</view>
+        </navigator>
+        <navigator wx:if="{{myData.is_vip}}" class="service-item" hover-class="none"
+          url="/page/product/pages/subscribe-order/subscribe-order">
+          <view class="service-pic">
+            <image src="/resource/images/my_12.png"></image>
+          </view>
+          <view class="service-item-name">订阅订单</view>
+        </navigator>
+        <navigator class="service-item" hover-class="none" url="/page/article/pages/help-center/help-center">
+          <view class="service-pic">
+            <image src="/resource/images/my_13.png"></image>
+          </view>
+          <view class="service-item-name">帮助中心</view>
+        </navigator>
+        <navigator wx:if="{{isOpenInvoice}}" class="service-item" hover-class="none" url="/page/my/pages/invoice-record/invoice-record">
+          <view class="service-pic">
+            <image src="/resource/images/my_16.png"></image>
+          </view>
+          <view class="service-item-name">我的发票</view>
+        </navigator>
+        <navigator class="service-item" hover-class="none"
+          url="/page/article/pages/custom-enterprise/custom-enterprise">
+          <view class="service-pic">
+            <image src="/resource/images/my_14.png"></image>
+          </view>
+          <view class="service-item-name">企业定制</view>
+        </navigator>
+        <button class="kf-btn service-item" open-type="contact" hover-class="none">
+          <view class="service-pic">
+            <image src="/resource/images/my_15.png"></image>
+          </view>
+          <view class="service-item-name">联系客服</view>
+        </button>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <!-- 没有用户uid -->
+    <block wx:if="{{!userId}}">
+      <view class="my-header">
+        <view class="user-session">
+          <navigator class="user-photo" hover-class="none" url="/page/my/pages/login/login">
+            <image class="width-100" src="https://bht.liwushijian.com/library/img/xcx_img/photo_01.png"></image>
+          </navigator>
+          <view class="user-info">
+            <navigator class="user-link" hover-class="none" url="/page/my/pages/login/login">登录</navigator>
+          </view>
+        </view>
+        <navigator class="vip-session no-vip" hover-class="none" url="/page/my/pages/login/login">
+          <view class="no-vip-dy">
+            <view class="no-vip-dy-left">先试后买+订阅计划</view>
+            <view class="no-vip-dy-right">去看看<image src="/resource/images/my_02.png"></image>
+            </view>
+          </view>
+        </navigator>
+      </view>
+      <view class="my-session store-session">
+        <navigator class="my-tit" hover-class="none" url="/page/my/pages/login/login">
+          <view class="my-tit-left">商店订单</view>
+          <view class="my-tit-right">全部<image src="/resource/images/right.png"></image>
+          </view>
+        </navigator>
+        <view class="order-list">
+          <navigator class="order-item" hover-class="none" url="/page/my/pages/login/login">
+            <view class="order-pic">
+              <image src="/resource/images/my_04.png"></image>
+            </view>
+            <view class="order-item-name">待付款</view>
+          </navigator>
+          <navigator class="order-item" hover-class="none" url="/page/my/pages/login/login">
+            <view class="order-pic">
+              <image src="/resource/images/my_05.png"></image>
+            </view>
+            <view class="order-item-name">待发货</view>
+          </navigator>
+          <navigator class="order-item" hover-class="none" url="/page/my/pages/login/login">
+            <view class="order-pic">
+              <image src="/resource/images/my_06.png"></image>
+            </view>
+            <view class="order-item-name">待收货</view>
+          </navigator>
+          <navigator class="order-item" hover-class="none" url="/page/my/pages/login/login">
+            <view class="order-pic">
+              <image src="/resource/images/my_07.png"></image>
+            </view>
+            <view class="order-item-name">退换</view>
+          </navigator>
+        </view>
+      </view>
+
+      <view class="my-session service-session">
+        <view class="my-tit">
+          <view class="my-tit-left">我的服务</view>
+        </view>
+        <view class="service-list">
+          <navigator class="service-item" hover-class="none" url="/page/my/pages/login/login">
+            <view class="service-pic">
+              <image src="/resource/images/my_08.png"></image>
+            </view>
+            <view class="service-item-name">个人资料</view>
+          </navigator>
+          <navigator class="service-item" hover-class="none" url="/page/my/pages/login/login">
+            <view class="service-pic">
+              <image src="/resource/images/my_09.png"></image>
+            </view>
+            <view class="service-item-name">收货地址</view>
+          </navigator>
+          <navigator class="service-item" hover-class="none" url="/page/my/pages/login/login">
+            <view class="service-pic">
+              <image src="/resource/images/my_10.png"></image>
+            </view>
+            <view class="service-item-name">优惠券</view>
+          </navigator>
+          <navigator class="service-item" hover-class="none" url="/page/my/pages/login/login">
+            <view class="service-pic">
+              <image src="/resource/images/my_11.png"></image>
+            </view>
+            <view class="service-item-name">商店订单</view>
+          </navigator>
+          <navigator class="service-item" hover-class="none" url="/page/my/pages/login/login">
+            <view class="service-pic">
+              <image src="/resource/images/my_12.png"></image>
+            </view>
+            <view class="service-item-name">订阅订单</view>
+          </navigator>
+          <navigator class="service-item" hover-class="none" url="/page/article/pages/help-center/help-center">
+            <view class="service-pic">
+              <image src="/resource/images/my_13.png"></image>
+            </view>
+            <view class="service-item-name">帮助中心</view>
+          </navigator>
+          <navigator class="service-item" hover-class="none" url="/page/my/pages/login/login">
+            <view class="service-pic">
+              <image src="/resource/images/my_14.png"></image>
+            </view>
+            <view class="service-item-name">企业定制</view>
+          </navigator>
+          <button class="kf-btn service-item" open-type="contact" hover-class="none">
+            <view class="service-pic">
+              <image src="/resource/images/my_15.png"></image>
+            </view>
+            <view class="service-item-name">联系客服</view>
+          </button>
+        </view>
+      </view>
+    </block>
+    <!-- 有用户uid但没有手机号 -->
+    <block wx:if="{{userId&&!userData.mobile}}">
+      <view class="my-header">
+        <view class="user-session">
+          <button class="my-btn user-photo" hover-class="none" open-type="getPhoneNumber"
+            bindgetphonenumber="getPhoneNumber">
+            <image class="width-100" src="{{userData.avatarUrl}}"></image>
+          </button>
+          <view class="user-info">
+            <button class="user-link my-btn" hover-class="none" open-type="getPhoneNumber"
+              bindgetphonenumber="getPhoneNumber">登录</button>
+          </view>
+        </view>
+        <navigator class="vip-session no-vip" hover-class="none" url="/page/my/pages/vip/vip">
+          <view class="no-vip-dy" hover-class="none" url="/page/my/pages/vip/vip">
+            <view class="no-vip-dy-left">先试后买+订阅计划</view>
+            <view class="no-vip-dy-right">去看看<image src="/resource/images/my_02.png"></image>
+            </view>
+          </view>
+        </navigator>
+      </view>
+      <view class="my-session store-session">
+        <button class="my-btn my-tit" hover-class="none" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+          <view class="my-tit-left">商店订单</view>
+          <view class="my-tit-right">全部<image src="/resource/images/right.png"></image>
+          </view>
+        </button>
+        <view class="order-list">
+          <button class="my-btn order-item" hover-class="none" open-type="getPhoneNumber"
+            bindgetphonenumber="getPhoneNumber">
+            <view class="order-pic">
+              <image src="/resource/images/my_04.png"></image>
+            </view>
+            <view class="order-item-name">待付款</view>
+          </button>
+          <button class="my-btn order-item" hover-class="none" open-type="getPhoneNumber"
+            bindgetphonenumber="getPhoneNumber">
+            <view class="order-pic">
+              <image src="/resource/images/my_05.png"></image>
+            </view>
+            <view class="order-item-name">待发货</view>
+          </button>
+          <button class="my-btn order-item" hover-class="none" open-type="getPhoneNumber"
+            bindgetphonenumber="getPhoneNumber">
+            <view class="order-pic">
+              <image src="/resource/images/my_06.png"></image>
+            </view>
+            <view class="order-item-name">待收货</view>
+          </button>
+          <button class="my-btn order-item" hover-class="none" open-type="getPhoneNumber"
+            bindgetphonenumber="getPhoneNumber">
+            <view class="order-pic">
+              <image src="/resource/images/my_07.png"></image>
+            </view>
+            <view class="order-item-name">退换</view>
+          </button>
+        </view>
+      </view>
+
+      <view class="my-session service-session">
+        <view class="my-tit">
+          <view class="my-tit-left">我的服务</view>
+        </view>
+        <view class="service-list">
+          <button class="my-btn service-item" hover-class="none" open-type="getPhoneNumber"
+            bindgetphonenumber="getPhoneNumber">
+            <view class="service-pic">
+              <image src="/resource/images/my_08.png"></image>
+            </view>
+            <view class="service-item-name">个人资料</view>
+          </button>
+          <button class="my-btn service-item" hover-class="none" open-type="getPhoneNumber"
+            bindgetphonenumber="getPhoneNumber">
+            <view class="service-pic">
+              <image src="/resource/images/my_09.png"></image>
+            </view>
+            <view class="service-item-name">收货地址</view>
+          </button>
+          <button class="my-btn service-item" hover-class="none" open-type="getPhoneNumber"
+            bindgetphonenumber="getPhoneNumber">
+            <view class="service-pic">
+              <image src="/resource/images/my_10.png"></image>
+            </view>
+            <view class="service-item-name">优惠券</view>
+          </button>
+          <button class="my-btn service-item" hover-class="none" open-type="getPhoneNumber"
+            bindgetphonenumber="getPhoneNumber">
+            <view class="service-pic">
+              <image src="/resource/images/my_11.png"></image>
+            </view>
+            <view class="service-item-name">商店订单</view>
+          </button>
+          <button class="my-btn service-item" hover-class="none" open-type="getPhoneNumber"
+            bindgetphonenumber="getPhoneNumber">
+            <view class="service-pic">
+              <image src="/resource/images/my_12.png"></image>
+            </view>
+            <view class="service-item-name">订阅订单</view>
+          </button>
+          <navigator class="service-item" hover-class="none" url="/page/article/pages/help-center/help-center">
+            <view class="service-pic">
+              <image src="/resource/images/my_13.png"></image>
+            </view>
+            <view class="service-item-name">帮助中心</view>
+          </navigator>
+          <navigator class="service-item" hover-class="none"
+            url="/page/article/pages/custom-enterprise/custom-enterprise">
+            <view class="service-pic">
+              <image src="/resource/images/my_14.png"></image>
+            </view>
+            <view class="service-item-name">企业定制</view>
+          </navigator>
+          <button class="kf-btn service-item" open-type="contact" hover-class="none">
+            <view class="service-pic">
+              <image src="/resource/images/my_15.png"></image>
+            </view>
+            <view class="service-item-name">联系客服</view>
+          </button>
+        </view>
+      </view>
+    </block>
+  </block>
+</block>
+<view class="nav-border"></view>
+
+<!-- 新人优惠券礼包 -->
+<!-- <import src="../../templates/coupon-pack.wxml" />
+<template is="tempCoupon"  data="{{packArr,userId}}" /> -->
+
+<!-- 授权登录 -->
+<view class="loginModel" hidden="{{loginModelHidden}}" catchtouchmove="true">
+  <image src="https://bht.liwushijian.com/library/img/xcx_img/login.png" class="loginImg"></image>
+  <view class="loginText">我们需要获得您的授权，以继续操作</view>
+  <button class="loginBtn" bindtap="updateUserInfo">
+    <image src="https://bht.liwushijian.com/library/img/xcx_img/weixin.png" class="loginBtnimg"></image>微信授权登录
+  </button>
+</view>
+<view class="loginBg" hidden="{{loginModelHidden}}" catchtouchmove="true"></view>
+
+<renew-remind id="renew-remind" bind:modal="modalCall"></renew-remind>

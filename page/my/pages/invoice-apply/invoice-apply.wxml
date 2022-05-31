@@ -1,0 +1,184 @@
+<topbar id="topbar" bar-obj="{{barObj}}"></topbar>
+
+<view class="invoice-box" bindtap="selectOrder">
+  <view class="invoice-image">
+    <image wx:if="{{order_data[0].img}}" class="order-image" src="{{order_data[0].img}}" mode="aspectFill"></image>
+    <image wx:else class="no-order-image" src="/resource/images/invoice-no-order.png"></image>
+  </view>
+  <view class="invoice-content" wx:if="{{order_data && order_data.length}}">
+    <view class="order-number"><text class="invoice-label">订单编号</text>
+      <view>
+        <view wx:for="{{order_data}}" wx:key="index">{{item.order_numb}}</view>
+      </view>
+    </view>
+    <view class="flex-align-center"><text class="invoice-label">开票金额</text><text
+        class="invoice-strong">￥{{invoiceMoney}}</text>
+      <image src="/resource/images/！.png" data-key="swalHidden" catchtap="swalFunc"></image>
+    </view>
+  </view>
+  <view wx:else class="invoice-select">选择订单<text>*</text></view>
+  <view wx:if="{{!order_data || order_data.length < 2}}" class="invoice-session">
+    <image wx:if="{{isNotOrderIn}}" src="/resource/images/right.png"></image>
+  </view>
+</view>
+
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view
+    class="form-list {{rise_type === '2' && isFold ? 'fold-list' : ''}}  {{rise_type === '2' ? 'bottom-form-list' : ''}}">
+    <view class="form-item label-session">
+      <view class="item-name">发票类型</view>
+      <view class="itemt-text text-right line label-list-session label-list-right" data-key="typeHidden"
+        bindtap="swalFunc">
+        <view class="custom-session">
+          <block>{{i_type_name}}</block>
+          <image  wx:if="{{type_data && type_data.length > 1}}" src="/resource/images/right.png"></image>
+        </view>
+      </view>
+    </view>
+    <view class="form-item">
+      <view class="item-name">抬头类型</view>
+      <view class="itemt-text text-right line">
+        <radio-group class="radio-group" bindchange="radioChange">
+          <label class="item-radio">
+            <radio value="1" checked="{{rise_type === '1'}}" color="#000" />个人或事业单位
+          </label>
+          <label class="item-radio">
+            <radio value="2" checked="{{rise_type === '2'}}" color="#000" />企业
+          </label>
+        </radio-group>
+      </view>
+    </view>
+    <view class="form-item">
+      <view class="item-name required-after">发票抬头</view>
+      <view class="flex-align-center itemt-text line">
+        <input type="text" name="rise" model:value="{{rise}}" placeholder-class="placeholder"
+          placeholder="{{rise_type === '1' ?'填写需要开具发票的姓名' : '填写需要开具发票的企业名称'}}" maxlength="50" bindinput="isAble" />
+        <view class="itemt-icon" bindtap="goInvoiceTile">
+          <image src="/resource/images/invoice_apply_1.png"></image>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{rise_type === '2'}}" class="form-item">
+      <view class="item-name required-after">税号</view>
+      <view class="itemt-text line">
+        <input name="phone" model:value="{{duty_paragraph}}" placeholder-class="placeholder" maxlength="20" placeholder="纳税人识别号"
+          bindinput="formatNumberLetter" />
+      </view>
+    </view>
+    <view wx:if="{{i_type === '1'}}" class="form-item">
+      <view class="item-name">邮箱地址</view>
+      <view class="itemt-text {{rise_type === '2' ? 'line' : ''}}">
+        <input name="mail" model:value="{{mail}}" placeholder-class="placeholder" placeholder="开具后自动发送到邮箱" bindinput="handleInput" />
+      </view>
+    </view>
+    <view wx:if="{{rise_type === '2'}}" class="form-item">
+      <view class="item-name">开户银行</view>
+      <view class="itemt-text line">
+        <input name="bank" model:value="{{bank}}" placeholder-class="placeholder" maxlength="25" placeholder="选填" bindinput="handleInput" />
+      </view>
+    </view>
+    <view wx:if="{{rise_type === '2'}}" class="form-item">
+      <view class="item-name">银行账号</view>
+      <view class="itemt-text line">
+        <input id="cardNumber" name="bank_card" type="number" model:value="{{bank_card}}" maxlength="23" placeholder-class="placeholder"
+          placeholder="选填" bindinput="formatCardNumber" />
+      </view>
+    </view>
+    <view wx:if="{{rise_type === '2'}}" class="form-item">
+      <view class="item-name">企业地址</view>
+      <view class="itemt-text line">
+        <input name="address" model:value="{{address}}" placeholder-class="placeholder" maxlength="50" placeholder="选填" />
+      </view>
+    </view>
+    <view wx:if="{{rise_type === '2'}}" class="form-item">
+      <view class="item-name">企业电话</view>
+      <view class="itemt-text">
+        <input name="phone" type="number" model:value="{{phone}}" placeholder-class="placeholder" maxlength="15" placeholder="选填" bindinput="formatNumber" />
+      </view>
+    </view>
+    <view class="shrink-box {{isFold ? 'fold-btn' : 'unfold-btn' }}" wx:if="{{rise_type === '2'}}" bindtap="changeFold">
+      <view class="shrink-btn">
+        <image src="{{isFold ? '/resource/images/bottom.png' : '/resource/images/top.png'}}"></image>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{i_type === '2' && order_data && order_data.length}}" class="form-list" bindtap="goAddress">
+    <view class="form-item label-session">
+      <view class="item-name required-after">收票地址</view>
+      <view class="itemt-text text-right label-list-session label-list-right">
+        <view class="custom-session" style="align-items: flex-start;">
+          <view wx:if="{{userAddId}}" style="flex: 1 0 0;">
+            <view class="address-info">
+              <view wx:if="{{rece_label}}" class="address-label">{{rece_label}}</view><text
+                class="address-user">{{rece_realname}}</text><text class="address-user">{{rece_mobile}}</text>
+            </view>
+            <view class="address-text">{{rece_address}}</view>
+          </view>
+          <image src="/resource/images/right.png" style="margin-top: 12rpx;"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="form-list">
+    <view class="form-item label-session">
+      <view class="item-name">发票内容</view>
+      <view class="itemt-text label-list-session label-list-right" data-key="contentHidden" bindtap="swalFunc">
+        <view class="custom-session" bindtap="swalFunc">
+          <text>{{c_type_name}}</text>
+          <image wx:if="{{goods_type_data && goods_type_data.length > 1}}" src="/resource/images/right.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="form-list">
+    <view class="form-item default-item">
+      <view class="item-name" style="padding-top: 0;">设为默认抬头</view>
+      <label class="item-checkbox">
+        <checkbox value="1" model:checked="{{is_default}}" color="#fff" />
+      </label>
+    </view>
+  </view>
+</form>
+
+<view class="btn-kong"></view>
+<view class="btn-box bottom-fixed">
+  <view class="del-btn btn-d" wx:if="{{addrId}}" catchtap="delAddress">删除</view>
+  <view class="sure-btn btn-d {{addrId ? '' : 'btn-100'}} {{btnDisabled ? 'disabled-btn' : ''}}"
+    catchtap="{{!btnDisabled ? 'formSubmit' : ''}}">提交申请</view>
+</view>
+<!-- 发票类型弹窗 -->
+<view class="swal-session type-session" hidden="{{typeHidden}}" data-nohide="true" data-key="typeHidden"
+  catchtap="swalFunc">
+  <view class="type-list">
+    <view wx:for="{{type_data}}" wx:key="index" class="type-item" data-id="{{item.value}}" data-text="{{item.text}}"
+      catchtap="selectType">
+      {{item.text}}
+    </view>
+  </view>
+</view>
+<view class="maskbg" catchtouchmove="true" data-key="typeHidden" hidden="{{typeHidden}}" catchtap="swalFunc"></view>
+<!-- 发票内容弹窗 -->
+<view class="swal-session type-session" hidden="{{contentHidden}}" data-nohide="true" data-key="contentHidden"
+  catchtap="swalFunc">
+  <view class="type-list">
+    <view wx:for="{{goods_type_data}}" wx:key="index" class="type-item" data-id="{{item.value}}"
+      data-text="{{item.text}}" catchtap="selectContent">
+      {{item.text}}
+    </view>
+  </view>
+</view>
+<view class="maskbg" catchtouchmove="true" data-key="contentHidden" hidden="{{contentHidden}}" catchtap="swalFunc">
+</view>
+
+<view class="swal-session bottom-fixed" hidden="{{swalHidden}}" data-nohide="true" data-key="swalHidden"
+  catchtap="swalFunc">
+  <view class="swal-title">
+    <text>开票金额说明</text>
+    <view class="close-btn" catchtap="swalFunc">
+      <image src="/resource/images/close_02.png" class="width-100" data-key="swalHidden" catchtap="swalFunc"></image>
+    </view>
+  </view>
+  <view class="swal-content">· 开票金额为消费者实付款金额，红包、优惠、购物券不在开票范围内</view>
+  <view class="swal-content">· 如订单发生退货退款，开票金额将变更为最终实付金额</view>
+</view>
+<view class="maskbg" catchtouchmove="true" hidden="{{swalHidden}}" data-key="swalHidden" catchtap="swalFunc"></view>

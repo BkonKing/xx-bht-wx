@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "modal": "/components/modal/modal",
+    "picker-module": "/components/picker-module/picker-module"
+  }
+}

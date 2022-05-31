@@ -1,0 +1,25 @@
+<view class="~modal-bg modal-session" wx:if="{{modalShow}}" catchtap="modalFunc">
+  <view class="cont" catchtap="showModal">
+    <view class="modal-icon"><image src="https://bht.liwushijian.com/library/img/xcx_img/coupon_icon_01.png"></image></view>
+    <view class="modal-tit">您的专属优惠券已到账</view>
+    <view class="copon-list-block">
+      <image wx:if="{{couponList.length > 2}}" class="copon-mask-img" src="https://bht.liwushijian.com/library/img/xcx_img/coupon_icon_03.png"></image>
+      <view class="copon-list">
+        <view wx:for="{{couponList}}" wx:key="index" class="coupon-item">
+          <view class="copon-left"><text>￥</text>{{item.reduce_price}}</view>
+          <view class="copon-right">
+            <view class="copon-info">
+              <view class="copon-name">满{{item.threshold_price}}元使用</view>
+              <view class="copon-time">{{item.g_stime}} - {{item.g_etime}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="link-block">
+      <navigator class="go-link" url="/page/product/pages/coupons/coupons" hover-class="none">可在“<text>我的-优惠券</text>”中查看</navigator>
+    </view>
+    <view catchtap="hideModal" class="modal-sure">知道了</view>
+  </view>
+  <slot></slot>
+</view>

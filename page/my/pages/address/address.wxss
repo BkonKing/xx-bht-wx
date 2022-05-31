@@ -1,0 +1,116 @@
+/*地址管理*/
+page {
+  background-color: #fafafa;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.address-list {
+  background-color: #fff;
+}
+.address-item {
+  height: 160rpx;
+  /* padding: 40rpx 0 0 30rpx; */
+  display: flex;
+  position: relative;
+}
+.address-label {
+  width: 80rpx;
+  height: 80rpx;
+  background-color: #b8babf;
+  color: #fff;
+  font-size: 24rpx;
+  padding: 0 10rpx;
+  overflow: hidden;
+  margin: 40rpx 0 0 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.address-label image {
+  width: 25rpx;
+  height: 32rpx;
+}
+.address-info {
+  margin-left: 20rpx;
+  width: 526rpx;
+  height: 80rpx;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-top: 40rpx;
+}
+.address-user {
+  display: flex;
+  line-height: 36rpx;
+  color: #212124;
+}
+.address-name {
+  max-width: 300rpx;
+  margin-right: 20rpx;
+}
+.address-detail {
+  line-height: 38rpx;
+  color: #919499;
+  font-size: 24rpx;
+  display: flex;
+  align-items: center;
+}
+.address-detail view.address-default {
+  flex-shrink: 0;
+  width: 60rpx;
+  height: 30rpx;
+  font-size: 24rpx;
+  color: #ffffff;
+  line-height: 30rpx;
+  border-radius: 1px;
+  text-align: center;
+  margin-right: 10rpx;
+  background: -webkit-linear-gradient(to right, #cd9681 , #9e6f5d);
+  background: linear-gradient(to right, #cd9681 , #9e6f5d);
+}
+.address-link {
+  width: 94rpx;
+  padding-right: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.address-link image {
+  width: 44rpx;
+  height: 44rpx;
+}
+.address-line {
+  height: 1px;
+  background-color: #f1f1f1;
+  position: absolute;
+  bottom: 0;
+  left: 30rpx;
+  right: 30rpx;
+}
+.address-item:last-child .address-line {
+  display: none;
+}
+.add-box-kong {
+  height: 158rpx;
+}
+.add-box {
+  height: 158rpx;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 30rpx 0 40rpx;
+  z-index: 20;
+}
+.address-add {
+  width: 710rpx;
+  margin: 0 auto;
+  border-radius: 1px;
+}
+.address-add image {
+  width: 23rpx;
+  height: 23rpx;
+  position: absolute;
+  left: 250rpx;
+  top: 33rpx;
+}

@@ -1,0 +1,134 @@
+@import '/resource/css/shop-list.wxss';
+page{
+  background:#fafafa;
+  width: 100%;
+  height: 100%;
+}
+/* 搜索输入框 start */
+.classify-sort {
+  margin-left: 6rpx;
+}
+.search-top-box {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  height: 120rpx;
+  background-color: #fff;
+  overflow: hidden;
+  z-index: 55;
+  padding: 26rpx 30rpx;
+}
+.search-kong {
+  height: 120rpx;
+}
+.search-top {
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 4rpx;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  border: 1px solid #212124;
+  position: relative;
+}
+.search-top .search-icon {
+  height: 24rpx;
+  width: 24rpx;
+  margin: 0 20rpx;
+}
+.search-input {
+  height: 48rpx;
+  line-height: 48rpx;
+  width: 540rpx;
+  text-align: left;
+  flex-grow: 1;
+}
+.input-del {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 17rpx 20rpx 0;
+  display: flex;
+  z-index: 5;
+}
+.input-del image {
+  width: 32rpx;
+  height: 32rpx;
+}
+/* 搜索输入框 end */
+
+/* 热门搜索/历史搜索 start */
+.search-words {
+  padding-left: 30rpx;
+}
+.search-block:nth-child(1) {
+  margin-bottom: 20rpx;
+}
+.search-tit {
+  height: 88rpx;
+  line-height: 88rpx;
+  color: #60646b;
+  font-size: 26rpx;
+}
+.search-del {
+  float: right;
+  height: 68rpx;
+  width: 68rpx;
+  margin: 10rpx 12rpx 0 0;
+  padding: 18rpx 18rpx;
+  display: flex;
+}
+.search-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.search-item {
+  height: 78rpx;
+  line-height: 78rpx;
+  color: #919499;
+  margin: 0 30rpx 30rpx 0;
+  background-color: #fff;
+  border-radius: 2rpx;
+  padding: 0 30rpx;
+}
+/* 热门搜索/历史搜索 end */
+.product-list {
+  margin-top: 40rpx;
+}
+.product-item{
+border: 1rpx solid #F1F1F1;
+border-radius: 8rpx;
+}
+
+.product-item .product-cont{
+  padding-right: 26rpx;
+}
+
+
+/* .goods-block {
+  background-color: #fafafa;
+}
+.nomore {
+  background-color: #fafafa;
+} */
+.body-block {
+  min-height: 100%;
+  /* background-color: #fff; */
+}
+.body-block.body-fff {
+  background-color: #fff;
+}
+
+.product-item .product-price {
+  margin-top: -10rpx;
+}
+
+.product-only-price text {
+  font-size: 46rpx;
+}
+
+.product-vprice text {
+  line-height: 44rpx;
+}

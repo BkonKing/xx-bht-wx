@@ -1,0 +1,75 @@
+.picker-session {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  animation: translateMove 0.5s;
+  -webkit-animation: translateMove 0.5s;
+  z-index: 1001;
+  background-color: #fff;
+}
+.picker-title {
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-top: 1px solid #f1f1f1;
+  border-bottom: 1px solid #f1f1f1;
+  color: #212124;
+}
+picker-view {
+  width: 100%; height: 400rpx;
+  overflow: hidden;
+}
+.picker-item {
+  height: 80rpx !important;
+  line-height: 80rpx;
+  text-align: center;
+  color: #212124;
+}
+.selected-item {  /*设置选择器中间选中框的样式*/
+  height: 80rpx;
+  line-height: 80rpx;
+  /* border-top: 1px solid #f00;
+  border-bottom: 1px solid #f00; */
+  /* border: none; */
+}
+.selected-item::before,.selected-item::after {
+  border: none;
+  content: '';
+  height: 1px;
+  background-color: #212124;
+  /* border-top: 1px solid #f00; */
+  /* border-bottom: 1px solid #f00; */
+  width: 80%;
+  left: 10%;
+}
+
+.picker-operation {
+  display: flex;
+  border-top: 1px solid #f1f1f1;
+  justify-content: space-around;
+}
+.picker-operation view {
+  line-height: 80rpx;
+  flex: 1;
+  text-align: center;
+}
+.picker-operation view:nth-child(1) {
+  color: #b8babf;
+}
+.picker-operation view:nth-child(2) {
+  color: #212124;
+}
+
+
+@keyframes translateMove
+{
+  from {transform:translateY(100%);}
+  to {transform:translateY(0);}
+}
+
+@-webkit-keyframes translateMove
+{
+  from {transform:translateY(100%);}
+  to {transform:translateY(0);}
+}

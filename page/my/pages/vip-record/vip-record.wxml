@@ -1,0 +1,28 @@
+<topbar id="topbar" bar-obj="{{barObj}}"></topbar>
+
+<block wx:for="{{listData}}" wx:key="index">
+  <view class="record-tit">{{index}}</view>
+  <view class="record-list">
+    <block wx:for="{{item}}" wx:for-item="item" wx:key="index">
+      <view class="vip-order" bindtap="goDetail" data-id="{{item.id}}">
+        <view class="vip-body">
+          <view class="vip-view">
+            <image src="../../../../resource/images/vip_card.png" class="vip-logo" />
+          </view>
+          <view class="vip-view-1">
+            <text lines="1" class="vip-title">{{item.tip_name}}</text>
+            <text lines="1" class="vip-date {{item.order_status === '3' ? 'red-text' : ''}}">{{item.text || '--'}}</text>
+          </view>
+        </view>
+        <view class="vip-footer">
+          <view class="vip-horizontal-line" />
+          <view class="vip-price-wrapper">
+            <text lines="1" class="vip-label">实付</text>
+            <text lines="1" class="vip-yuan">￥</text>
+            <text lines="1" class="vip-price">{{item.pay_price}}</text>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</block>

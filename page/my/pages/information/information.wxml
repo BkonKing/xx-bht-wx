@@ -1,0 +1,50 @@
+<topbar id="topbar" bar-obj="{{barObj}}" bind:topbarFunc="topbarCall"></topbar>
+
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class="form-list">
+    <view class="form-item">
+      <view class="item-name">姓名</view>
+      <view class="itemt-text">
+        <input type="text" value="{{userName}}" placeholder-class="placeholder-text" placeholder="请输入" bindblur="nameSubmit" />
+      </view>
+    </view>
+    <view class="form-item" catchtap="modalFunc">
+      <view class="item-name">性别</view>
+      <view class="itemt-text">
+        <input type="text" disabled value="{{userSex}}" placeholder-class="placeholder-text" placeholder="请选择" />
+      </view>
+      <view class="itemt-icon"><image src="/resource/images/right.png"></image></view>
+    </view>
+    <view class="form-item address-choose" bindtap="{{userBirthday ? '' : 'pickerTime'}}">
+      <view class="item-name">生日</view>
+      <view class="itemt-text">
+        <input type="text" disabled value="{{userBirthday}}" placeholder-class="placeholder-text" placeholder="会员生日当月附送专属生日茶礼" />
+      </view>
+      <view class="itemt-icon"><image src="/resource/images/right.png" wx:if="{{!userBirthday}}"></image></view>
+    </view>
+    <view class="form-item">
+      <view class="item-name">手机号<text wx:if="{{page_status === 1}}">*</text></view>
+      <view class="itemt-text tel-itemt">
+        <button class="" hover-class="none" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+        {{userTel}}
+        </button>
+        <input hidden disabled value="{{userTel}}" placeholder-class="placeholder-text" placeholder="11位手机号" maxlength='11' />
+      </view>
+    </view>
+    <navigator class="form-item" hover-class="none" url="/page/my/pages/address/address?page_type=1">
+      <view class="item-name">收货地址<text wx:if="{{page_status === 1}}">*</text></view>
+      <view class="itemt-text">
+        <input type="text" class="p-nowrap" disabled value="{{userAddress}}" placeholder-class="placeholder-text" placeholder="请选择" />
+      </view>
+      <view class="itemt-icon"><image src="/resource/images/right.png"></image></view>
+    </navigator>
+  </view>
+</form>
+<view wx:if="{{page_status == 1}}" class="information-btn btn-d" bindtap="topbarCall">保存</view>
+
+<modal id="modal" modal-arr="{{modalArr}}" modal-show="{{modalShow}}" bind:modal="modalCall"></modal>
+<picker-module id="picker-module" picker-tit="{{pickerTit}}" picker-obj="{{pickerObj}}" select-val="{{selectVal}}" picker-show="{{pickerShow}}" bind:pickerFunc="pickerCall"></picker-module>
+
+
+<!-- <import src="../../templates/login-model.wxml" />
+<template is="tempLogin" data="{{loginModelHidden}}" /> -->

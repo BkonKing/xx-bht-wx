@@ -1,0 +1,93 @@
+/* page/my/pages/invoice-title/invoice-title.wxss */
+page {
+  background: #F7F7F7;
+  line-height: 1;
+}
+
+.title-list {
+  padding: 30rpx 32rpx 0;
+}
+
+.title-item {
+  width: 686rpx;
+  padding: 0 30rpx;
+  margin-bottom: 30rpx;
+  background: #FFFFFF;
+  border-radius: 4rpx;
+}
+
+.title-info {
+  display: flex;
+  padding: 30rpx 0;
+  border-bottom: 1rpx solid #eee;
+}
+
+.title-tag {
+  width: 88rpx;
+  height: 48rpx;
+  margin-right: 20rpx;
+  background: #cb93481a;
+  border-radius: 2rpx;
+  font-size: 24rpx;
+  font-weight: 500;
+  color: #A15C24;
+  text-align: center;
+  line-height: 48rpx;
+}
+
+.title-title {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 28rpx;
+  font-weight: bold;
+  line-height: 48rpx;
+  color: #212124;
+}
+
+.title-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 92rpx;
+}
+
+.title-link text {
+  font-size: 24rpx;
+  color: #212124;
+}
+
+.title-link .title-link-image {
+  width: 32rpx;
+  height: 32rpx;
+  padding: 20rpx 0 20rpx 20rpx;
+}
+
+.add-box-kong {
+  height: 118rpx;
+}
+
+.add-box {
+  height: 118rpx;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0 32rpx 40rpx;
+  z-index: 20;
+}
+
+.address-add {
+  width: 686rpx;
+  height: 88rpx;
+  background: #212124;
+  border-radius: 44rpx;
+  font-size: 28rpx;
+  color: #FFFFFF;
+}
+
+.empty-none image {
+  width: 312rpx;
+  height: 284rpx;
+}

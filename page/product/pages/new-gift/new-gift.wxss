@@ -1,0 +1,236 @@
+#topbar .invitation-topbar-title {
+  background-color: initial;
+}
+
+page {
+  background: #212124;
+}
+
+.poster-image {
+  position: fixed;
+  z-index: -1;
+  width: 750rpx;
+  height: 1334rpx;
+  top: 0;
+}
+
+.title-box {
+  width: 520rpx;
+  height: 155rpx;
+  margin-top: 340rpx;
+  margin-left: 115rpx;
+  position: relative;
+}
+
+.title-box-border {
+  width: 520rpx;
+  height: 155rpx;
+  position: absolute;
+  top: 0;
+  z-index: 0;
+}
+
+.title {
+  line-height: 33rpx;
+  color: #762F07;
+  font-size: 33rpx;
+}
+
+.num {
+  line-height: 72rpx;
+  color: #762F07;
+  font-size: 72rpx;
+}
+
+.caption {
+  line-height: 33rpx;
+  color: #762F07;
+  font-size: 33rpx;
+}
+
+.caption-1 {
+  text-align: center;
+  color: #762F07;
+  font-size: 33rpx;
+}
+
+.get-box {
+  width: 690rpx;
+  height: 252rpx;
+  margin: 186rpx 30rpx 0;
+  padding-top: 60rpx;
+  background: #212124;
+  border-radius: 20px;
+  position: relative;
+  border: 1px solid #FFE9D1;
+}
+
+.phone-input {
+  box-sizing: border-box;
+  width: 600rpx;
+  height: 88rpx;
+  margin: 0 45rpx;
+  padding: 0 100rpx;
+  background: #ffffff1a;
+  border-radius: 44rpx;
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #FFFFFF;
+}
+
+.get-btn {
+  position: absolute;
+  left: 194rpx;
+  bottom: -44rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300rpx !important;
+  height: 88rpx;
+  background: linear-gradient(90deg, #DFB68D, #C4855E);
+  box-shadow: 0px 1rpx 0px 0px rgba(255, 255, 255, 0.5);
+  border-radius: 44rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+.get-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.get-number {
+  font-size: 56rpx;
+  font-weight: bold;
+  line-height: 1;
+  color: #FFE4C5;
+}
+
+.get-text {
+  margin-top: 30rpx;
+  font-size: 28rpx;
+  line-height: 1;
+  color: #FFE4C5;
+}
+
+.modal-bg {
+  z-index: 9999999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.modal-body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 600rpx;
+  height: 448rpx;
+  background: #FFFFFF;
+  border-radius: 4rpx;
+}
+
+.modal-body-text {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #212124;
+  line-height: 48rpx;
+}
+
+.open-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400rpx;
+  height: 88rpx;
+  margin-top: 80rpx;
+  background: linear-gradient(90deg, #DFB68D, #C4855E);
+  box-shadow: 0px 1rpx 0px 0px rgba(255, 255, 255, 0.5);
+  border-radius: 44rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+.share-btn {
+  font-size: 30rpx;
+  font-weight: 500;
+  text-decoration: underline;
+  color: #919499;
+  line-height: 120rpx;
+  background-color: initial;
+}
+
+.modal-close-btn {
+  width: 44rpx;
+  height: 44rpx;
+  position: absolute;
+  bottom: -84rpx;
+}
+
+/* login */
+.loginModel {
+  background: #fff;
+  width: 500rpx;
+  height: 410rpx;
+  margin: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin: -205rpx 0 0 -250rpx;
+  z-index: 999;
+  border-radius: 16rpx;
+  text-align: center;
+  opacity: 1;
+  padding: 40rpx 20rpx 30rpx;
+}
+
+.loginText {
+  font-size: 13px;
+  margin: 20rpx 0 18rpx;
+}
+
+.loginBtn {
+  background: #269c22;
+  margin: 0 auto;
+  color: #fff;
+  padding: 10rpx 0;
+  margin-top: 26rpx;
+  height: 90rpx;
+  line-height: 70rpx;
+  border-radius: 10rpx;
+  font-size: 14px;
+}
+
+button.loginBtn:not([size='mini']) {
+  width: 420rpx !important;
+}
+
+.loginBtnimg {
+  width: 46rpx;
+  height: 46rpx;
+  vertical-align: middle;
+  margin-right: 16rpx;
+}
+
+.loginBtn::after {
+  border: 0
+}
+
+.loginImg {
+  width: 130rpx;
+  height: 130rpx;
+}
+
+.loginBg {
+  z-index: 998;
+}
+
+.former-text{  
+  text-decoration: line-through;
+}

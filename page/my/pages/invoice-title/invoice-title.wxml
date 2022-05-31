@@ -1,0 +1,26 @@
+<!--page/my/pages/invoice-title/invoice-title.wxml-->
+<topbar id="topbar" bar-obj="{{barObj}}"></topbar>
+
+<view class="title-list">
+  <view class="title-item" wx:for="{{listData}}" wx:key="index" bindtap="goDetail" data-id="{{item.id}}" data-index="{{index}}">
+    <view class="title-info">
+      <view wx:if="{{item.is_default === '1'}}" class="title-tag">默认</view>
+      <view class="title-title">{{item.rise}}</view>
+    </view>
+    <view class="title-link">
+      <text>{{item.rise_type_name}}</text>
+      <image class="title-link-image" src="/resource/images/edit_1.png"  data-id="{{item.id}}" catchtap="goEdit"></image>
+    </view>
+  </view>
+</view>
+<!-- <switch color="#f00" checked="true" bindchange="switch2Change"/> -->
+<view class="add-box-kong"></view>
+<view class="add-box">
+  <navigator hover-class="none" class="address-add btn-d" url="/page/my/pages/invoice-title-edit/invoice-title-edit">
+    添加新抬头
+  </navigator>
+</view>
+
+<view class="empty-none" hidden="{{listData && listData.length}}">
+  <image src="/resource/images/invoice-no-data.png"></image>
+</view>

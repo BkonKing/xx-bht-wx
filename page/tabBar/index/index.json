@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "modal": "/components/modal/modal",
+    "coupon-remind": "/components/coupon-remind/coupon-remind",
+    "coupon-modal": "/components/coupon-modal/coupon-modal",
+    "picker-module": "/components/picker-module/picker-module"
+  }
+}

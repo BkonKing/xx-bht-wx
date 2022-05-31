@@ -1,0 +1,127 @@
+/* 商品列表 start */
+page{
+  background:#fafafa;
+  width: 100%;
+}
+.bar-bg {
+  background-color: #212124 !important;
+  color: #ffffff !important;
+  padding: 0 30rpx;
+}
+.shop-tit {
+  height: 150rpx;
+  color: #ffffff;
+  text-align: center;
+}
+.shop-tit view:nth-child(1) {
+  line-height: 64rpx;
+  font-size: 48rpx;
+  font-weight: bold;
+}
+.shop-tit view:nth-child(2) {
+  line-height: 50rpx;
+}
+
+.bht-session {
+  padding: 0 20rpx;
+  margin-bottom: 30rpx;
+  border: 1px solid #efefef;
+}
+.shop-session {
+  position: relative;
+  padding-top: 40rpx;
+}
+.shop-session::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 269rpx;
+  background-color: #212124;
+  z-index: -1;
+}
+.list-session {
+  padding: 40rpx 20rpx;
+  overflow: hidden;
+}
+.shop-list {
+  padding-bottom: 40rpx;
+}
+.shop-item {
+  display: flex;
+  height: 149rpx;
+  margin-bottom: 30rpx;
+  position: relative;
+}
+.shop-item:last-child {
+  margin-bottom: 0;
+}
+.shop-pic {
+  display: flex;
+  width: 148rpx;
+}
+.shop-info {
+  width: 350rpx;
+  flex-grow: 1;
+  padding: 0 0 0 20rpx;
+}
+.shop-name {
+  line-height: 48rpx;
+  color: #212124;
+}
+.shop-specs {
+  line-height: 42rpx;
+  color: #b8babf;
+  font-size: 26rpx;
+  margin-bottom: 9rpx;
+}
+.shop-price {
+  display: flex;
+  height: 50rpx;
+  align-items: center;
+}
+.vip-icon {
+  flex-shrink: 0;
+  width: 116rpx;
+  height: 30rpx;
+  padding-right: 6rpx;
+  margin-right: 9rpx;
+  line-height: 30rpx;
+  color: #ffffff;
+  font-size: 20rpx;
+  text-align: center;
+  background: url('https://bht.liwushijian.com/library/img/xcx_img/vip_bg1.png') no-repeat center center/100% 100%;
+}
+.now-price {
+  color: #212124;
+  font-size: 38rpx;
+  font-weight: bold;
+  margin-right: 6rpx;
+}
+.now-price text {
+  font-size: 26rpx;
+  font-weight: normal;
+}
+.old-price {
+  color: #b8babf;
+  font-size: 26rpx;
+  text-decoration: line-through;
+}
+.shop-tip {
+  height: 60rpx;
+  width: 650rpx;
+  color: #b8babf;
+  font-size: 24rpx;
+  border-radius: 2rpx;
+  border: 2rpx solid #b8babf;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.shop-tip image {
+  height: 24rpx;
+  width: 24rpx;
+  margin-right: 4rpx;
+}
+/* 商品列表 end */

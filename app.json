@@ -1,0 +1,127 @@
+{
+  "pages": [
+    "page/tabBar/index/index",
+    "page/tabBar/store/index",
+    "page/tabBar/cart/index",
+    "page/tabBar/my/index"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "不荒唐",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8",
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "color": "#b8babf",
+    "selectedColor": "#9e6f5d",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "page/tabBar/index/index",
+        "iconPath": "resource/icon/icon1.png",
+        "selectedIconPath": "resource/icon/icon1_s.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "page/tabBar/store/index",
+        "iconPath": "resource/icon/icon2.png",
+        "selectedIconPath": "resource/icon/icon2_s.png",
+        "text": "商城"
+      },
+      {
+        "pagePath": "page/tabBar/cart/index",
+        "iconPath": "resource/icon/icon3.png",
+        "selectedIconPath": "resource/icon/icon3_s.png",
+        "text": "购物车"
+      },
+      {
+        "pagePath": "page/tabBar/my/index",
+        "iconPath": "resource/icon/icon4.png",
+        "selectedIconPath": "resource/icon/icon4_s.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "subPackages": [
+    {
+      "root": "page/my/",
+      "pages": [
+        "pages/vip/vip",
+        "pages/vip-refund/vip-refund",
+        "pages/vip-record/vip-record",
+        "pages/address/address",
+        "pages/address-edit/address-edit",
+        "pages/information/information",
+        "pages/login/login",
+        "pages/tel-reg/tel-reg",
+        "pages/invoice-apply/invoice-apply",
+        "pages/invoice-record/invoice-record",
+        "pages/invoice-title/invoice-title",
+        "pages/invoice-title-edit/invoice-title-edit",
+        "pages/invoice-title-detail/invoice-title-detail",
+        "pages/invoice-detail/invoice-detail",
+        "pages/invoice-select-order/invoice-select-order",
+        "pages/vip-detail/vip-detail"
+      ]
+    },
+    {
+      "root": "page/product/",
+      "pages": [
+        "pages/goods-details/goods-details",
+        "pages/search/search",
+        "pages/settlement/settlement",
+        "pages/subscribe-plan/subscribe-plan",
+        "pages/subscribe-order/subscribe-order",
+        "pages/dorder-details/dorder-details",
+        "pages/subscribe-buy-refund/subscribe-buy-refund",
+        "pages/subscribe-pay/subscribe-pay",
+        "pages/subscribe-refund/subscribe-refund",
+        "pages/subscribe-exchange/subscribe-exchange",
+        "pages/ordinary-order/ordinary-order",
+        "pages/ordinary-order-details/ordinary-order-details",
+        "pages/ordinary-refund-details/ordinary-refund-details",
+        "pages/ordinary-exchange-details/ordinary-exchange-details",
+        "pages/logistics/logistics",
+        "pages/ordinary-apply-refund/ordinary-apply-refund",
+        "pages/ordinary-apply-exchange/ordinary-apply-exchange",
+        "pages/ordinary-apply-refunds/ordinary-apply-refunds",
+        "pages/coupons/coupons",
+        "pages/coupons-select/coupons-select",
+        "pages/carts/carts",
+        "pages/invitation/invitation",
+        "pages/invitation-poster/invitation-poster",
+        "pages/new-gift/new-gift",
+        "pages/special/special"
+      ]
+    },
+    {
+      "root": "page/article/",
+      "pages": [
+        "pages/agreement/agreement",
+        "pages/member-benefits/member-benefits",
+        "pages/custom-enterprise/custom-enterprise",
+        "pages/help-center/help-center",
+        "pages/privacy/privacy"
+      ]
+    }
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "不荒唐希望获得您的位置信息，以为您提供更好的服务！"
+    }
+  },
+  "usingComponents": {
+    "topbar": "/components/topbar/topbar",
+    "renew-remind": "/components/renew-remind/renew-remind"
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

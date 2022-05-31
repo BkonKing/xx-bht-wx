@@ -1,0 +1,275 @@
+<topbar id="topbar" bar-obj="{{barObj}}"></topbar>
+<view hidden="{{!bodyShow}}">
+  <view class="shop-session">
+    <view class="shop-tit">
+      <view>{{subscribeData.status_string}}</view>
+      <view>{{subscribeData.status_tip}}</view>
+    </view>
+    <view class="bht-session list-session">
+      <view class="shop-list">
+        <block wx:for="{{subscribeData.goods_list}}" wx:key="index">
+          <navigator class="shop-item" hover-class="none"
+            url="/page/product/pages/goods-details/goods-details?goods_id={{item.goods_id}}">
+            <view class="shop-pic">
+              <image class="width-100" mode="aspectFill" src="{{item.specs_img}}"></image>
+            </view>
+            <view class="shop-info">
+              <view class="shop-name p-nowrap">{{item.goods_name}}</view>
+              <view class="shop-specs p-nowrap">{{item.spece_name}}</view>
+              <view class="shop-price" wx:if="{{item.s_type==2}}">
+                <view class="vip-icon">会员优享价</view>
+                <view class="now-price"><text>￥</text>{{item.e_price}}</view>
+                <view class="old-price"><text>￥</text>{{item.s_price}}</view>
+              </view>
+              <view class="shop-price" wx:else>
+                <view class="now-price"><text>￥</text>0.00</view>
+                <view class="old-price"><text>￥</text>{{item.s_price}}</view>
+              </view>
+            </view>
+            <view class="shop-refund-tip" wx:if="{{item.type_val==3||item.type_val==5||item.type_val==7}}">
+              {{item.type_txt}}</view>
+            <view class="shop-refund-tip sh-bg" wx:if="{{item.type_val==1}}">
+              <image src="https://bht.liwushijian.com/library/img/xcx_img/order_bg1.png"></image>
+            </view>
+            <view class="shop-refund-tip buy-refund-bg" wx:if="{{item.type_val==2}}">
+              <image src="https://bht.liwushijian.com/library/img/xcx_img/order_bg2.png"></image>
+            </view>
+            <view class="shop-refund-tip buy-refund-bg" wx:if="{{item.type_val==4}}">
+              <image src="https://bht.liwushijian.com/library/img/xcx_img/order_bg3.png"></image>
+            </view>
+            <view class="shop-refund-tip buy-refund-bg" wx:if="{{item.type_val==6}}">
+              <image src="https://bht.liwushijian.com/library/img/xcx_img/order_bg4.png"></image>
+            </view>
+          </navigator>
+        </block>
+      </view>
+      <view class="shop-tip">
+        <image src="/resource/images/tip_01.png"></image>{{subscribeData.buy_tip}}
+      </view>
+      <view wx:if="{{zzGoodsList.length}}" class="zz-shop">
+        <view class="zz-tip">本次未寄正装，如需购买可点击下方</view>
+        <view class="zz-list {{zzGoodsList.length == 1 ? 'zz-list-center' : ''}}">
+          <navigator wx:for="{{zzGoodsList}}" wx:key="index"
+            url="/page/product/pages/goods-details/goods-details?goods_id={{item.goods_id}}" class="zz-item"
+            hover-class="none">
+            <image mode="aspectFill" src="{{item.specs_img}}"></image>
+          </navigator>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <block wx:if="{{subscribeData.is_stop != 1}}">
+    <block
+      wx:if="{{subscribeData.order_status == 3 || subscribeData.order_status == 4 || subscribeData.order_status == 5}}">
+      <view class="bht-session">
+        <view class="tip-list">
+          <view class="tip-item"><text>商品总价</text><text>￥{{subscribeData.total_price}}</text></view>
+          <view class="tip-item"><text>运费</text><text>￥0.00</text></view>
+          <view class="tip-item" wx:if="{{subscribeData.vip_discount && subscribeData.vip_discount != '0.00'}}">
+            <text>会员折扣</text><text>-￥{{subscribeData.vip_discount}}</text></view>
+          <view class="tip-item" wx:if="{{subscribeData.vip_yx_discount && subscribeData.vip_yx_discount != '0.00'}}">
+            <text>会员优享</text><text>-￥{{subscribeData.vip_yx_discount}}</text></view>
+          <view class="tip-item" wx:if="{{subscribeData.coupon_discount && subscribeData.coupon_discount!='0.00'}}">
+            <text>优惠券</text><text>-￥{{subscribeData.coupon_discount}}</text></view>
+        </view>
+        <view class="tip-total">总计支付：￥{{subscribeData.pay_price}}</view>
+      </view>
+    </block>
+    <!-- 待发货 -->
+    <view class="bht-session select-session" wx:if="{{subscribeData.order_status == 0}}">
+      <view class="select-list">
+        <view class="select-item link-item " wx:if="{{subscribeData.address_edit}}">
+          <view class="link-left color-f33f3f">请确认地址</view>
+          <view class="link-middle">{{subscribeData.send_txt}}</view>
+        </view>
+        <view class="select-item link-item address-item" bindtap="{{subscribeData.address_edit ? 'linkFunc' : ''}}"
+          data-url="/page/my/pages/address/address?page_type=1">
+          <view class="link-left">收货地址</view>
+          <view class="link-middle">
+            <view class="user-info">
+              <view class="p-nowrap">{{subscribeData.rece_realname}}</view>
+              <view>{{subscribeData.rece_mobile}}</view>
+            </view>
+            <view class="user-address p-nowrap">{{subscribeData.rece_address}}</view>
+          </view>
+          <view class="link-icon" wx:if="{{subscribeData.address_edit}}">
+            <image src="/resource/images/right.png"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 待收货 -->
+    <view class="bht-session select-session" wx:if="{{subscribeData.order_status == 1}}">
+      <view class="select-list">
+        <view class="select-item link-item address-item">
+          <view class="link-left">收货地址</view>
+          <view class="link-middle">
+            <view class="user-info">
+              <view class="p-nowrap">{{subscribeData.rece_realname}}</view>
+              <view>{{subscribeData.rece_mobile}}</view>
+            </view>
+            <view class="user-address p-nowrap">{{subscribeData.rece_address}}</view>
+          </view>
+        </view>
+        <navigator wx:if="{{subscribeData.distribution_type == 1}}"
+          class="select-item link-item address-item logistics-item" hover-class="none"
+          url="/page/product/pages/logistics/logistics?logistics_id={{subscribeData.logistice_id}}&order_id={{subscribeData.id}}&logistice_type=1&order_mark=2">
+          <view class="link-left">配送方式</view>
+          <view class="link-middle">
+            <view>上门自提<text class="color-b8babf">（已提货）</text></view>
+          </view>
+          <view class="link-icon">
+            <image src="/resource/images/right.png"></image>
+          </view>
+        </navigator>
+        <navigator wx:else class="select-item link-item address-item logistics-item" hover-class="none"
+          url="/page/product/pages/logistics/logistics?logistics_id={{subscribeData.logistice_id}}&order_id={{subscribeData.id}}">
+          <view class="link-left">物流配送</view>
+          <view class="link-middle">
+            <view class="user-info">
+              <view>{{subscribeData.logistice_name}}</view>
+            </view>
+            <view class="logistics-info">
+              <view class="p-nowrap">{{subscribeData.logistice_new.context}}</view>
+              <view>{{subscribeData.logistice_new.time}}</view>
+            </view>
+          </view>
+          <view class="link-icon">
+            <image src="/resource/images/right.png"></image>
+          </view>
+        </navigator>
+      </view>
+    </view>
+
+    <!-- 订单完成 -->
+    <view class="bht-session select-session"
+      wx:if="{{subscribeData.order_status == 3 || subscribeData.order_status == 4 || subscribeData.order_status == 5}}">
+      <view class="select-list">
+        <view class="select-item link-item address-item">
+          <view class="link-left">收货地址</view>
+          <view class="link-middle">
+            <view class="user-info">
+              <view class="p-nowrap">{{subscribeData.rece_realname}}</view>
+              <view>{{subscribeData.rece_mobile}}</view>
+            </view>
+            <view class="user-address p-nowrap">{{subscribeData.rece_address}}</view>
+          </view>
+        </view>
+        <navigator wx:if="{{subscribeData.distribution_type == 1}}" class="select-item link-item" hover-class="none"
+          url="/page/product/pages/logistics/logistics?logistics_id={{subscribeData.logistice_id}}&order_id={{subscribeData.id}}&logistice_type=1&order_mark=2">
+          <view class="link-left">配送方式</view>
+          <view class="link-middle">
+            <view class="color-60646b">上门自提<text class="color-b8babf">（已提货）</text></view>
+          </view>
+          <view class="link-icon">
+            <image src="/resource/images/right.png"></image>
+          </view>
+        </navigator>
+        <navigator wx:else class="select-item link-item" hover-class="none"
+          url="/page/product/pages/logistics/logistics?logistics_id={{subscribeData.logistice_id}}&order_id={{subscribeData.id}}">
+          <view class="link-left">物流配送</view>
+          <view class="link-middle">
+            <view><text
+                class="color-60646b">{{subscribeData.logistice_name}}</text>{{subscribeData.logistice_status_string}}
+            </view>
+          </view>
+          <view class="link-icon">
+            <image src="/resource/images/right.png"></image>
+          </view>
+        </navigator>
+      </view>
+    </view>
+  </block>
+  <!-- 交易停止 -->
+  <block wx:else>
+    <view class="bht-session select-session">
+      <view class="select-list">
+        <view class="select-item link-item address-item">
+          <view class="link-left">收货地址</view>
+          <view class="link-middle">
+            <view class="user-info">
+              <view class="p-nowrap">{{subscribeData.rece_realname}}</view>
+              <view>{{subscribeData.rece_mobile}}</view>
+            </view>
+            <view class="user-address p-nowrap">{{subscribeData.rece_address}}</view>
+          </view>
+        </view>
+        <navigator wx:if="{{subscribeData.distribution_type == 1}}" class="select-item link-item" hover-class="none"
+          url="/page/product/pages/logistics/logistics?logistics_id={{subscribeData.logistice_id}}&order_id={{subscribeData.id}}&logistice_type=1&order_mark=2">
+          <view class="link-left">配送方式</view>
+          <view class="link-middle">
+            <view class="color-60646b">上门自提<text class="color-b8babf">（已提货）</text></view>
+          </view>
+          <view class="link-icon">
+            <image src="/resource/images/right.png"></image>
+          </view>
+        </navigator>
+        <navigator wx:else class="select-item link-item" hover-class="none"
+          url="/page/product/pages/logistics/logistics?logistics_id={{subscribeData.logistice_id}}&order_id={{subscribeData.id}}">
+          <view class="link-left">物流配送</view>
+          <view class="link-middle">
+            <view><text
+                class="color-60646b">{{subscribeData.logistice_name}}</text>{{subscribeData.logistice_status_string}}
+            </view>
+          </view>
+          <view class="link-icon">
+            <image src="/resource/images/right.png"></image>
+          </view>
+        </navigator>
+      </view>
+    </view>
+
+    <!-- <view class="bht-session logistics-session order-session">
+      <view class="tip-list">
+        <view class="tip-item"><text>订单编号</text><text>{{subscribeData.subscribe_numb}}</text></view>
+        <view class="tip-item"><text>创建时间</text><text>{{subscribeData.ctime}}</text></view>
+        <view class="tip-item"><text>发货时间</text><text>{{subscribeData.ftime}}</text></view>
+        <view class="tip-item"><text>交易停止</text><text>{{subscribeData.stop_ktime}}</text></view>
+      </view>
+    </view> -->
+  </block>
+
+  <block wx:if="{{subscribeData.order_status!=3&&subscribeData.order_status!=4}}">
+    <view class="bht-session logistics-session order-session">
+      <view class="tip-list">
+        <view class="tip-item"><text>订单编号</text><text>{{subscribeData.subscribe_numb}}</text></view>
+        <view class="tip-item"><text>创建时间</text><text>{{subscribeData.ctime}}</text></view>
+        <view class="tip-item" wx:if="{{subscribeData.ftime}}"><text>发货时间</text><text>{{subscribeData.ftime}}</text>
+        </view>
+        <view class="tip-item" wx:if="{{subscribeData.order_status==5 && subscribeData.is_stop != 1}}">
+          <text>支付方式</text><text>微信支付</text></view>
+        <view class="tip-item" wx:if="{{subscribeData.is_stop == 1}}">
+          <text>交易停止</text><text>{{subscribeData.stop_ktime}}</text></view>
+      </view>
+    </view>
+  </block>
+
+  <block
+    wx:if="{{(subscribeData.is_stop != 1 && (subscribeData.is_retreat || subscribeData.is_barter)) || subscribeData.is_kesqkp || subscribeData.is_invoice === '1'}}">
+    <view class="fixed-empty"></view>
+    <view class="bottom-fixed bottom-link">
+      <navigator wx:if="{{subscribeData.is_kesqkp}}" hover-class="none"
+        url="/page/my/pages/invoice-apply/invoice-apply?order_id={{subscribeData.wxpay_id}}">申请开票</navigator>
+      <navigator wx:if="{{subscribeData.is_invoice === '1'}}" hover-class="none"
+        url="/page/my/pages/invoice-detail/invoice-detail?id={{subscribeData.invoice_id}}">发票详情</navigator>
+      <navigator hover-class="none" wx:if="{{subscribeData.is_retreat}}" hover-class="none"
+        url="/page/product/pages/subscribe-refund/subscribe-refund?subscribe_id={{subscribe_id}}&s_status=1">退货详情
+      </navigator>
+      <navigator hover-class="none" wx:if="{{subscribeData.is_barter}}" hover-class="none"
+        url="/page/product/pages/subscribe-exchange/subscribe-exchange?subscribe_id={{subscribe_id}}&s_status=2">换货详情
+      </navigator>
+    </view>
+  </block>
+  <view wx:else class="bottom-empty"></view>
+</view>
+<!-- 授权登录 -->
+<view class="loginModel" hidden="{{loginModelHidden}}" catchtouchmove="true">
+  <image src="https://bht.liwushijian.com/library/img/xcx_img/login.png" class="loginImg"></image>
+  <view class="loginText">我们需要获得您的授权，以继续操作</view>
+  <button class="loginBtn" bindtap="updateUserInfo">
+    <image src="https://bht.liwushijian.com/library/img/xcx_img/weixin.png" class="loginBtnimg"></image>微信授权登录
+  </button>
+</view>
+<view class="loginBg" hidden="{{loginModelHidden}}" catchtouchmove="true"></view>

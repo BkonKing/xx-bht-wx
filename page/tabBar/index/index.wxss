@@ -1,0 +1,29 @@
+page {
+  background-color: #fff;
+}
+.index-cont {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+}
+.index-cont image {
+  width: 100% !important;
+}
+.index-cont .wxParse-p {
+  width: 100%;
+}
+.index-link {
+  width: 578rpx;
+  height: 138rpx;
+  display: flex;
+  position: absolute;
+  top: 956rpx;
+  left: 86rpx;
+  z-index: 8;
+}
+
+.fixedBtn {
+  position: fixed;
+  top: auto;
+  bottom: 0;
+}

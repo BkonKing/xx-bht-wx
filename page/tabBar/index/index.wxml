@@ -1,0 +1,22 @@
+<topbar id="topbar" bar-obj="{{barObj}}"></topbar>
+
+<!-- <navigator url="/page/product/pages/subscribe-plan/subscribe-plan">链接</navigator> -->
+
+<view class="bht-body" hidden="{{!bodyShow}}">
+  <view class="index-cont">
+    <navigator wx:if="{{userId}}" id="index-link" class="index-link  {{fixedBtn}}" hover-class="none" url="{{is_vip ? '/page/tabBar/store/index' : '/page/my/pages/vip/vip'}}" open-type="{{is_vip ? 'switchTab' :'navigate'}}">
+      <image class="width-100" src="https://bht.liwushijian.com/library/img/xcx_img/index_12.png"></image>
+    </navigator>
+    <navigator wx:else id="index-link" class="index-link  {{fixedBtn}}" hover-class="none" url="/page/my/pages/login/login">
+      <image class="width-100" src="https://bht.liwushijian.com/library/img/xcx_img/index_12.png"></image>
+    </navigator>
+    <import src="/resource/wxParse/wxParse.wxml"/> <template is="wxParse" data="{{wxParseData:articleContent.nodes}}"/>
+  </view>
+</view>
+
+<view class="nav-border"></view>
+
+<renew-remind id="renew-remind"></renew-remind>
+
+<coupon-remind coupon-tip="{{couponTip}}" modal-show="{{couponRmindShow}}" id="coupon-remind"></coupon-remind>
+<coupon-modal coupon-list="{{couponList}}" modal-show="{{couponModalShow}}" id="coupon-modal"></coupon-modal>

@@ -1,0 +1,167 @@
+<topbar id="topbar" bar-obj="{{barObj}}"></topbar>
+
+<view class="swiper-block">
+  <swiper indicator-dots="true" interval="5000" autoplay="true">
+    <block wx:for="{{swiperList}}" wx:key="*this">
+      <swiper-item>
+        <image class="width-100" bindtap="bigPic" mode="aspectFill" src="{{item}}" data-list="{{item}}" data-src="{{item}}" data-index="{{index}}" />
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+
+<view class="shop-info">
+  <view class="shop-tit-session">
+    <view class="shop-name p-nowrap">{{goodsData.goods_name}}</view>
+    <view class="shop-specs">{{goodsData.sub_title}}</view>
+  </view>
+  <view class="shop-line"></view>
+  <view class="shop-price {{isSmall ? 'small-price' : ''}}">
+    <block wx:if="{{goodsData.vip_status === 3}}">
+      <view class="vip-price v-price">￥<text class="now-price">{{goodsData.buying_roles == 1 ? goodsData.vip_price : goodsData.sell_price}} </text><view class="old-price" wx:if="{{goodsData.original_price && goodsData.original_price!='0.00'}}">￥<text>{{goodsData.original_price}}</text></view></view>
+    </block>
+    <block wx:else>
+      <!-- 非会员 -->
+      <block wx:if="{{goodsData.vip_status === 0}}">
+          <view class="vip-price v-price">会员价￥<text class="now-price">{{goodsData.vip_price}}</text></view>
+          <view class="ordinary-price">非会员价￥<text class="now-price">{{goodsData.sell_price}}</text>
+            <view class="old-price" wx:if="{{goodsData.original_price && goodsData.original_price!='0.00'}}">￥<text>{{goodsData.original_price}}</text></view>
+          </view>
+      </block>
+      <!-- 会员无优享 -->
+      <block wx:elif="{{goodsData.vip_status === 1}}">
+          <view class="vip-price v-price">会员价￥<text class="now-price">{{goodsData.vip_price}}</text></view>
+          <view class="ordinary-price">非会员价￥<text class="now-price">{{goodsData.sell_price}}</text></view>
+      </block>
+      <!-- 会员有优享 -->
+      <block wx:elif="{{goodsData.vip_status === 2}}">
+          <view class="svip-price v-price">会员优享价￥<text class="now-price">{{goodsData.enjoy_price}}</text><view class="old-price">￥<text>{{goodsData.vip_price}}</text></view></view>
+          <view class="ordinary-price">非会员价￥<text class="now-price">{{goodsData.sell_price}}</text></view>
+      </block>
+    </block>
+  </view>
+</view>
+
+<view class="shop-tip">
+  <view class="tip-seven"><image src="/resource/images/seven.png"></image>{{goodsData.tip_left}}</view>
+  <view class="tip-postage"><image src="/resource/images/postage.png"></image>{{goodsData.tip_right}}</view>
+</view>
+
+<view class="shop-content shop-content-detail">
+  <view class="content-text">
+    <import src="/resource/wxParse/wxParse.wxml"/> <template is="wxParse" data="{{wxParseData:goodsContent.nodes}}"/>
+  </view>
+  <view class="shop-nomore">已经到最底啦</view>
+</view>
+
+<view class="operate-session bottom-fixed">
+  <view class="operate-left">
+    <button class="kf-btn" open-type="contact" hover-class="none">
+      <image src="/resource/images/my_15.png"></image>
+      <view>客服</view>
+    </button>
+    <navigator wx:if="{{isDestruction}}" class="cart-btn" hover-class="none" open-type="switchTab" url="/page/tabBar/cart/index">
+      <image src="/resource/images/cart_05.png"></image>
+      <view>购物车</view>
+      <view class="cart-num" wx:if="{{cartNum}}">{{cartNum}}</view>
+    </navigator>
+    <navigator wx:else class="cart-btn" hover-class="none" open-type="{{isBack ? 'navigateBack' : 'navigate'}}" url="/page/product/pages/carts/carts">
+      <image src="/resource/images/cart_05.png"></image>
+      <view>购物车</view>
+      <view class="cart-num" wx:if="{{cartNum}}">{{cartNum}}</view>
+    </navigator>
+  </view>
+  <view class="operate-right" wx:if="{{btnStatus > 0}}">
+    <view class="btn-disabled" data-type="cart">{{goodsData.sell_out_text}}</view>
+  </view>
+  <view class="operate-right" wx:else>
+    <block wx:if="{{userId}}">
+      <block wx:if="{{goodsData.vip_status == 3 && !goodsData.ok_buy}}">
+        <navigator wx:if="{{goodsData.buying_roles == 1}}" url="/page/my/pages/vip/vip" class="add-btn vip-go" hover-class="none">仅限会员购买<image src="/resource/images/right_02.png"></image></navigator>
+        <view wx:if="{{goodsData.buying_roles == 2}}" class="buy-btn">仅限非会员购买</view>
+      </block>
+      <block wx:else>
+        <view class="add-btn" catchtap="showFunc" data-type="cart">加入购物车</view>
+        <view class="buy-btn" catchtap="showFunc" data-type="buy">立即购买</view>
+      </block>
+    </block>
+    <block wx:else>
+      <navigator class="add-btn" hover-class="none" url="/page/my/pages/login/login">加入购物车</navigator>
+      <navigator class="buy-btn" hover-class="none" url="/page/my/pages/login/login">立即购买</navigator>
+    </block>
+  </view>
+</view>
+
+<!-- <view class="shop-kong {{noPrice ? 'hide' : ''}}"></view> -->
+<view class="shop-type bottom-fixed" style="top:{{headerArr.height + 44 + 'px'}}" wx:if="{{isShow}}">
+  <view class="shop-dpic" catchtap="showFunc">
+    <image catchtap="bigPic2" mode="aspectFill" src="{{goods.specs_img}}" data-src="{{goods.specs_img}}"></image>
+  </view>
+  <view class="shop-params">
+    <view class="shop-dname p-nowrap">{{goodsData.goods_name}}</view>
+    <view class="shop-price shop-dprice {{isSmall2 ? 'small-price' : ''}}">
+      <block wx:if="{{goodsData.vip_status === 3}}">
+        <view class="vip-price v-price">￥<text class="now-price">{{goodsData.buying_roles == 1 ? skuList[typeIndex].vip_price : skuList[typeIndex].s_price}} </text><view class="old-price" wx:if="{{skuList[typeIndex].y_price && skuList[typeIndex].y_price!='0.00'}}">￥<text>{{skuList[typeIndex].y_price}}</text></view></view>
+      </block>
+      <block wx:else>
+        <!-- 非会员 -->
+        <block wx:if="{{goodsData.vip_status === 0}}">
+            <view class="vip-price v-price">会员价￥<text class="now-price">{{skuList[typeIndex].vip_price}}</text></view>
+            <view class="ordinary-price">非会员价￥<text class="now-price">{{skuList[typeIndex].s_price}}</text>
+              <view class="old-price" wx:if="{{skuList[typeIndex].y_price && skuList[typeIndex].y_price!='0.00'}}">￥<text>{{skuList[typeIndex].y_price}}</text></view>
+            </view>
+        </block>
+        <!-- 会员无优享 -->
+        <block wx:elif="{{goodsData.vip_status === 1}}">
+            <view class="vip-price v-price">会员价￥<text class="now-price">{{skuList[typeIndex].vip_price}}</text></view>
+            <view class="ordinary-price">非会员价￥<text class="now-price">{{skuList[typeIndex].s_price}}</text></view>
+        </block>
+        <!-- 会员有优享 -->
+        <block wx:elif="{{goodsData.vip_status === 2}}">
+            <view class="svip-price v-price">会员优享价￥<text class="now-price">{{skuList[typeIndex].e_price}}</text><view class="old-price">￥<text>{{skuList[typeIndex].vip_price}}</text></view></view>
+            <view class="ordinary-price">非会员价￥<text class="now-price">{{skuList[typeIndex].s_price}}</text></view>
+        </block>
+      </block>
+    </view>
+    <view class="shop-line"></view>
+    <view class="shop-dlist">
+      <view class="shop-ditem">
+        <view class="shop-dtit">规格</view>
+        <view class="clearfix">
+          <block wx:for="{{skuList}}" wx:key="index">
+            <view class="shop-doption {{typeIndex == index ? 'active' : ''}}" bindtap="typeFunc" data-index="{{index}}">{{item.specs_name}}</view>
+          </block>
+        </view>
+      </view>
+      <view class="shop-line type-line"></view>
+      <view class="shop-ditem">
+        <view class="shop-dtit">数量</view>
+        <view class="clearfix">
+          <view class="shop-btn-block">
+            <view class="shop-btn shop-sub" catchtap="countTab" data-types="-1"></view>
+            <block wx:if="{{btn_type == 'cart'}}">
+              <view class="shop-num">{{skuList[typeIndex].count}}</view>
+              <view class="shop-btn shop-add {{ skuList[typeIndex].notAdd ? 'not-add' : ''}}" catchtap="countTab" data-types="1"></view>
+            </block>
+            <block wx:else>
+              <view class="shop-num">{{skuList[typeIndex].count2}}</view>
+              <view class="shop-btn shop-add {{ skuList[typeIndex].notAdd2 ? 'not-add' : ''}}" catchtap="countTab" data-types="1"></view>
+            </block>
+            <!-- <view class="shop-btn shop-add not-add" hidden="{{!not_add}}"></view> -->
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="btn-d shop-sure" catchtap="addCar">确认</view>
+    <view class="shop-dclose" catchtap="showFunc"><image src="/resource/images/close.png"></image></view>
+  </view>
+</view>
+<view class="maskbg" catchtouchmove="true" bindtap="showFunc" hidden="{{!isShow}}"></view>
+
+<renew-remind id="renew-remind"></renew-remind>
+
+<!-- <import src="../../templates/login-model.wxml" />
+<template is="tempLogin" data="{{loginModelHidden}}" /> -->
+
+
+

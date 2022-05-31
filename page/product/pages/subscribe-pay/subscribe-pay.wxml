@@ -1,0 +1,85 @@
+<topbar id="topbar" bar-obj="{{barObj}}"></topbar>
+<view class="shop-session">
+  <view class="bht-session list-session">
+    <view class="shop-list">
+      <block wx:for="{{listData}}" wx:key="index">
+        <view class="shop-item" url="/page/product/pages/goods-details/goods-details" hover-class="none">
+          <!-- <navigator hover-class="none" url="/page/product/pages/goods-details/goods-details?goods_id={{item.goods_id}}"></navigator> -->
+          <view class="shop-pic">
+            <view class="item-key">{{index+1}}</view>
+            <image class="width-100" mode="aspectFill" src="{{item.specs_img}}"></image>
+          </view>
+          <view class="shop-info">
+            <view class="shop-name p-nowrap">{{item.goods_name}}</view>
+            <view class="shop-specs p-nowrap">{{item.spece_name}}</view>
+            <view class="shop-price">
+              <view class="vip-icon">会员优享价</view>
+              <view class="now-price"><text>￥</text>{{item.e_price}}</view>
+              <view class="old-price"><text>￥</text>{{item.s_price}}</view>
+            </view>
+          </view>
+          <view class="select-list" catchtap="modalFunc" data-index="{{index}}">
+            <view>
+              <block wx:if="{{item.select_status==1}}">退货</block>
+              <block wx:elif="{{item.select_status==2}}">购买</block>
+              <image src="/resource/images/right.png"></image>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view class="shop-tip"><image src="/resource/images/tip_01.png"></image>7天可退(正装拆封后可不退)；退货无忧(免费上门取退)</view>
+  </view>
+</view>
+
+<view wx:if="{{buyNum}}" class="bht-session coupon-session link-item" bindtap="linkFunc" data-url="/page/product/pages/coupons-select/coupons-select?coupon_id={{couponInfo.user_coupon_id}}&page_type=2">
+  <view class="link-left">优惠券</view>
+  <view class="link-middle {{priceInfo.coupon_money ? '' : 'color-gray'}}">{{priceInfo.coupon_money ? couponInfo.coupon_text : '无可用优惠券'}}</view>
+  <view class="link-icon"><image src="/resource/images/right.png"></image></view>
+</view>
+
+<view class="bht-session price-session">
+  <view class="tip-list">
+    <view class="tip-item"><text>商品总价</text><text>￥{{priceInfo.total_s_price}}</text></view>
+    <view class="tip-item"><text>运费</text><text>￥0.00</text></view>
+    <view class="tip-item" wx:if="{{buyNum}}"><text>会员折扣</text><text>-￥{{priceInfo.vip_discount}}</text></view>
+    <view class="tip-item" wx:if="{{buyNum}}"><text>会员优享</text><text>-￥{{priceInfo.vip_yx_discount}}</text></view>
+    <view class="tip-item" wx:if="{{priceInfo.coupon_money && priceInfo.coupon_money!='0.00'}}"><text>优惠券</text><text>-￥{{priceInfo.coupon_money}}</text></view>
+  </view>
+  <view class="tip-total">总计支付：￥{{priceInfo.pay_total}}</view>
+</view>
+
+<view class="fixed-empty"></view>
+<view class="bottom-fixed pay-bottm">
+  <view class="pay-total">总计支付：<text>￥{{priceInfo.pay_total}}</text></view>
+  <view class="btn-d" catchtap="sureFunc">确定</view>
+</view>
+
+<view class="modal-bg" wx:if="{{modalShow}}" catchtouchmove="true">
+  <view class="modal-session">
+    <view class="modal-list">
+      <view class="modal-item bottom-line {{modalIndex == 2 ? 'cur' : ''}}" catchtap="modalSelect" data-index="2"><view class="modal-checkbox"></view>购买</view>
+      <view class="modal-item bottom-line {{modalIndex == 1 ? 'cur' : ''}}" catchtap="modalSelect" data-index="1"><view class="modal-checkbox"></view>退货<text>（请选择下方原因）</text></view>
+    </view>
+    <view class="reason-list">
+      <block wx:for="{{modalArr}}" wx:key="index">
+        <view class="reason-item {{reasonId == item.id ? 'cur' : ''}}" data-index="{{index}}" data-id="{{item.id}}" catchtap="itemSelect">{{item.modalStr}}</view>
+      </block>
+      <!-- <view class="reason-item {{reasonIndex == 1 ? 'cur' : ''}}" data-index="1" catchtap="itemSelect">口感不太满意</view>
+      <view class="reason-item {{reasonIndex == 2 ? 'cur' : ''}}" data-index="2" catchtap="itemSelect">品种不太满意</view>
+      <view class="reason-item {{reasonIndex == 3 ? 'cur' : ''}}" data-index="3" catchtap="itemSelect">价格不太满意</view> -->
+    </view>
+    <view class="modal-operation">
+      <view catchtap="modalCancel">取消</view>
+      <view catchtap="modalSure">确认</view>
+    </view>
+  </view>
+</view>
+
+  
+
+
+
+
+
+

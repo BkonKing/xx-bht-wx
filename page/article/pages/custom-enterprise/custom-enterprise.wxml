@@ -1,0 +1,12 @@
+<topbar id="topbar" bar-obj="{{barObj}}"></topbar>
+
+<view class="pic-cont">
+  <import src="/resource/wxParse/wxParse.wxml"/> <template is="wxParse" data="{{wxParseData:articleContent.nodes}}"/>
+</view>
+
+<view class="download-btn" bindtap="downloadFunc"><image src="/resource/images/upload_02.png"></image>附件：需求清单</view>
+<view class="kf-block">
+  <button class="kf-btn btn-d" open-type="contact" hover-class="none">
+    联系客服
+  </button>
+</view>

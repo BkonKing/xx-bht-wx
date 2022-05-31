@@ -1,0 +1,360 @@
+@import '/resource/css/nav.wxss';
+@import '/resource/css/order-list.wxss';
+page{
+  background:#fafafa;
+  width: 100%;
+  padding-bottom: 30rpx;
+}
+.bar-bg {
+  background-color: #fff !important;
+  color: #212124 !important;
+}
+
+/* 导航 start */
+.nav-item.cur::after {
+  width: 98rpx;
+  margin-left: -49rpx;
+}
+.nav-item:nth-child(1).cur::after,.nav-item:nth-child(5).cur::after {
+  width: 58rpx;
+  margin-left: -29rpx;
+}
+/* 导航 end */
+
+/* 商品列表 start */
+.list-session {
+  padding: 0 30rpx 14rpx;
+  margin-top: 30rpx;
+  margin-bottom: 0;
+}
+.list-tit {
+  display: flex;
+  justify-content: space-between;
+  height: 88rpx;
+  line-height: 88rpx;
+  color: #919499;
+  font-size: 26rpx;
+}
+.shop-list {
+  padding-bottom: 0;
+  max-height: 682rpx;
+  overflow: hidden;
+}
+.shop-list.list-auto {
+  max-height: inherit;
+}
+.shop-name,.shop-specs,.shop-list-tip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.shop-name view:nth-child(1) {
+  max-width: 400rpx;
+}
+.shop-name view:nth-child(2),.shop-price text {
+  color: #b8babf;
+}
+.shop-name view:nth-child(2) text,.shop-price {
+  font-size: 26rpx;
+}
+.shop-price  {
+  color: #212124;
+}
+.shop-price text {
+  text-decoration: line-through;
+  padding-right: 10rpx;
+}
+.item-tip {
+  height: 30rpx;
+  width: 100rpx;
+  line-height: 26rpx;
+  color: #bd8975;
+  font-size: 20rpx;
+  text-align: center;
+  border: 2rpx solid #bd8975;
+  border-radius: 2rpx;
+}
+.item-tip2 {
+  color: #f33f3f;
+  font-size: 24rpx;
+}
+.toggle-btn {
+  height: 60rpx;
+  display: flex;
+  justify-content: center;
+  padding: 22rpx 0;
+}
+.toggle-btn image {
+  height: 100%;
+}
+.shop-list.list-auto + .toggle-btn image {
+  transform: rotate(180deg);
+}
+.item-total {
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: right;
+  font-size: 26rpx;
+  color: #b8babf;
+}
+.item-total view {
+  display: inline;
+  color: #212124;
+  padding-left: 18rpx;
+}
+.item-total view text {
+  font-weight: bold;
+  font-size: 38rpx;
+}
+  /* 按钮 */
+.btn-block {
+  height: 76rpx;
+  display: flex;
+  /* align-items: center; */
+  justify-content: flex-end;
+  border-top: 1px solid #f1f1f1;
+}
+.item-btn {
+  height: 60rpx;
+  width: 160rpx;
+  line-height: 56rpx;
+  color: #919499;
+  font-size: 26rpx;
+  text-align: center;
+  border: 2rpx solid #b8babf;
+  border-radius: 2rpx;
+  margin-top: 14rpx;
+  margin-left: 20rpx;
+}
+.pay-btn {
+  width: 220rpx;
+  border-color: #9e6f5d;
+  color: #fefefe;
+  background-color: #9e6f5d;
+  margin-left: 20rpx;
+}
+/* 商品列表 end */
+
+/* nav */
+/* .nav-empty {
+  height: 98rpx;
+}
+.nav-box {
+  height: 98rpx;
+  width: 100%;
+  display: flex;
+  position: fixed;
+  left: 0;
+  background-color: #fff;
+  z-index: 9;
+}
+.nav-item {
+  width: 250rpx;
+  height: 100%;
+  line-height: 98rpx;
+  text-align: center;
+  position: relative;
+  font-size: 30rpx;
+  color: #333;
+  font-weight: 700;
+}
+.nav-item.cur {
+  color: #ffae00;
+}
+.nav-item.cur::after {
+  content: '';
+  position: absolute;
+  left: 105rpx;
+  bottom: 0;
+  width: 40rpx;
+  height: 4rpx;
+  background-color: #ffae00;
+  z-index: 9;
+  border-radius: 1rpx;
+} */
+
+/* .record-list {
+  padding: 30rpx 32rpx 0;
+  font-size: 28rpx;
+}
+.record-item {
+  box-sizing: border-box;
+  border: 1rpx solid #e4e4e4;
+  padding: 0 20rpx;
+  min-height: 360rpx;
+  background-color: #fff;
+  border-radius: 15rpx;
+}
+.record-item + .record-item {
+  margin-top: 28rpx;
+}
+.item-header {
+  height: 98rpx;
+  line-height: 98rpx;
+}
+.item-ordernum {
+  float: left;
+  color: #666;
+}
+.item-status {
+  float: right;
+  color: #333;
+}
+.item-body {
+  height: 161rpx;
+  overflow: hidden;
+  border-top: 1rpx solid #f4f4f4;
+  border-bottom: 1rpx solid #f4f4f4;
+}
+.item-link {
+  height: 102rpx;
+  margin: 29rpx auto 0;
+}
+.item-pic {
+  float: left;
+  font-size: 0;
+  height: 100%;
+  overflow: hidden;
+}
+.item-pic.item-pic-more {
+  width: 470rpx;
+}
+.item-pic image {
+  width: 102rpx;
+  height: 102rpx;
+  border-radius: 5rpx;
+}
+.item-pic image + image {
+  margin-left: 20rpx;
+}
+.item-info {
+  float: left;
+  margin-left: 20rpx;
+  width: 366rpx;
+}
+.item-name,.item-price {
+  height: 56rpx;
+  line-height: 56rpx;
+  color: #000;
+}
+.item-words,.item-num {
+  line-height: 38rpx;
+  color: #999;
+  font-size: 24rpx;
+}
+.item-data {
+  float: right;
+  width: 154rpx;
+  height: 100%;
+}
+.item-price {
+  text-align: right;
+  width: 100%;
+  color: #ffae00;
+}
+.item-num {
+  width: 100%;
+  text-align: right;
+}
+.item-footer {
+  height: 97rpx;
+  box-sizing: border-box;
+  padding-top: 15rpx;
+  line-height: 66rpx;
+}
+.item-footer .footer-text {
+  float: left;
+  color: #666;
+}
+.footer-text .item-user {
+  display: block;
+  float: left;
+  max-width: 340rpx;
+  overflow: hidden;
+  height: 66rpx;
+}
+.item-btn {
+  float: right;
+  margin-left: 20rpx;
+  background: #fff;
+  padding: 0 22rpx;
+}
+button.item-btn::after {
+  border: none;
+  background-color: fff;
+}
+button.item-btn.button-hover {
+  background-color: #fff;
+}
+.record-get .item-info {
+  width: 520rpx;
+}
+.record-join .footer-text .item-user {
+  max-width: 300rpx;
+}
+.record-join .footer-text text {
+  margin-left: 20rpx;
+}
+.item-coupon {
+  padding: 0;
+  width: 122rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 20rpx;
+  color: #50c6e0;
+  box-sizing: border-box;
+  text-align: center;
+  margin-top: 8rpx;
+  margin-left: 0;
+  position: relative;
+  overflow: hidden;
+  background: url('https://www.liwushijian.com/library/img/xcx_img/coupon_icon_01.png') no-repeat center center/100% 100%;
+}
+.item-coupon view {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #50c6e0;
+  box-sizing: border-box;
+  z-index: 4;
+  border-radius: 6rpx;
+  display: none;
+}
+.item-coupon::before,.item-coupon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  margin-top: -8rpx;
+  width: 16rpx;
+  height: 16rpx;
+  border: 1px solid #50c6e0;
+  box-sizing: border-box;
+  z-index: 5;
+  border-radius: 8rpx;
+  background-color: #fff;
+  display: none;
+}
+.item-coupon::before {
+  left: -9rpx;
+}
+.item-coupon::after {
+  right: -9rpx;
+}
+
+page {
+  height: 100%;
+}
+.tab-content {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-sizing: border-box;
+  padding-top: 98rpx;
+  height: auto;
+}
+.tab-content scroll-view {
+  height: 100%;
+} */

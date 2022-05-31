@@ -1,0 +1,170 @@
+@import '/resource/css/list.wxss';
+page {
+  background-color: #fafafa;
+  padding-bottom: 40rpx;
+}
+.list-tip {
+  padding-left: 30rpx;
+  line-height: 98rpx;
+  color: #60646b;
+  font-size: 26rpx;
+}
+/* 商品列表 start */
+.shop-list {
+  margin: 0 auto;
+  width: 690rpx;
+  border: 1px solid #efefef;
+  padding:  40rpx 0;
+  border-radius: 4rpx;
+  background-color: #fff;
+}
+.shop-item {
+  display: flex;
+  position: relative;
+  margin-bottom: 30rpx;
+  height: 150rpx;
+}
+.shop-item:last-child {
+  margin-bottom: 0;
+}
+.shop-checkbox {
+  width: 71rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.checkbox-session {
+  width: 32rpx;
+  height: 32rpx;
+  border-radius: 50%;
+  border: 2rpx solid #b8babf;
+}
+.shop-checkbox.cur .checkbox-session {
+  border: none;
+  background: #212124 url('https://bht.liwushijian.com/library/img/xcx_img/cart_03.png') no-repeat center center/100% 100%;
+}
+.shop-checkbox.nocur .checkbox-session {
+  border: none;
+  background: #b8babf;
+}
+.shop-cont {
+  width: 480rpx;
+  flex-grow: 1;
+  overflow: hidden;
+  display: flex;
+  padding-right: 30rpx;
+}
+.product-pic {
+  width: 150rpx;
+  height: 100%;
+  display: flex;
+}
+.product-info {
+  flex-grow: 1;
+  padding-left: 20rpx;
+  width: 400rpx;
+}
+.product-name {
+  line-height: 48rpx;
+  color: #212124;
+  display: flex;
+  justify-content: space-between;
+}
+.product-name view:nth-child(1) {
+  width: 320rpx;
+  flex-grow: 1; 
+}
+.product-name view:nth-child(2) {
+  width: 50rpx;
+  text-align: right;
+  color: #b8babf;
+}
+.product-name view:nth-child(2) text {
+  font-size: 26rpx;
+}
+.product-specs {
+  line-height: 42rpx;
+  font-size: 26rpx;
+  color: #b8babf;
+}
+.product-price {
+  line-height: 50rpx;
+  margin-top: 9rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.product-price view:nth-child(1) {
+  color: #f33f3f;
+  font-size: 24rpx;
+}
+.product-price view:nth-child(2) {
+  color: #212124;
+  font-size: 38rpx;
+  font-weight: bold;
+}
+.product-price text {
+  font-size: 26rpx;
+  font-weight: normal;
+}
+.toggle-btn {
+  height: 60rpx;
+  display: flex;
+  justify-content: center;
+  padding: 22rpx 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+}
+.toggle-btn image {
+  height: 100%;
+}
+.shop-list.shop-list-long {
+  padding-bottom: 60rpx;
+}
+.shop-list {
+  /* height: 800rpx; */
+  overflow: hidden;
+  position: relative;
+}
+.shop-list.list-auto {
+  height: auto;
+}
+.shop-list.list-auto .toggle-btn image {
+  transform: rotate(180deg);
+}
+/* 商品列表 end */
+
+/* 选择退换 start */
+.select-session {
+  border: 1px solid #efefef;
+}
+.link-item {
+  height: 120rpx;
+  padding: 0 25rpx 0 20rpx;
+}
+.link-item:last-child::after {
+  display: none;
+}
+.link-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 19rpx;
+  right: 19rpx;
+  height: 1px;
+  background-color: #f1f1f1;
+}
+.link-left {
+  color: #60646b;
+  display: flex;
+  align-items: center;
+}
+.link-left image {
+  width: 44rpx;
+  height: 44rpx;
+  margin-right: 20rpx;
+}
+
+/* 选择退换 end */

@@ -1,0 +1,64 @@
+.modal-session {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cont {
+  width: 600rpx;
+  /* min-height: 321rpx; */
+  background-color: #fff;
+  border-radius: 4rpx;
+  font-size: 30rpx;
+  position: relative;
+}
+.close {
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  display: flex;
+  top: -80rpx;
+  right: 30rpx;
+}
+.close image {
+  width: 100%;
+  height: 100%;
+}
+.txt-block {
+  width: 500rpx;
+  /* height: 200rpx; */
+  padding: 20rpx 0;
+  margin: 0 auto;
+}
+.cont-txt {
+  width: 500rpx;
+  min-height: 100rpx;
+  max-height: 400rpx;
+  overflow-y: auto;
+  line-height: 49rpx;
+  color: #60646b;
+  display: table-cell;
+  vertical-align: middle;
+}
+.cont-txt view {
+  /* display: inline; */
+  font-size: 30rpx;
+}
+/* .cont-txt text {
+  color: #f33f3f;
+} */
+.cont-txt .wxParse-inline {
+  display: inline;
+}
+.line-block {
+  width: 560rpx;
+  height: 1px;
+  background-color: #f1f1f1;
+  margin: 0 auto;
+}
+.go-link {
+  color: #212124;
+  height: 120rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

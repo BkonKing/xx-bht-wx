@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "picker-module": "/components/picker-module/picker-module",
+    "alert-remind": "/components/alert-remind/alert-remind"
+  }
+}

@@ -1,0 +1,3 @@
+<template name="tempNoMore">
+  <view class="nomore" hidden="{{noMoreHidden}}">没有更多了</view>
+</template>

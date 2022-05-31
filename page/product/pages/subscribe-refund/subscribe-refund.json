@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "picker-module": "/components/picker-module/picker-module"
+  }
+}

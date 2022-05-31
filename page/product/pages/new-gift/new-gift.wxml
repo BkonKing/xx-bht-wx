@@ -1,0 +1,64 @@
+<topbar id="topbar" customtitle="invitation-topbar-title" bar-obj="{{barObj}}"></topbar>
+
+<image class="poster-image" src="https://bhtdevelop.mhshjy.com/library/img/invitation/new-gift-bg.png"></image>
+
+<view class="title-box">
+  <image class="title-box-border" src="https://bhtdevelop.mhshjy.com/library/img/invitation/new-gift-border.png">
+  </image>
+  <view class="caption-1">
+    <text lines="1" class="title">加入会员仅需</text>
+    <text lines="1" class="num">{{info.setting_price}}</text>
+    <text lines="1" class="caption">元(<text class="former-text">{{info.vip_price}}元</text>)</text>
+  </view>
+  <view class="caption-1">再送{{info.send_copywriting}}元抵用金</view>
+</view>
+
+<view class="get-box">
+  <input wx:if="{{!isGet}}" class="phone-input" type="number" model:value="{{mobile}}" placeholder="请输入手机号领取"
+    maxlength='11' />
+  <view wx:else class="get-info">
+    <view class="get-number">{{mobile}}</view>
+    <view class="get-text">领取成功!</view>
+  </view>
+  <button wx:if="{{userId && !userData.mobile && !isGet}}" class="get-btn" open-type="getPhoneNumber"
+    bindgetphonenumber="getPhoneNumber">
+    领取
+  </button>
+  <button wx:if="{{userId && userData.mobile && !isGet}}" class="get-btn" bindtap="invite">领取</button>
+  <navigator wx:if="{{userId && userData.mobile && isGet}}"  class="get-btn" url="/page/my/pages/vip/vip">立即加入会员</navigator>
+</view>
+
+<view class="loginModel" hidden="{{loginModelHidden}}" catchtouchmove="true">
+  <image src="https://bht.liwushijian.com/library/img/xcx_img/login.png" class="loginImg"></image>
+  <view class="loginText">我们需要获得您的授权，以继续操作</view>
+  <button class="loginBtn" bindtap="updateUserInfo">
+    <image src="https://bht.liwushijian.com/library/img/xcx_img/weixin.png" class="loginBtnimg"></image>微信授权登录
+  </button>
+</view>
+<view class="loginBg" hidden="{{loginModelHidden}}" catchtouchmove="true"></view>
+
+<view class="modal-bg" wx:if="{{vipShow}}" catchtap="vipModalFunc">
+  <view class="modal-body" catchtap="showVipModal">
+    <view class="modal-body-text" style="margin-top: 60rpx;">您已经是不荒唐会员了</view>
+    <view class="modal-body-text">不能重复领取</view>
+    <navigator open-type="switchTab" url="/page/tabBar/store/index" class="open-btn">去商城看看</navigator>
+    <button class="share-btn" open-type="share">分享给好友一起领</button>
+    <image class="modal-close-btn" src="/resource/images/close.png" catchtap="vipModalFunc"></image>
+  </view>
+</view>
+
+<view class="modal-bg" wx:if="{{modalShow}}" catchtap="modalFunc">
+  <view class="modal-body" catchtap="showLoseModal" style="height: 360rpx;">
+    <view class="modal-body-text" style="margin-top: 90rpx;">链接已失效</view>
+    <button class="open-btn" catchtap="modalFunc">我知道了</button>
+    <image class="modal-close-btn" src="/resource/images/close.png" catchtap="modalFunc"></image>
+  </view>
+</view>
+
+<view class="modal-bg" wx:if="{{errorShow}}" catchtap="errorModalFunc">
+  <view class="modal-body" catchtap="showErrorModal" style="height: 360rpx;">
+    <view class="modal-body-text" style="margin-top: 90rpx;">{{errorText}}</view>
+    <button class="open-btn" catchtap="errorModalFunc">我知道了</button>
+    <image class="modal-close-btn" src="/resource/images/close.png" catchtap="errorModalFunc"></image>
+  </view>
+</view>

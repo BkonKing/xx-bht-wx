@@ -1,0 +1,131 @@
+<topbar id="topbar" bar-obj="{{barObj}}"></topbar>
+<view class="scroll-block">
+  <view class="store-header">
+    <block wx:if="{{noticeList.length > 0}}">
+      <view class="container">
+        <view class="scrolltxt">
+          <image src="/resource/images/store_02.png"></image>
+          <swiper class="swiper-container" vertical="true" autoplay="true" circular="true" interval="5000">
+            <block wx:for="{{noticeList}}" wx:key="index">
+              <swiper-item>
+                <view class="swiper-item p-nowrap">{{item.title}}</view>
+              </swiper-item>
+            </block>
+          </swiper>
+        </view>
+      </view>
+    </block>
+    <navigator class="search-box {{noticeList.length > 0 ? 'search-margin' : ''}}" hover-class="none"
+      url="/page/product/pages/search/search">
+      <image src="/resource/images/search_icon.png"></image>精品岩茶
+    </navigator>
+
+    <block wx:if="{{swiperList.length > 0}}">
+      <view class="banner-swiper-block">
+        <swiper class="banner-swiper" indicator-dots="true" autoplay="true" interval="5000" duration="500" circular
+          bindchange="" current="{{}}">
+          <block wx:for="{{swiperList}}" wx:key="swiper_pageid">
+            <block wx:if="{{item.url}}">
+              <navigator hover-class="none" url="{{item.url}}" open-type="{{item.is_tab ? 'switchTab' : 'navigate'}}">
+                <swiper-item>
+                  <image src="{{item.img}}" class="slide-image" mode='aspectFill'></image>
+                </swiper-item>
+              </navigator>
+            </block>
+            <block wx:else>
+              <view>
+                <swiper-item>
+                  <image src="{{item.img}}" class="slide-image" mode='aspectFill'></image>
+                </swiper-item>
+              </view>
+            </block>
+          </block>
+        </swiper>
+      </view>
+    </block>
+  </view>
+
+  <view id="scrollNav"
+    class="nav-session {{navList.length == 2 ? 'nav-two' : 'nav-three'}} {{scrollNavFixed ? 'top-fixed' : ''}}"
+    style="top:{{headerArr.height + 44 + 'px'}}">
+    <view class="nav-session-box">
+      <block wx:for="{{navList}}" wx:key="index">
+        <view wx:if="{{item.x_name !== '全部'}}" class="nav-item {{indexTab == index ? 'cur' : ''}} {{navList.length == 1 ? 'nav-one' : ''}}"
+          catchtap="navFun" data-index="{{index}}" data-id="{{item.id}}">
+          <image wx:if="{{item.icon_cur_url || item.icon_url}}"
+            src="{{indexTab == index ? item.icon_cur_url : item.icon_url}}"></image><text>{{item.x_name}}</text>
+        </view>
+      </block>
+    </view>
+    <view class="line"></view>
+  </view>
+
+
+
+  <view class="fixed-empty" hidden="{{!scrollNavFixed}}"></view>
+
+  <block wx:if="{{recommendList.length > 0}}">
+    <view class="shop-swiper-block">
+      <swiper class="shop-swiper" autoplay="true" interval="50000" duration="500" previous-margin="80rpx"
+        next-margin="80rpx" circular bindchange="swiperChange" current="{{swiperIndex}}">
+        <block wx:for="{{recommendList}}" wx:key="index">
+          <swiper-item class="{{swiperIndex == index ? 'cur' : ''}}">
+            <view class="shop-swiper-item">
+              <navigator class="swiper-link-pic" hover-class="none"
+                url="/page/product/pages/goods-details/goods-details?goods_id={{item.goods_id}}">
+                <image class="width-100" src="{{item.thumb}}" mode='aspectFill'></image>
+              </navigator>
+              <navigator hover-class="none" class="swiper-shadow"
+                url="/page/product/pages/goods-details/goods-details?goods_id={{item.goods_id}}">
+                <view class="swipe-shop-name p-nowrap">{{item.goods_name}}</view>
+                <view class="swipe-shop-words p-nowrap">{{item.sub_title}}</view>
+                <view class="swipe-shop-price">
+                  <view class="swipe-shop-vprice">会员:￥<text class="vip_price">{{item.vip_price}}</text></view>
+                  <view class="swipe-shop-price">非会员:￥<text>{{item.sell_price}}</text></view>
+                </view>
+              </navigator>
+            </view>
+            <!-- <image src="https://bht.liwushijian.com/library/uploads/image/20190826/20190826113626_62093.jpg" class="slide-image {{swiperIndex == index ? 'cur' : ''}}"></image> -->
+          </swiper-item>
+
+        </block>
+      </swiper>
+    </view>
+  </block>
+
+  <view class="product-list" wx:if="{{goodsList && goodsList.length}}">
+    <block wx:for="{{goodsList}}" wx:key="index">
+      <navigator class="product-item {{item.vip_status==2||item.vip_status==3 ? 'product-vip-item' : ''}}"
+        hover-class="none" url="/page/product/pages/goods-details/goods-details?goods_id={{item.id}}">
+        <view class="product-pic">
+          <image wx:if="{{item.sign_url}}" class="product-icon width-100" src="{{item.sign_url}}"></image>
+          <image class="product-pic width-100" src="{{item.thumb}}" mode="aspectFill"></image>
+        </view>
+        <view class="product-cont">
+          <view class="product-name p-nowrap">{{item.goods_name}}</view>
+          <view class="product-words p-nowrap">{{item.sub_title}}</view>
+          <view class="product-line"></view>
+          <block wx:if="{{item.vip_status == 3}}">
+            <view class="product-vprice product-enjoy-price">{{item.buying_roles == 1 ? '仅限会员：' :
+              '仅限非会员：'}}￥<text>{{item.buying_roles == 1 ? item.vip_price : item.sell_price}}</text></view>
+          </block>
+          <block wx:else>
+            <view class="product-vprice product-enjoy-price" wx:if="{{item.vip_status == 2}}">
+              会员优享：￥<text>{{item.enjoy_price}}</text></view>
+            <view class="product-vprice" wx:else>会员：￥<text>{{item.vip_price}}</text></view>
+            <view class="product-price">非会员：￥<text>{{item.sell_price}}</text></view>
+          </block>
+        </view>
+      </navigator>
+    </block>
+  </view>
+
+
+  <!-- <import src="/templates/nomore.wxml" />
+  <template is="tempNoMore" data="{{noMoreHidden}}" /> -->
+
+</view>
+
+<view class="nav-border"></view>
+
+<renew-remind id="renew-remind" bind:modal="modalCall"></renew-remind>

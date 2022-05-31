@@ -1,0 +1,96 @@
+<topbar id="topbar" bar-obj="{{barObj}}"></topbar>
+<block wx:if="{{bodyShow}}">
+  <view class="top-bg">
+    <view class="step-list">
+      <view class="step-item">
+        <image src="https://bht.liwushijian.com/library/img/xcx_img/vicon_01.png"></image>
+        <view>申请</view>
+      </view>
+      <view class="step-arrow">
+        <image src="https://bht.liwushijian.com/library/img/xcx_img/vicon_07.png"></image>
+      </view>
+      <view class="step-item">
+        <image src="{{infoData.status === 0 ? 'https://bht.liwushijian.com/library/img/xcx_img/vicon_02.png' : 'https://bht.liwushijian.com/library/img/xcx_img/vicon_03.png'}}"></image>
+        <view>审核</view>
+      </view>
+      <view class="step-arrow">
+        <image src="https://bht.liwushijian.com/library/img/xcx_img/vicon_07.png"></image>
+      </view>
+      <view class="step-item">
+        <image src="{{infoData.status < 2 ? 'https://bht.liwushijian.com/library/img/xcx_img/vicon_04.png' : 'https://bht.liwushijian.com/library/img/xcx_img/vicon_05.png'}}"></image>
+        <view>完成</view>
+      </view>
+    </view>
+  </view>
+  <block wx:if="{{infoData.status === 1}}">
+    <navigator wx:if="{{infoData.is_url}}" class="step-3-top" hover-class="none" url="/page/product/pages/subscribe-buy-refund/subscribe-buy-refund?subscribe_id={{infoData.subscribe_id}}">
+      {{infoData.examine_text}}
+      <image src="https://bht.liwushijian.com/library/img/xcx_img/vicon_08.png"></image>
+    </navigator>
+    <view wx:else class="step-3-top">
+      {{infoData.examine_text}}
+    </view>
+  </block>
+  <view class="content">
+    <view class="cont-item vip-cont">
+      <image src="https://bht.liwushijian.com/library/img/xcx_img/vicon_06.png"></image>
+      <view class="vip-txt">
+        <view>{{infoData.title}}</view>
+        <view>{{infoData.title2}}</view>
+      </view>
+    </view>
+    <view wx:if="{{infoData.status === 0}}" class="step-1">
+      <view class="cont-item" catchtap="modalFunc">
+        <view class="item-label">退款原因<text>*</text></view>
+        <view class="item-right reason-cont">
+          <view wx:if="{{reasonVal}}">{{reasonVal}}</view>
+          <view wx:else class="reason-no">请选择</view>
+          <image src="/resource/images/right.png"></image>
+        </view>
+      </view>
+      <view class="cont-item words-item">
+        <view class="item-label">退款说明</view>
+        <view class="item-right">
+          <textarea hidden="{{modalShow}}" bindinput="getWords" placeholder="请输入" placeholder-style="color: #b8babf"></textarea>
+        </view>
+        <view class="item-right hide-view">
+          {{wordsVal}}
+        </view>
+      </view>
+      <view class="cont-item">
+        <view class="item-label">退款金额</view>
+        <view class="item-right">
+          <view class="refund-num">￥{{infoData.vip_info.pay_price}}</view>
+        </view>
+      </view>
+    </view>
+    <view wx:else class="step-2 info-list">
+      <view class="info-item">
+        <view class="item-label">服务单号</view>
+        <view class="item-right">{{infoData.viprefund_info.viprefund_numb}}<view class="copy-block" catchtap="copyNo"><view class="copy">复制</view></view></view>
+      </view>
+      <view class="info-item">
+        <view class="item-label">申请时间</view>
+        <view class="item-right">{{infoData.viprefund_info.ctime}}</view>
+      </view>
+      <view wx:if="{{infoData.status === 2}}" class="info-item">
+        <view class="item-label">退款时间</view>
+        <view class="item-right">{{infoData.viprefund_info.refund_time}}</view>
+      </view>
+      <view class="info-item">
+        <view class="item-label">退款原因</view>
+        <view class="item-right">{{infoData.viprefund_info.retreat_reason}}</view>
+      </view>
+      <view class="info-item">
+        <view class="item-label">退款金额</view>
+        <view class="item-right">￥{{infoData.viprefund_info.refund_price}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{infoData.status === 0}}" class="bottom-submit">
+    <view class="bottom-fixed"><view class="sure-btn btn-d" catchtap="submitFunc">提交申请</view></view>
+  </view>
+</block>
+
+<modal id="modal" modal-arr="{{modalArr}}" modal-show="{{modalShow}}" bind:modal="modalCall" bind:hide="modalHide"></modal>

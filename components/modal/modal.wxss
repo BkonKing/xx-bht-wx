@@ -1,0 +1,45 @@
+.modal-session {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-list {
+  width: 600rpx;
+  background-color: #fff;
+  border-radius: 4rpx;
+  animation: myfain 0.5s;
+  -webkit-animation: myfain 0.5s;
+}
+.modal-item {
+  height: 120rpx;
+  line-height: 120rpx;
+  width: 100%;
+  margin: 0 auto;
+  font-size: 30rpx;
+  text-align: center;
+  color: #60646b;
+  position: relative;
+}
+.modal-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 20rpx;
+  right: 20rpx;
+  height: 1px;
+  background-color: #f1f1f1;
+}
+.modal-item:last-child {
+  border-bottom: none;
+}
+@keyframes myfain
+{
+  from {opacity:0;}
+  to {opacity:1;}
+}
+
+@-webkit-keyframes myfain
+{
+  from {opacity:0;}
+  to {opacity:1;}
+}

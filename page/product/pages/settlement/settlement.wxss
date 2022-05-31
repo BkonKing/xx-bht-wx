@@ -1,0 +1,185 @@
+@import '/resource/css/order.wxss';
+page{
+  background:#fafafa;
+  width: 100%;
+}
+.bar-bg {
+  background-color: #212124 !important;
+  color: #fff !important;
+}
+
+.shop-session {
+  padding-top: 0;
+}
+/* 收货地址 start */
+.address-session {
+  height: 269rpx;
+  margin-bottom: 40rpx;
+}
+.address-tit {
+  line-height: 79rpx;
+  color: #ffffff;
+  padding-left: 30rpx;
+}
+.address-info {
+  height: 150rpx;
+  border: none;
+  display: flex;
+  background: #fff url('https://bht.liwushijian.com/library/img/xcx_img/address_bg.png') repeat-x -22rpx bottom/auto 8rpx;
+}
+button.address-info.no-address:not([size='mini']) {
+  width: 690rpx;
+  margin: 0 auto;
+  text-align: left;
+  font-weight: normal;
+}
+.no-address-text {
+  line-height: 150rpx;
+  width: 300rpx;
+  flex-grow: 1;
+  color: #919499;
+  font-size: 38rpx;
+}
+  /* 有地址 */
+.address-text {
+  width: 600rpx;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.address-user {
+  height: 68rpx;
+  line-height: 68rpx;
+  color: #212124;
+  display: flex;
+  justify-content: space-between;
+}
+.address-name {
+  max-width: 380rpx;
+  font-weight: bold;
+  margin-right: 30rpx;
+}
+.address-tel {
+  width: 200rpx;
+  flex-grow: 1;
+}
+.address-detail {
+  height: 50rpx;
+  line-height: 30rpx;
+  color: #919499;
+  font-size: 28rpx;
+  display: flex;
+  padding-bottom: 20rpx;
+}
+.address-default {
+  flex-shrink: 0;
+  height: 30rpx;
+  width: 60rpx;
+  line-height: 30rpx;
+  color: #ffffff;
+  font-size: 24rpx;
+  background-color: #b8babf;
+  text-align: center;
+  border-radius: 2rpx;
+  margin-right: 8rpx;
+  background: -webkit-linear-gradient(to right, #cd9681 , #9e6f5d);
+  background: linear-gradient(to right, #cd9681 , #9e6f5d);
+}
+/* 收货地址 end */
+
+/* 商品列表 start */
+.shop-list {
+  padding-bottom: 0;
+}
+.shop-name,.shop-specs,.shop-list-tip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.shop-name view:nth-child(1) {
+  max-width: 420rpx;
+}
+.shop-name view:nth-child(2),.shop-specs view:nth-child(2) {
+  color: #b8babf;
+}
+.shop-name view:nth-child(2) text {
+  font-size: 26rpx;
+}
+.shop-specs view:nth-child(1) {
+  max-width: 360rpx;
+}
+.shop-specs view:nth-child(2) {
+  text-decoration: line-through;
+}
+.vip-label {
+  font-size: 24rpx;
+  padding-top: 6rpx;
+  color: #212124;
+}
+.item-tip {
+  height: 30rpx;
+  width: 100rpx;
+  line-height: 26rpx;
+  color: #bd8975;
+  font-size: 20rpx;
+  text-align: center;
+  border: 2rpx solid #bd8975;
+  border-radius: 2rpx;
+}
+/* 商品列表 end */
+
+.tip-text-red {
+  color: red !important;
+}
+.tip-text-red text {
+  margin-right: 10rpx;
+  color: #b8babf;
+}
+
+.link-middle {
+  text-align: left;
+}
+.tip-total text {
+  padding-right: 32rpx;
+}
+
+/* 底部信息 start */
+.fixed-empty {
+  height: 108rpx;
+}
+.bottom-info {
+  display: flex;
+  height: 98rpx;
+  line-height: 98rpx;
+  background-color: #fff;
+}
+.bottom-num {
+  width: 500rpx;
+  flex-grow: 1;
+  color: #212124;
+  font-size: 48rpx;
+  font-weight: bold;
+  text-align: right;
+  padding-right: 40rpx;
+}
+.bottom-btn {
+  height: 100%;
+  line-height: 98rpx;
+  width: 240rpx;
+}
+button.bottom-btn {
+  padding: 0;
+  border-radius: 0;
+  width: 240rpx;
+}
+button.bottom-btn:not([size='mini']) {
+  width: 240rpx;
+  margin: 0;
+  font-weight: normal;
+}
+
+/* 底部信息 end */
+
+
+

@@ -1,0 +1,472 @@
+/* page/my/pages/invoice-detail/invoice-detail.wxss */
+page {
+  background: #F7F7F7;
+}
+
+.body {
+  padding: 30rpx;
+}
+
+.schedule {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 170rpx;
+  padding: 50rpx 84rpx;
+  position: relative;
+  background: linear-gradient(90deg, #CB9348 0%, #E7B065 100%);
+  border-radius: 4rpx;
+}
+
+.schedule-container {
+  display: flex;
+}
+
+.schedule-box {
+  display: flex;
+  align-items: center;
+}
+
+.schedule-tag {
+  display: flex;
+  width: 30rpx;
+  height: 30rpx;
+  background: #FFFFFF;
+  border-radius: 50%;
+}
+
+.schedule-tag-un {
+  display: flex;
+  width: 30rpx;
+  height: 30rpx;
+  background: #EBC490;
+  border-radius: 50%;
+}
+
+.schedule-line {
+  border-radius: 3rpx;
+  background-color: #ffffff;
+  width: 190rpx;
+  height: 6rpx;
+}
+
+.schedule-line-un {
+  border-radius: 3rpx;
+  background-color: #EBC490;
+  width: 190rpx;
+  height: 6rpx;
+}
+
+.schedule-label-box {
+  display: flex;
+  align-items: center;
+  margin-top: 20rpx;
+  line-height: 24rpx;
+}
+
+.schedule-label {
+  color: #ffffff;
+  font-size: 24rpx;
+}
+
+.schedule-label+.schedule-label {
+  margin-left: 150rpx;
+}
+
+.info {
+  background: #FFFFFF;
+}
+
+.info-personage {
+  padding-bottom: 80rpx;
+}
+
+.info-title {
+  padding-top: 50rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #212124;
+  text-align: center;
+  line-height: 32rpx;
+}
+
+.info-date {
+  margin-top: 29rpx;
+  margin-bottom: 56rpx;
+  text-align: center;
+}
+
+.flex {
+  display: flex;
+  margin-left: 50rpx;
+  margin-top: 26rpx;
+}
+
+.info-label {
+  font-size: 24rpx;
+  font-weight: 500;
+  color: #AAAAAA;
+  line-height: 24rpx;
+}
+
+.info-text {
+  margin-top: 12rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #212124;
+  word-break: break-all;
+}
+
+.left-1 {
+  width: 350rpx;
+  margin-right: 52rpx;
+}
+
+.one-box {
+  margin-left: 50rpx;
+  margin-top: 26rpx;
+  margin-right: 50rpx;
+}
+
+.shrink-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 690rpx;
+  height: 76rpx;
+  position: initial;
+  left: 30rpx;
+  bottom: 0;
+  background-color: #fff;
+  z-index: 2;
+}
+
+.shrink-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 78rpx;
+  height: 36rpx;
+  background: #F7F7F7;
+  border-radius: 18rpx;
+}
+
+.shrink-btn image {
+  width: 18rpx;
+  height: 10rpx;
+}
+
+.fold-list {
+  position: relative;
+  height: 406rpx;
+  overflow: hidden;
+  padding-bottom: 59rpx;
+}
+
+/* 展开 */
+/* .unfold-btn {
+  position: absolute;
+} */
+
+.image-list {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  min-height: 240rpx;
+  padding: 40rpx 30rpx;
+  background: #fff;
+  border-top: 1px dashed #AAAAAA;
+}
+
+.image-list-box {
+  display: flex;
+  overflow-x: auto;
+}
+
+.image-list-box::-webkit-scrollbar {
+  display: none; /* Chrome Safari */
+}
+
+.image-list-view {
+  display: flex;
+  justify-content: center;
+}
+
+.image-box {
+  position: relative;
+  flex-shrink: 0;
+  width: 270rpx;
+  height: 160rpx;
+  border-radius: 10rpx;
+}
+
+.image-box+.image-box {
+  margin-left: 30rpx;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  border-radius: 10rpx;
+}
+
+.upload-image {
+  position: absolute;
+  right: 20rpx;
+  bottom: 13rpx;
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.fixed-btn-box {
+  height: 158rpx;
+}
+
+.fixed-btn {
+  display: flex;
+  width: 100%;
+  padding: 0 32rpx;
+  position: fixed;
+  bottom: 30rpx;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 330rpx;
+  height: 88rpx;
+  background: #212124;
+  border-radius: 44rpx;
+  font-size: 28rpx;
+  color: #FFFFFF;
+}
+
+.box {
+  padding: 0 30rpx;
+  margin-top: 30rpx;
+  background: #FFFFFF;
+  border-radius: 4rpx;
+}
+
+.box-item {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 30rpx 0;
+  font-size: 28rpx;
+  color: #212124;
+}
+
+.b-line {
+  border-bottom: 1px solid #EEEEEE;
+}
+
+.box-item view {
+  line-height: 1;
+}
+
+.flex-acenter {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.box-item-right .tag {
+  width: 62rpx;
+  height: 36rpx;
+  margin-right: 20rpx;
+  background: #CB9348;
+  border-radius: 2rpx;
+  font-size: 22rpx;
+  font-weight: 500;
+  color: #FFFFFF;
+  line-height: 36rpx;
+  text-align: center;
+}
+
+.address {
+  font-size: 28rpx;
+  color: #AAAAAA;
+  text-align: right;
+}
+
+.box-item-right view+view {
+  margin-top: 28rpx;
+}
+
+.order-number-right {
+  display: flex;
+}
+
+.box-item-right image {
+  width: 12rpx;
+  height: 22rpx;
+  margin-left: 14rpx;
+}
+
+.btn-1 {
+  margin-right: 26rpx;
+  background: #fff;
+  color: #AAAAAA;
+}
+
+.coupon-tag {
+  width: 32rpx;
+  height: 32rpx;
+  border-radius: 16rpx;
+  background: #F7F7F7;
+  z-index: 2;
+}
+
+.coupon-tag-left {
+  position: absolute;
+  top: 155rpx;
+  left: -16rpx;
+}
+
+.coupon-tag-right {
+  position: absolute;
+  top: 155rpx;
+  right: -16rpx;
+}
+
+.coupon-tag-left-1 {
+  position: absolute;
+  top: -16rpx;
+  left: -16rpx;
+}
+
+.coupon-tag-right-1 {
+  position: absolute;
+  top: -16rpx;
+  right: -16rpx;
+}
+
+.alert-session {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 985;
+}
+
+.alert-block {
+  width: 600rpx;
+  border-radius: 4rpx;
+  background-color: #fff;
+  font-size: 30rpx;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  width: 88rpx;
+  height: 88rpx;
+  top: -0;
+  right: 10rpx;
+  z-index: 66;
+  padding: 20rpx;
+  display: flex;
+}
+
+.close-btn image {
+  width: 100%;
+  height: 100%;
+}
+
+.alert-header {
+  height: 260rpx;
+  line-height: 300rpx;
+  text-align: center;
+  font-size: 34rpx;
+  color: #212124;
+}
+
+.alert-btn {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 120rpx;
+  padding-bottom: 28rpx;
+}
+
+.alert-btn view,
+.alert-btn navigator {
+  width: 200rpx;
+  line-height: 70rpx;
+  text-align: center;
+  border: 1px solid #aaa;
+  border-radius: 8rpx;
+}
+
+.alert-btn .alert-btn-bg {
+  background: #212124;
+  color: #fff;
+  border: none;
+}
+
+.image-preview {
+  background: rgba(0, 0, 0, 0.6)
+}
+
+.image-perview-info {
+  position: absolute;
+  bottom: 215rpx;
+}
+
+.image-perview-text {
+  margin-bottom: 50rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #FFFFFF;
+}
+
+.save-image-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto !important;
+  height: 88rpx;
+  padding: 0 40rpx;
+  border: 1px solid #EEEEEE;
+  border-radius: 44rpx;
+  background: #fff0;
+  font-size: 28rpx;
+  color: #FFFFFF;
+}
+
+.image-swiper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.image-swiper-item {
+  display: flex;
+  align-items: center;
+}
+
+.image-swiper image {
+  width: 100%;
+}
+
+@keyframes myfain {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes myfain {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

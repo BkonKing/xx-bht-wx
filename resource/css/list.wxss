@@ -1,0 +1,35 @@
+.link-item {
+  position: relative;
+  color: #60646b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.link-left {
+  text-align: left;
+}
+.link-middle {
+  height: 100%;
+  width: 200rpx;
+  flex-grow: 1;
+  text-align: right;
+}
+.link-middle input {
+  color: #b8babf;
+  height: 110rpx;
+  width: 100%;
+  padding: 30rpx 0;
+  line-height: 50rpx;
+  box-sizing: border-box;
+}
+.link-icon {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  padding-left: 18rpx;
+}
+.link-icon image {
+  width: 12rpx;
+  height: 22rpx;
+}

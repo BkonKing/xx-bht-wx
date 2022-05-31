@@ -1,0 +1,327 @@
+{
+  "description": "项目配置文件",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": false,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": true,
+    "coverView": true,
+    "nodeModules": false,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "useMultiFrameRuntime": false,
+    "useApiHook": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "enableEngineNative": false,
+    "bundle": false,
+    "useIsolateContext": true,
+    "useCompilerModule": true,
+    "userConfirmedUseCompilerModuleSwitch": false,
+    "userConfirmedBundleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.11.2",
+  "appid": "wx4b83ceaa0f8096eb",
+  "projectname": "%E4%B8%8D%E8%8D%92%E5%94%90",
+  "debugOptions": {
+    "hidedInDevtools": []
+  },
+  "isGameTourist": false,
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": -1,
+          "name": "首页",
+          "pathName": "page/tabBar/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "商店",
+          "pathName": "page/tabBar/store/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "购物车",
+          "pathName": "page/tabBar/cart/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "我的",
+          "pathName": "page/tabBar/my/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 4,
+          "name": "vip会员-我的",
+          "pathName": "page/my/pages/vip/vip",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "购买会员记录-我的",
+          "pathName": "page/my/pages/vip-record/vip-record",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "收货地址-我的",
+          "pathName": "page/my/pages/address/address",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 7,
+          "name": "添加/修改地址-我的",
+          "pathName": "page/my/pages/address-edit/address-edit",
+          "query": "addrId=1",
+          "scene": null
+        },
+        {
+          "id": 8,
+          "name": "个人资料-我的",
+          "pathName": "page/my/pages/information/information",
+          "query": "prev_page=vip",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "购物车-项目",
+          "pathName": "page/product/pages/carts/carts",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "商品详情-项目",
+          "pathName": "page/product/pages/goods-details/goods-details",
+          "query": "goods_id=14",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "搜索-项目",
+          "pathName": "page/product/pages/search/search",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "结算-项目",
+          "pathName": "page/product/pages/settlement/settlement",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "订阅计划--项目",
+          "pathName": "page/product/pages/subscribe-plan/subscribe-plan",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "订阅订单-项目",
+          "pathName": "page/product/pages/subscribe-order/subscribe-order",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 15,
+          "name": "订阅订单详情-项目",
+          "pathName": "page/product/pages/dorder-details/dorder-details",
+          "query": "subscribe_id=61",
+          "scene": null
+        },
+        {
+          "id": 15,
+          "name": "购买或预约取退-项目",
+          "pathName": "page/product/pages/subscribe-buy-refund/subscribe-buy-refund",
+          "query": "subscribe_id=18",
+          "scene": null
+        },
+        {
+          "id": 16,
+          "name": "订阅付款-项目",
+          "pathName": "page/product/pages/subscribe-pay/subscribe-pay",
+          "query": "subscribe_id=18",
+          "scene": null
+        },
+        {
+          "id": 17,
+          "name": "订阅退货-项目",
+          "pathName": "page/product/pages/subscribe-refund/subscribe-refund",
+          "query": "subscribe_id=13&s_status=1",
+          "scene": null
+        },
+        {
+          "id": 17,
+          "name": "订阅换货-项目",
+          "pathName": "page/product/pages/subscribe-exchange/subscribe-exchange",
+          "query": "subscribe_id=17&s_status=1",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "普通订单-项目",
+          "pathName": "page/product/pages/ordinary-order/ordinary-order",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 21,
+          "name": "普通订单详情（普通订单）-项目",
+          "pathName": "page/product/pages/ordinary-order-details/ordinary-order-details",
+          "query": "ordinary_id=15",
+          "scene": null
+        },
+        {
+          "id": 22,
+          "name": "退款/退款退货详情（普通订单）-项目",
+          "pathName": "page/product/pages/ordinary-refund-details/ordinary-refund-details",
+          "query": "returnrefund_id =1",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "换货详情（普通订单）-项目",
+          "pathName": "page/product/pages/ordinary-exchange-details/ordinary-exchange-details",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 22,
+          "name": "物流详情（普通订单）-项目",
+          "pathName": "page/product/pages/logistics/logistics",
+          "query": "logistics_id=14&order_id=12",
+          "scene": null
+        },
+        {
+          "id": 25,
+          "name": "申请退换（普通订单）-项目",
+          "pathName": "page/product/pages/ordinary-apply-refund/ordinary-apply-refund",
+          "query": "ordinary_id=81",
+          "scene": null
+        },
+        {
+          "id": 25,
+          "name": "申请换货（普通订单）-项目",
+          "pathName": "page/product/pages/ordinary-apply-exchange/ordinary-apply-exchange",
+          "query": "ordinary_id=34",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "申请退款换货（普通订单）-项目",
+          "pathName": "page/product/pages/ordinary-apply-refunds/ordinary-apply-refunds",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "优惠券-项目",
+          "pathName": "page/product/pages/coupons/coupons",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "优惠券选择-项目",
+          "pathName": "page/product/pages/coupons-select/coupons-select",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 28,
+          "name": "会员协议-文章",
+          "pathName": "page/article/pages/agreement/agreement",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "企业定制-文章",
+          "pathName": "page/article/pages/custom-enterprise/custom-enterprise",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "帮助中心-文章",
+          "pathName": "page/article/pages/help-center/help-center",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "会员隐私-文章",
+          "pathName": "page/article/pages/privacy/privacy",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 34,
+          "name": "申请退款-我的",
+          "pathName": "page/my/pages/vip-refund/vip-refund",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "page/tabBar/store/index",
+          "pathName": "page/tabBar/store/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "page/product/pages/search/search",
+          "pathName": "page/product/pages/search/search",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "page/tabBar/my/index",
+          "pathName": "page/tabBar/my/index",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

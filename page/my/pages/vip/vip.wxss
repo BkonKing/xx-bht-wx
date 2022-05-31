@@ -1,0 +1,369 @@
+page {
+  min-height: 100%;
+  width: 100%;
+  background: #212124;
+  /* background: #212124 url('https://bht.liwushijian.com/library/img/xcx_img/vip_bg8.jpg') no-repeat center top / 100% auto; */
+}
+
+.bar-bg {
+  /* background-color: #212124 !important; */
+  background: #212124 url('https://bht.liwushijian.com/library/img/xcx_img/vip_bg8.jpg') no-repeat center top / 100% auto;
+  color: #ffffff !important;
+  padding: 0 30rpx;
+}
+
+/* header start */
+.vip-header {
+  /* overflow: hidden; */
+  height: 344rpx;
+  width: 600rpx;
+  margin: 60rpx auto 0;
+  position: relative;
+}
+
+.vip-header.no-vip {
+  background: url('https://bht.liwushijian.com/library/img/xcx_img/vip_bg9.png') no-repeat center bottom / 100% auto;
+}
+
+.bg-block {
+  overflow: hidden;
+  background: #212124 url('https://bht.liwushijian.com/library/img/xcx_img/vip_bg8.jpg') no-repeat center bottom / 100% auto;
+}
+
+.year-fee {
+  position: absolute;
+  top: 114rpx;
+  left: 66rpx;
+  height: 106rpx;
+  width: 466rpx;
+  color: #9b572e;
+  text-align: center;
+  line-height: 106rpx;
+  font-weight: bold;
+}
+
+.year-fee text.now-price {
+  font-size: 68rpx;
+}
+
+/* .year-fee-s.year-fee text.now-price {
+  font-size: 45rpx;
+} */
+.year-fee text.line-through {
+  text-decoration: line-through;
+}
+
+.year-fee text.old-price {
+  font-size: 34rpx;
+}
+
+.header-tip {
+  height: 36rpx;
+  line-height: 36rpx;
+  color: #9b572e;
+  font-size: 24rpx;
+  text-align: center;
+  background: url('https://bht.liwushijian.com/library/img/xcx_img/vip_bg13.png') no-repeat center top / 100% 100%;
+}
+
+.vip-tip {
+  position: absolute;
+  bottom: -16rpx;
+  left: 114rpx;
+  width: 372rpx;
+  height: 120rpx;
+  padding: 16rpx;
+  line-height: 88rpx;
+  text-align: center;
+  border-radius: 44rpx;
+  overflow: hidden;
+  color: #ffffff;
+  background: url('https://bht.liwushijian.com/library/img/xcx_img/vip_bg10.png') no-repeat center top / 100% 100%;
+}
+
+.header-tip.over-tip {
+  color: #f33f3f;
+  background: url('https://bht.liwushijian.com/library/img/xcx_img/vip_bg12.png') no-repeat center top / 100% 100%;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  /* height: 110rpx; */
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 54rpx;
+}
+
+.user-info.user-info-top {
+  padding-top: 44rpx;
+}
+
+.user-photo {
+  width: 90rpx;
+  height: 90rpx;
+  margin-right: 20rpx;
+  border-radius: 50%;
+}
+
+.vip-name {
+  display: flex;
+  line-height: 52rpx;
+  margin-top: 8rpx;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-name {
+  font-size: 30rpx;
+  color: #9b572e;
+  font-weight: bold;
+  max-width: 370rpx;
+  margin-right: 20rpx;
+}
+
+.vip-icon {
+  width: 34rpx;
+  height: 30rpx;
+}
+
+.user-vip-time {
+  font-size: 24rpx;
+  padding-left: 20rpx;
+  flex-grow: 1;
+}
+
+.vip-link text {
+  font-size: 24rpx;
+}
+
+.user-vip-go {
+  width: 70rpx;
+  height: 100%;
+  padding-left: 15rpx;
+  display: flex;
+  align-items: center;
+}
+
+.user-vip-go image {
+  width: 34rpx;
+  height: 34rpx;
+}
+
+/* header end */
+
+/* 图片列表 start */
+.vip-cont {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.vip-cont image {
+  width: 100% !important;
+}
+
+.vip-cont .wxParse-p {
+  width: 100%;
+}
+
+/* 图片列表 end */
+
+/* 底部 start */
+.read-checkbox,
+.link-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70rpx;
+  line-height: 70rpx;
+  color: #dfb68d;
+  margin-top: 60rpx;
+}
+
+.checkbox-box {
+  padding-left: 70rpx;
+  background: url('https://bht.liwushijian.com/library/img/xcx_img/vip_bg5.png') no-repeat 20rpx 20rpx / 30rpx 30rpx;
+}
+
+.checkbox-box.cur {
+  background-image: url('https://bht.liwushijian.com/library/img/xcx_img/vip_bg6.png');
+}
+
+.read-checkbox navigator {
+  padding-right: 20rpx;
+}
+
+.vip-empty {
+  height: 138rpx;
+}
+
+.vip-footer {
+  height: 138rpx;
+  padding-right: 30rpx;
+  display: flex;
+  align-items: center;
+  background-color: #212124;
+}
+
+.kf-btn {
+  width: 105rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #dfb68d;
+  font-size: 22rpx;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+button.kf-btn {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+  padding: 0;
+}
+
+button.kf-btn:not([size='mini']) {
+  width: 105rpx !important;
+}
+
+.kf-btn::after {
+  border: none;
+}
+
+.kf-btn image {
+  width: 44rpx;
+  height: 44rpx;
+}
+
+.vip-btn {
+  width: 615rpx;
+  height: 98rpx;
+  line-height: 88rpx;
+  color: #212124;
+  text-align: center;
+  font-weight: bold;
+  background: url('https://bht.liwushijian.com/library/img/xcx_img/vip_bg7.png') no-repeat center top / 100% 100%;
+}
+
+.link-list {
+  height: 64rpx;
+  line-height: 64rpx;
+  font-size: 26rpx;
+  padding-bottom: 60rpx;
+}
+
+.link-list navigator {
+  padding: 0 10rpx;
+}
+
+button.vip-btn:not([size='mini']) {
+  margin: inherit;
+  margin-bottom: 0;
+  width: 615rpx;
+  font-size: 30rpx;
+  font-weight: normal;
+  padding: 0;
+}
+
+/* 底部 end */
+
+/* 优惠券弹窗 start */
+.swal-session {
+  animation: translateMove 0.5s;
+  -webkit-animation: translateMove 0.5s;
+  background-color: #fff;
+  z-index: 188;
+  padding-bottom: 30rpx;
+}
+
+.close-btn {
+  position: absolute;
+  width: 88rpx;
+  height: 88rpx;
+  top: -88rpx;
+  right: 10rpx;
+  z-index: 66;
+  padding: 20rpx;
+  display: flex;
+}
+
+.swal-tit {
+  height: 74rpx;
+  line-height: 74rpx;
+  text-align: center;
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #212124;
+}
+
+.swal-cont {
+  padding: 0 30rpx;
+  line-height: 44rpx;
+  font-size: 26rpx;
+  color: #212124;
+  margin-bottom: 30rpx;
+}
+
+.swal-li {
+  display: flex;
+  align-items: center;
+  min-height: 108rpx;
+  padding: 40rpx 0;
+  line-height: 1;
+  border-bottom: 1px solid #F1F1F1;
+}
+
+.swal-li image {
+  width: 134rpx;
+  height: 80rpx;
+  margin-right: 38rpx;
+}
+
+.swal-li-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #212124;
+}
+
+.swal-li-text {
+  margin-top: 12rpx;
+  font-size: 24rpx;
+  color: #AAAAAA;
+}
+
+.swal-li-coupon {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #212124;
+}
+
+.coupon-number {
+  margin-left: 31rpx;
+  color: #AAAAAA;
+}
+
+.swal-btn {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 88rpx;
+  width: 690rpx;
+  margin: 0 auto;
+  font-size: 34rpx;
+  font-weight: 500;
+  border-radius: 4rpx;
+}
+
+.swal-btn text {
+  margin-left: 10rpx;
+  font-size: 26rpx;
+  font-weight: 500;
+  text-decoration: line-through;
+  color: #FFFFFF;
+  opacity: 0.3;
+}
+
+/* 优惠券弹窗 end */

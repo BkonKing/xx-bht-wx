@@ -1,0 +1,34 @@
+<topbar id="topbar" bar-obj="{{barObj}}"></topbar>
+
+<view class="address-list">
+  
+  <view class="address-item" wx:for="{{listData}}" wx:key="index" bindtap="{{isSelectAddress ? 'selectAddress' : ''}}" data-addressid="{{item.id}}" data-address="{{item.address_cont}}" data-index="{{index}}">
+    <view class="address-label">
+      <block wx:if="{{item.ulabel}}">{{item.ulabel}}</block>
+      <image wx:else src="https://bht.liwushijian.com/library/img/xcx_img/address_05.png"></image>
+    </view>
+    <view class="address-info">
+      <view class="address-user">
+        <view class="address-name p-nowrap">{{item.uname}}</view>
+        <view class="address-tel">{{item.utel}}</view>
+      </view>
+      <view class="address-detail">
+        <view wx:if="{{item.is_default==1}}" class="address-default">默认</view>
+        <view class="p-nowrap">{{item.address_cont}}</view>
+      </view>
+    </view>
+    <view class="address-link" catchtap="linkFunc" data-eventid="10" data-url="/page/my/pages/address-edit/address-edit?addrId={{item.id}}">
+      <image src="/resource/images/address_01.png"></image>
+    </view>
+    <view class="address-line"></view>
+  </view>
+</view>
+<!-- <switch color="#f00" checked="true" bindchange="switch2Change"/> -->
+<view class="add-box-kong"></view>
+<view class="add-box">
+  <view class="address-add btn-d" catchtap="linkFunc" data-eventid="11" data-url="/page/my/pages/address-edit/address-edit">
+    <image src="/resource/images/address_02.png"></image>添加地址
+  </view>
+</view>
+
+<view class="empty-none" hidden="{{noneHidden}}"><image src="https://bht.liwushijian.com/library/img/xcx_img/empty_05.png"></image><view>暂无收货地址~</view></view>

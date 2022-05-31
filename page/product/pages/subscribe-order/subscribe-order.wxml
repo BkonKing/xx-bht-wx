@@ -1,0 +1,58 @@
+<topbar id="topbar" bar-obj="{{barObj}}"></topbar>
+<block wx:if="{{bodyShow}}">
+  <navigator class="subscribe-tit" hover-class="none" url="/page/product/pages/subscribe-plan/subscribe-plan">订阅计划<image src="/resource/images/right.png"></image></navigator>
+  <view class="subscribe-list">
+    <block wx:for="{{listData}}" wx:key="index">
+      <view class="subscribe-item clearfix">
+        <view class="item-line"></view>
+        <view class="item-time">{{item.send_time}}</view>
+        <view class="subscribe-cont" hover-class="none" catchtap="linkFunc" data-url="/page/product/pages/dorder-details/dorder-details?subscribe_id={{item.subscribe_id}}">
+          <view class="item-head">
+            <view class="item-nper">{{item.current_num}}</view>
+          </view>
+          <view class="item-middle">
+            <view class="item-num">订单编号：{{item.subscribe_numb}}</view>
+            <view class="pic-list">
+              <view class="pic-item" wx:for="{{item.goods_list}}" wx:for-item="itemName" wx:key="index">
+                <image class="width-100" mode="aspectFill" src="{{itemName.specs_img}}"></image>
+                <view class="item-icon {{itemName.type_val == 2 ? 'icon-buy' : ''}} {{itemName.type_val == 3 || itemName.type_val == 4 ? 'icon-refund' : ''}}" wx:if="{{itemName.type_val>0}}">{{itemName.type_txt}}</view>
+              </view>
+            </view>
+          </view>
+          <view class="item-foot" wx:if="{{item.order_status !=5}}">
+            <view class="item-tip">{{item.status_string}}<text>{{item.status_tip}}</text></view>
+            <view class="foot-btn">
+              <!-- 已寄出（待收货）/待购买 -->
+              <block wx:if="{{item.order_status== 1 || item.order_status== 2}}">
+                <block wx:if="{{item.distribution_type == 1}}">
+                  <view hover-class="none" catchtap="linkFunc" data-url="/page/product/pages/logistics/logistics?order_id={{item.subscribe_id}}&logistics_id={{item.logistice_id}}&logistice_type=1&order_mark=2">查看物流</view>
+                </block>
+                <block wx:else>
+                  <view hover-class="none" catchtap="linkFunc" data-url="/page/product/pages/logistics/logistics?order_id={{item.subscribe_id}}&logistics_id={{item.logistice_id}}">查看物流</view>
+                </block>
+                <block wx:if="{{item.order_status== 2}}">
+                  <view wx:if="{{item.dispose==0}}" hover-class="none" class="btn-9e6f5d" catchtap="linkFunc" data-url="/page/product/pages/subscribe-buy-refund/subscribe-buy-refund?subscribe_id={{item.subscribe_id}}">购买/退货</view>
+                </block>
+              </block>
+              <!-- 退货中 -->
+              <block wx:if="{{item.order_status== 3}}">
+                <view hover-class="none" catchtap="linkFunc" data-url="/page/product/pages/subscribe-refund/subscribe-refund?subscribe_id={{item.subscribe_id}}&s_status=1">退货详情</view>
+              </block>
+              <!-- 退货中 -->
+              <block wx:if="{{item.order_status== 4}}">
+                <view hover-class="none" catchtap="linkFunc" data-url="/page/product/pages/subscribe-exchange/subscribe-exchange?subscribe_id={{item.subscribe_id}}&s_status=1">换货详情</view>
+              </block>
+            </view>
+          </view>
+        </view>
+      </view> 
+    </block>
+  </view>
+  <view class="empty-none" hidden="{{noneHidden}}"><image src="https://bht.liwushijian.com/library/img/xcx_img/empty_01.png"></image><view>暂无订单记录~</view></view>
+  <import src="/templates/nomore.wxml" />
+  <template is="tempNoMore" data="{{noMoreHidden}}" />
+</block>
+
+
+
+

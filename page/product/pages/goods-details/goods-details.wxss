@@ -1,0 +1,416 @@
+@import '/resource/wxParse/wxParse.wxss';
+page{
+  background:#fafafa;
+  width: 100%;
+}
+
+/* 轮播 start */
+.swiper-block {
+  height: 750rpx;
+  margin: 0 auto;
+  position: relative;
+}
+.swiper-block swiper {
+  width: 100%;
+  height: 100%;
+}
+.swiper-block .wx-swiper-dots.wx-swiper-dots-horizontal {
+  position: absolute;
+  bottom: 30rpx;
+  z-index: 999;
+}
+.swiper-block .wx-swiper-dot {
+  width: 22rpx;
+  display: inline-flex;
+  height: 6rpx;
+  margin-left: 3px !important;
+  margin-right: 3px !important;
+  justify-content: space-between;
+  border-radius: 2rpx;
+  background: rgba(33,33,36,0.15);
+}
+.swiper-block .wx-swiper-dot::before {
+  content: '';
+  flex-grow: 1;
+  background: rgba(33,33,36,0.15);
+  border-radius: 2rpx;
+}
+.swiper-block .wx-swiper-dot-active::before {
+  background: #212124;
+}
+.swiper-block .wx-swiper-dot.wx-swiper-dot-active {
+  width: 32rpx;
+}
+/* 轮播 end */
+
+/* 商品信息 start */
+.shop-info {
+  /* padding: 0 20rpx; */
+  overflow: hidden;
+  background-color: #fff;
+}
+.shop-tit-session {
+  min-height: 157rpx;
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20rpx 20rpx;
+}
+.shop-name {
+  line-height: 48rpx;
+  color: #212124;
+  font-weight: bold;
+}
+.shop-specs {
+  line-height: 42rpx;
+  color: #b8babf;
+  font-size: 24rpx;
+}
+.shop-line {
+  width: 710rpx;
+  margin: 0 auto;
+  height: 4rpx;
+  background: url('https://bht.liwushijian.com/library/img/xcx_img/store_01.png') repeat-x left center / auto 100%;
+}
+.shop-params .shop-line {
+  width: 690rpx;
+}
+.shop-price {
+  height: 150rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ordinary-price {
+  margin-left: 60rpx;
+  font-size: 26rpx;
+  color: #919499;
+}
+.ordinary-price .now-price {
+  font-weight: bold;
+  font-size: 38rpx;
+}
+.v-price {
+  font-size: 26rpx;
+}
+.v-price .now-price {
+  font-weight: bold;
+  font-size: 52rpx;
+}
+.vip-price {
+  color: #212124;
+}
+.svip-price {
+  color: #f33f3f;
+}
+.old-price {
+  color: #b8babf;
+  display: inline;
+  text-decoration: line-through;
+}
+.old-price text {
+  font-size: 28rpx;
+}
+.small-price .v-price,.small-price .ordinary-price {
+  font-size: 24rpx;
+}
+.small-price .v-price .now-price {
+  font-size: 42rpx;
+}
+.small-price .v-price .now-price {
+  font-size: 42rpx;
+}
+.small-price .v-price .old-price text {
+  font-size: 26rpx;
+}
+.small-price .ordinary-price .now-price {
+  font-size: 30rpx;
+}
+.small-price ordinary-price {
+  margin-left: 30rpx;
+}
+/* 商品信息 end */
+
+/* 提示信息 start */
+.shop-tip {
+  height: 150rpx;
+  display: flex;
+  background-color: #fff;
+  margin: 30rpx 0;
+}
+.shop-tip view {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  color: #60646b;
+  font-size: 24rpx;
+}
+.shop-tip view image {
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 8rpx;
+}
+/* 提示信息 end */
+
+/* 商品详情 start */
+.content-text {
+  width:100%;
+}
+.wxParse-inline {
+  /* font-size: 24rpx;
+  line-height: 36rpx; */
+}
+.shop-content-detail .content-text {
+  /* font-size: 0; */
+  background-color: #fff;
+}
+.shop-content-detail .wxParse-inline {
+  /* font-size: 0;
+  line-height: 0; */
+}
+.content-text image {
+  max-width: 100%;
+  width: 100% !important;
+  /* float: left; */
+}
+.shop-nomore {
+  /* height: 240rpx; */
+  height: 98rpx;
+  overflow: hidden;
+  padding-bottom: 98rpx;
+  line-height: 142rpx;
+  color: #b8babf;
+  font-size: 24rpx;
+  text-align: center;
+  position: relative;
+}
+.shop-nomore::before,.shop-nomore::after {
+  content: '';
+  position: absolute;
+  height: 4rpx;
+  top: 70rpx;
+  width: 200rpx;
+  background: url('https://bht.liwushijian.com/library/img/xcx_img/store_01.png') repeat-x left center / auto 100%;
+}
+.shop-nomore::before {
+  left: 54rpx;
+}
+.shop-nomore::after {
+  right: 54rpx;
+}
+/* 商品详情 end */
+
+/* 操作 start */
+.operate-session {
+  display: flex;
+  height: 98rpx;
+  z-index: 20;
+  background-color: #fff;
+}
+.operate-left {
+  width: 270rpx;
+  display: flex;
+}
+.kf-btn,.cart-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #b8babf;
+  font-size: 22rpx;
+  width: 50%;
+  position: relative;
+}
+.cart-num {
+  position: absolute;
+  top: 6rpx;
+  left: 73rpx;
+  min-width: 34rpx;
+  height: 34rpx;
+  line-height: 30rpx;
+  border-radius: 17rpx;
+  background-color: #f33f3f;
+  text-align: center;
+  color: #fff;
+  font-size: 24rpx;
+  padding: 0 5rpx;
+}
+button.kf-btn {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+  padding: 0;
+  background-color: #fff;
+}
+button:not([size='mini']) {
+  width: 50% !important;
+}
+.kf-btn::after {
+  border: none;
+}
+.operate-left image {
+  width: 44rpx;
+  height: 44rpx;
+}
+.operate-right {
+  width: 480rpx;
+  display: flex;
+  flex-grow: 1;
+}
+.operate-right view,.operate-right navigator {
+  flex-grow: 1;
+  text-align: center;
+  line-height: 98rpx;
+  color: #ffffff;
+}
+.add-btn {
+  background: -webkit-linear-gradient(to right, #cd9681 , #9e6f5d);
+  background: linear-gradient(to right, #cd9681 , #9e6f5d);
+}
+.vip-go {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.vip-go image {
+  width: 12rpx;
+  height: 22rpx;
+  margin-left: 10rpx;
+}
+.buy-btn {
+  background-color: #212124;
+}
+.btn-disabled {
+  background-color: #919499;
+}
+/* 操作 end */
+
+/* 规格弹窗 start */
+/* .shop-kong {
+  height: 120rpx;
+} */
+.shop-type {
+  z-index: 110;
+  display: flex;
+  flex-direction: column;
+}
+.shop-dpic {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+.shop-dpic image {
+  height: 300rpx;
+  width: 300rpx;
+}
+.shop-params {
+  position: relative;
+  padding: 30rpx 0 20rpx;
+  min-height: 400rpx;
+  background-color: #fff;
+}
+.shop-dname {
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  color: #212124;
+  font-size: 34rpx;
+  font-weight: bold;
+  padding: 0 30rpx;
+}
+.shop-dprice {
+  height: 100rpx;
+  margin-bottom: 12rpx;
+}
+.shop-dlist {
+  max-height: 600rpx;
+  overflow-y: auto;
+  padding: 0 30rpx;
+  -webkit-overflow-scrolling: touch;
+}
+.shop-ditem {
+  overflow: hidden;
+}
+.shop-dtit {
+  color: #919499;
+  height: 94rpx;
+  line-height: 84rpx;
+  padding-top: 10rpx;
+  font-size: 26rpx;
+}
+.shop-doption {
+  float: left;
+  color: #919499;
+  line-height: 60rpx;
+  margin: 0 20rpx 30rpx 0;
+  border-radius: 2rpx;
+  padding: 0 28rpx;
+  border: 2rpx solid #b8babf;
+  align-items: center;
+}
+.shop-doption.active {
+  background-color: #212124;
+  color: #fff;
+  border-color: #212124;
+}
+.type-line {
+  margin-top: 10rpx;
+}
+.shop-btn-block {
+  height: 60rpx;
+  width: 200rpx;
+  border: 2rpx solid #b8babf;
+  border-radius: 2rpx;
+  color: #212124;
+  display: flex;
+  line-height: 56rpx;
+}
+.shop-btn {
+  width: 57rpx;
+  height: 100%;
+  text-align: center;
+}
+.shop-sub {
+  background: url('https://bht.liwushijian.com/library/img/xcx_img/sub.png') no-repeat center center/16rpx 16rpx;
+}
+.shop-add {
+  background: url('https://bht.liwushijian.com/library/img/xcx_img/add.png') no-repeat center center/16rpx 16rpx;
+}
+.shop-btn.not-add {
+  opacity: 0.6;
+}
+.shop-num {
+  width: 82rpx;
+  height: 100%;
+  border-left: 2rpx solid #b8babf;
+  border-right: 2rpx solid #b8babf;
+  text-align: center;
+  color: #212124;
+}
+.shop-sure {
+  width: 690rpx;
+  margin: 40rpx auto 0;
+}
+.shop-dclose {
+  position: absolute;
+  top: -74rpx;
+  right: 20rpx;
+  width: 64rpx;
+  height: 64rpx;
+  padding: 10rpx;
+  box-sizing: border-box;
+}
+.shop-dclose image {
+  width: 44rpx;
+  height: 44rpx;
+}
+/* 规格弹窗 end */
+.hide {
+  display: none;
+}
+
+

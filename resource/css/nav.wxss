@@ -1,0 +1,34 @@
+.nav-empty {
+  height: 88rpx;
+}
+.nav-box {
+  height: 88rpx;
+  width: 100%;
+  display: flex;
+  position: fixed;
+  left: 0;
+  background-color: #fff;
+  z-index: 89;
+}
+.nav-item {
+  height: 100%;
+  line-height: 88rpx;
+  text-align: center;
+  position: relative;
+  color: #919499;
+  flex: 1;
+}
+.nav-item.cur {
+  font-size: 34rpx;
+  color: #9e6f5d;
+  font-weight: bold;
+}
+.nav-item.cur::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  height: 4rpx;
+  background-color: #9e6f5d;
+  z-index: 9;
+}

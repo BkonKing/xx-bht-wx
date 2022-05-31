@@ -1,0 +1,317 @@
+@import '/resource/css/list.wxss';
+@import '/resource/css/order-list.wxss';
+/* 优惠券 start */
+.coupon-session {
+  height: 120rpx;
+}
+.link-left {
+  width: 160rpx;
+}
+.link-middle {
+  color: #f33f3f;
+}
+.link-middle.color-gray {
+  color: #b8babf;
+}
+.coupon-session .link-middle {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+/* 优惠券 end */
+
+/* 条目列表 start */
+.tip-list {
+  padding: 24rpx 0;
+}
+.tip-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 56rpx;
+}
+.tip-item text:nth-child(1) {
+  color: #60646b;
+}
+.tip-item text:nth-child(2) {
+  color: #b8babf;
+}
+.bht-session.order-session .tip-item text:nth-child(1),
+.bht-session.order-session .tip-item text:nth-child(2) {
+  color: #b8babf;
+}
+.tip-total {
+  line-height: 100rpx;
+  color: #212124;
+  border-top: 1px solid #f1f1f1;
+  text-align: right;
+}
+/* 条目列表 end */
+
+/* 日期地址选择 start */
+.select-session.bht-session {
+  padding: 0;
+}
+.select-item {
+  min-height: 110rpx;
+  padding: 0 20rpx;
+}
+.select-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 19rpx;
+  right: 19rpx;
+  height: 1px;
+  background-color: #f1f1f1;
+}
+.select-item:last-child::after {
+  display: none;
+}
+.select-item .link-left {
+  width: 169rpx;
+}
+.color-f33f3f {
+  color: #f33f3f;
+}
+.select-item .link-left text {
+  color: #f45656;
+}
+.select-item .link-middle {
+  color: #b8babf;
+  text-align: left;
+}
+.select-item .link-middle.color-60646b {
+  color: #60646b;
+}
+/* 日期地址选择 end */
+
+/* 取件信息 start */
+.price-session {
+  margin-bottom: 0;
+}
+.logistics-tit {
+  height: 88rpx;
+  color: #f33f3f;
+  font-size: 26rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.edit-btn {
+  height: 88rpx;
+  width: 88rpx;
+  padding: 24rpx;
+  position: absolute;
+  top: 0;
+  right: 30rpx;
+}
+.edit-btn image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+}
+.link-middle.take-time {
+  color: #60646b;
+}
+.link-middle.take-time + .link-icon {
+  padding-left: 0;
+}
+.take-time text {
+  color: #b8babf;
+  font-size: 24rpx;
+}
+.address-item {
+  height: 145rpx;
+  align-items: flex-start;
+}
+.address-item .link-left {
+  height: 100%;
+  display: flex;
+  line-height: 50rpx;
+  padding-top: 30rpx;
+}
+.user-info {
+  display: flex;
+  color: #60646b;
+  line-height: 50rpx;
+  padding-top: 30rpx;
+}
+.user-info view:nth-child(1) {
+  margin-right: 40rpx;
+  max-width: 230rpx;
+}
+.logistics-ysh-item .user-info view:nth-child(1) {
+  max-width: 420rpx;
+}
+.user-address {
+  color: #b8babf;
+  font-size: 24rpx;
+  line-height: 46rpx;
+}
+.color-60646b {
+  color: #60646b;
+}
+/* 取件信息 end */
+
+/* 物流信息 start */
+.logistics-session .tip-item {
+  justify-content: flex-start;
+}
+.logistics-session .tip-item text:nth-child(1) {
+  width: 169rpx;
+}
+.logistics-session .tip-item text:nth-child(2) {
+  flex-grow: 1;
+  width: 400rpx;
+  color: #60646b;
+}
+.logistics-tel {
+  height: 109rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #f1f1f1;
+  color: #60646b;
+}
+.logistics-tel image {
+  width: 34rpx;
+  height: 42rpx;
+  margin-right: 20rpx;
+}
+/* 物流信息 end */
+
+/* 物流配送 start */
+.logistics-item {
+  height: auto;
+}
+.logistics-item > view{
+  min-height: 145rpx;
+}
+.logistics-ysh-item.logistics-item > view{
+  min-height: 110rpx;
+}
+.color-b8babf {
+  color: #b8babf;
+}
+.logistics-info {
+  line-height: 40rpx;
+  font-size: 26rpx;
+  padding-left: 38rpx;
+  position: relative;
+  margin-top: 8rpx;
+  padding-bottom: 26rpx;
+}
+.logistics-info::before {
+  content: '';
+  position: absolute;
+  top: 16rpx;
+  left: 10rpx;
+  height: 8rpx;
+  width: 8rpx;
+  border-radius: 50%;
+  background-color: #b8babf;
+}
+.logistics-info::after {
+  content: '';
+  position: absolute;
+  top: 34rpx;
+  bottom: 39rpx;
+  left: 12rpx;
+  width: 2px;
+  background-color: #b8babf;
+}
+/* 物流配送 end */
+
+/* 底部跳转 start */
+.bottom-empty {
+  height: 30rpx;
+}
+.fixed-empty {
+  height: 98rpx;
+}
+.fixed-empty2 {
+  height: 30rpx;
+}
+.bottom-link {
+  height: 98rpx;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  justify-content: flex-end;
+  padding-right: 30rpx;
+}
+.bottom-link navigator,.bottom-link view,.reason-item {
+  height: 60rpx;
+  width: 160rpx;
+  line-height: 56rpx;
+  color: #919499;
+  font-size: 26rpx;
+  text-align: center;
+  border: 2rpx solid #b8babf;
+  border-radius: 2rpx;
+}
+.bottom-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 19rpx;
+  right: 19rpx;
+  height: 1px;
+  background-color: #efefef;
+}
+/* 底部跳转 end */
+
+.edit-submit {
+  width: 690rpx;
+  margin: 0 auto;
+}
+
+/* login */
+.loginModel{
+  background:#fff;
+  width: 500rpx;
+  height: 410rpx;
+  margin: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin: -205rpx 0 0 -250rpx;
+  z-index: 185;
+  border-radius: 16rpx;
+  text-align: center;
+  opacity: 1;
+  padding: 40rpx 20rpx 30rpx;
+}
+.loginText{
+  font-size:13px;
+  margin:20rpx 0 18rpx;
+}
+.loginBtn{
+  background:#269c22;
+  margin: 0 auto;
+  color:#fff;
+  padding: 10rpx 0;
+  margin-top: 26rpx;
+  height: 90rpx;
+  line-height: 70rpx;
+  border-radius: 10rpx;
+  font-size: 14px;
+}
+button.loginBtn:not([size='mini']){
+  width: 420rpx !important;
+}
+.loginBtnimg{
+  width: 46rpx;
+  height: 46rpx;
+  vertical-align: middle;
+  margin-right: 16rpx;
+}
+.loginBtn::after{
+  border:0
+}
+.loginImg{
+  width: 130rpx;
+  height: 130rpx;
+}

@@ -1,0 +1,212 @@
+<topbar id="topbar" bar-obj="{{barObj}}"></topbar>
+<view hidden="{{!bodyShow}}">
+  <view class="shop-session">
+    <view class="shop-tit">
+      <view>{{ordinaryData.status_string}}</view>
+      <view wx:if="{{ordinaryData.order_status == 0}}">
+        剩余{{countDownList[0].hou}}:{{countDownList[0].min}}:{{countDownList[0].sec}} 自动取消订单</view>
+      <view wx:else>{{ordinaryData.status_tip}}</view>
+    </view>
+    <view class="bht-session list-session">
+      <view
+        class="shop-list {{ordinaryData.goods_list.length > 4 ? 'shop-list-long' : ''}} {{isShow ? 'list-auto' : ''}}">
+        <block wx:for="{{ordinaryData.goods_list}}" wx:key="index">
+          <navigator class="shop-item" hover-class="none"
+            url="/page/product/pages/goods-details/goods-details?goods_id={{item.goods_id}}">
+            <view class="shop-pic">
+              <image class="width-100" mode="aspectFill" src="{{item.specs_img}}"></image>
+            </view>
+            <view class="shop-info">
+              <view class="shop-name">
+                <view class="p-nowrap">{{item.goods_name}}</view>
+                <view><text>X </text>{{item.sku_num}}</view>
+              </view>
+              <view class="shop-specs p-nowrap">
+                <view class="p-nowrap">{{item.specs_name}}</view>
+                <view wx:if="{{item.vip_status==1}}">￥{{item.s_price}}</view>
+                <view wx:elif="{{item.vip_status==2}}">￥{{item.vip_price}}</view>
+              </view>
+              <view class="shop-list-tip">
+                <view class="{{item.type_val == 1 ? 'item-tip' : 'item-tip2'}}">{{item.type_txt}}</view>
+                <view class="shop-price" wx:if="{{item.vip_status==0}}">
+                  <view class="now-price"><text>￥</text>{{item.s_price}}</view>
+                </view>
+                <view class="shop-price" wx:elif="{{item.vip_status==1}}">
+                  <view class="vip-label">会员价:</view>
+                  <view class="now-price"><text>￥</text>{{item.vip_price}}</view>
+                </view>
+                <view class="shop-price" wx:elif="{{item.vip_status==2}}">
+                  <view class="vip-icon">会员优享价</view>
+                  <view class="now-price"><text>￥</text>{{item.e_price}}</view>
+                </view>
+                <view class="shop-price" wx:else>
+                  <view class="now-price"><text>￥</text>{{item.s_price}}</view>
+                </view>
+              </view>
+            </view>
+          </navigator>
+        </block>
+      </view>
+      <view class="toggle-btn" bindtap="toggleFunc" wx:if="{{ordinaryData.goods_list.length > 4}}">
+        <image mode="heightFix" src="/resource/images/toggle_down.png"></image>
+      </view>
+      <view class="shop-tip">
+        <image src="/resource/images/tip_01.png"></image>{{ordinaryData.buy_tip}}
+      </view>
+    </view>
+  </view>
+
+  <view class="bht-session">
+    <view class="tip-list" style="display:flex;flex-direction:column;">
+      <view class="tip-item"><text>商品总价</text><text>￥{{ordinaryData.total_price}}</text></view>
+      <view class="tip-item"><text>运费</text><text>￥0.00</text></view>
+      <view class="tip-item" wx:if="{{ordinaryData.vip_discount && ordinaryData.vip_discount!='0.00'}}"><text>会员折扣</text><text>-￥{{ordinaryData.vip_discount}}</text></view>
+      <view class="tip-item" wx:if="{{ordinaryData.vip_yx_discount && ordinaryData.vip_yx_discount!='0.00'}}"><text>会员优享</text><text>-￥{{ordinaryData.vip_yx_discount}}</text></view>
+      <view class="tip-item" wx:if="{{ordinaryData.reduce_discount&&ordinaryData.reduce_discount!='0.00'}}" style="order: {{listOrder[3]}}"><text>满件优惠</text><text>-￥{{ordinaryData.reduce_discount}}</text></view>
+      <view class="tip-item" wx:if="{{ordinaryData.activity_discount && ordinaryData.activity_discount!='0.00'}}" style="order: {{listOrder[2]}}"><text>满额优惠</text><text>-￥{{ordinaryData.activity_discount}}</text></view>
+      <view class="tip-item" wx:if="{{ordinaryData.coupon_discount && ordinaryData.coupon_discount!='0.00'}}" style="order: {{listOrder[1]}}"><text>优惠券</text><text>-￥{{ordinaryData.coupon_discount}}</text></view>
+    </view>
+    <view class="tip-total">总计支付：￥{{ordinaryData.pay_price}}</view>
+  </view>
+
+  <!-- 待收货 -->
+  <view class="bht-session select-session">
+    <view class="select-list">
+      <view class="select-item link-item address-item">
+        <view class="link-left">收货地址</view>
+        <view class="link-middle">
+          <view class="user-info">
+            <view class="p-nowrap">{{ordinaryData.rece_realname}}</view>
+            <view>{{ordinaryData.rece_mobile}}</view>
+          </view>
+          <view class="user-address p-nowrap">{{ordinaryData.rece_address}}</view>
+        </view>
+      </view>
+      <block wx:if="{{ordinaryData.distribution_type == 1}}">
+        <navigator class="select-item link-item address-item logistics-item logistics-ysh-item" hover-class="none"
+          url="/page/product/pages/logistics/logistics?logistics_id={{ordinaryData.logistice_id}}&order_id={{ordinaryData.id}}&logistice_type=1&order_mark=1">
+          <view class="link-left">配送方式</view>
+          <view class="link-middle">
+            <view class="user-info">
+              <view>上门自提<text class="color-b8babf">（已提货）</text></view>
+            </view>
+          </view>
+          <view class="link-icon">
+            <image src="/resource/images/right.png"></image>
+          </view>
+        </navigator>
+      </block>
+      <block wx:else>
+        <block
+          wx:if="{{ordinaryData.order_status == 2 || ordinaryData.order_status == 3 || ordinaryData.order_status == 4}}">
+          <navigator class="select-item link-item address-item logistics-item" hover-class="none"
+            url="/page/product/pages/logistics/logistics?logistics_id={{ordinaryData.logistice_id}}&order_id={{ordinaryData.id}}">
+            <view class="link-left">物流配送</view>
+            <view class="link-middle">
+              <view class="user-info">
+                <view>{{ordinaryData.logistice_name}}</view>
+              </view>
+              <view class="logistics-info" wx:if="{{!ordinaryData.logistice_new}}">
+                <view class="p-nowrap">{{ordinaryData.logistice_new ? ordinaryData.logistice_new.context : '暂无物流信息'}}
+                </view>
+                <view>{{ordinaryData.logistice_new.time}}</view>
+              </view>
+            </view>
+            <view class="link-icon">
+              <image src="/resource/images/right.png"></image>
+            </view>
+          </navigator>
+        </block>
+      </block>
+    </view>
+  </view>
+
+  <view class="bht-session logistics-session order-session">
+    <view class="tip-list">
+      <view class="tip-item"><text>订单编号</text><text>{{ordinaryData.common_numb}}</text></view>
+      <view class="tip-item"><text>下单时间</text><text>{{ordinaryData.ctime}}</text></view>
+      <view class="tip-item" wx:if="{{ordinaryData.pay_time}}"><text>支付方式</text><text>微信支付</text></view>
+      <view class="tip-item" wx:if="{{ordinaryData.pay_time}}"><text>付款时间</text><text>{{ordinaryData.pay_time}}</text>
+      </view>
+      <view class="tip-item" wx:if="{{ordinaryData.ftime}}"><text>发货时间</text><text>{{ordinaryData.ftime}}</text></view>
+    </view>
+  </view>
+
+  <!-- <view class="fixed-empty" wx:if="{{(ordinaryData.order_status != 2&&ordinaryData.order_status != 5) || (ordinaryData.order_status == 4 && ordinaryData.is_operate) || (ordinaryData.order_status == 1 && ordinaryData.is_ready == 0)}}"></view> -->
+  <view class="fixed-empty"
+    wx:if="{{ordinaryData.is_kesqkp || ordinaryData.is_invoice === '1' || ordinaryData.is_operate || ordinaryData.order_status == 0 || (ordinaryData.order_status == 1 && ordinaryData.is_ready == 0) || (ordinaryData.order_status > 2 && (ordinaryData.is_barter || ordinaryData.is_retreat || ordinaryData.is_refund))}}">
+  </view>
+  <view class="fixed-empty2" wx:else></view>
+  <!-- 待付款 -->
+  <view class="bottom-fixed bottom-link" wx:if="{{ordinaryData.order_status == 0}}">
+    <view catchtap="cancelOrder">取消订单</view>
+    <view class="pay-btn" catchtap="payFunc">
+      付款({{countDownList[0].hou}}:{{countDownList[0].min}}:{{countDownList[0].sec}})</view>
+  </view>
+
+  <!-- 待发货 -->
+  <view class="bottom-fixed bottom-link"
+    wx:if="{{(ordinaryData.order_status == 1 && ordinaryData.is_ready == 0) || ordinaryData.is_operate || ordinaryData.is_barter || ordinaryData.is_retreat || ordinaryData.is_refund || ordinaryData.is_kesqkp || ordinaryData.is_invoice === '1'}}">
+    <navigator wx:if="{{ordinaryData.is_kesqkp}}" hover-class="none"
+      url="/page/my/pages/invoice-apply/invoice-apply?order_id={{ordinaryData.wxpay_id}}">申请开票</navigator>
+    <navigator wx:if="{{ordinaryData.is_invoice === '1'}}" hover-class="none"
+      url="/page/my/pages/invoice-detail/invoice-detail?id={{ordinaryData.invoice_id}}">发票详情</navigator>
+    <view wx:if="{{ordinaryData.order_status == 1 && ordinaryData.is_ready == 0}}" catchtap=" refundFunc">取消订单</view>
+    <!-- 订单收货 -->
+    <block wx:if="{{ordinaryData.is_operate || ordinaryData.is_barter || ordinaryData.is_retreat || ordinaryData.is_refund}}">
+      <navigator hover-class="none" wx:if="{{ordinaryData.is_operate}}"
+        url="/page/product/pages/ordinary-apply-refund/ordinary-apply-refund?ordinary_id={{ordinaryData.id}}">申请退换
+      </navigator>
+      <navigator wx:if="{{ordinaryData.is_barter}}" hover-class="none"
+        url="/page/product/pages/ordinary-exchange-details/ordinary-exchange-details?ordinary_id={{ordinaryData.id}}&barter_id={{ordinaryData.barter_id}}">
+        换货详情</navigator>
+      <navigator wx:if="{{ordinaryData.is_retreat}}" hover-class="none"
+        url="/page/product/pages/ordinary-refund-details/ordinary-refund-details?ordinary_id={{ordinaryData.id}}&returnrefund_id={{ordinaryData.returnrefund_id}}">
+        退货详情</navigator>
+      <navigator wx:if="{{ordinaryData.is_refund}}" hover-class="none"
+        url="/page/product/pages/ordinary-refund-details/ordinary-refund-details?ordinary_id={{ordinaryData.id}}&refund_id={{ordinaryData.refund_id}}">
+        退款详情</navigator>
+    </block>
+  </view>
+
+
+  <!-- 待收货 -->
+  <!-- <view class="bottom-fixed bottom-link">
+    <navigator hover-class="none">物流详情</navigator>
+  </view> -->
+
+  <!-- 订单收货 -->
+  <!-- <view class="bottom-fixed bottom-link"
+    wx:if="{{ordinaryData.is_operate || ordinaryData.is_barter || ordinaryData.is_retreat || ordinaryData.is_refund}}">
+    <navigator hover-class="none" wx:if="{{ordinaryData.is_operate}}"
+      url="/page/product/pages/ordinary-apply-refund/ordinary-apply-refund?ordinary_id={{ordinaryData.id}}">申请退换
+    </navigator>
+    <navigator wx:if="{{ordinaryData.is_barter}}" hover-class="none"
+      url="/page/product/pages/ordinary-exchange-details/ordinary-exchange-details?ordinary_id={{ordinaryData.id}}&barter_id={{ordinaryData.barter_id}}">
+      换货详情</navigator>
+    <navigator wx:if="{{ordinaryData.is_retreat}}" hover-class="none"
+      url="/page/product/pages/ordinary-refund-details/ordinary-refund-details?ordinary_id={{ordinaryData.id}}&returnrefund_id={{ordinaryData.returnrefund_id}}">
+      退货详情</navigator>
+    <navigator wx:if="{{ordinaryData.is_refund}}" hover-class="none"
+      url="/page/product/pages/ordinary-refund-details/ordinary-refund-details?ordinary_id={{ordinaryData.id}}&refund_id={{ordinaryData.refund_id}}">
+      退款详情</navigator>
+  </view> -->
+
+  <!-- 退换中 -->
+  <!-- <view class="bottom-fixed bottom-link" wx:if="{{ordinaryData.order_status == 3}}">
+    <navigator hover-class="none" wx:if="{{ordinaryData.is_operate}}" url="/page/product/pages/ordinary-apply-refund/ordinary-apply-refund?ordinary_id={{ordinaryData.id}}">申请退换</navigator>
+    <navigator wx:if="{{ordinaryData.is_barter}}" hover-class="none" url="/page/product/pages/ordinary-exchange-details/ordinary-exchange-details?ordinary_id={{ordinaryData.id}}&barter_id={{ordinaryData.barter_id}}">换货详情</navigator>
+    <navigator wx:if="{{ordinaryData.is_retreat}}" hover-class="none" url="/page/product/pages/ordinary-refund-details/ordinary-refund-details?ordinary_id={{ordinaryData.id}}&returnrefund_id={{ordinaryData.returnrefund_id}}">退货详情</navigator>
+    <navigator wx:if="{{ordinaryData.is_refund}}" hover-class="none" url="/page/product/pages/ordinary-refund-details/ordinary-refund-details?ordinary_id={{ordinaryData.id}}&refund_id={{ordinaryData.refund_id}}">退款详情</navigator>
+  </view> -->
+</view>
+
+<!-- 授权登录 -->
+<view class="loginModel" hidden="{{loginModelHidden}}" catchtouchmove="true">
+  <image src="https://bht.liwushijian.com/library/img/xcx_img/login.png" class="loginImg"></image>
+  <view class="loginText">我们需要获得您的授权，以继续操作</view>
+  <button class="loginBtn" bindtap="updateUserInfo">
+    <image src="https://bht.liwushijian.com/library/img/xcx_img/weixin.png" class="loginBtnimg"></image>微信授权登录
+  </button>
+</view>
+<view class="loginBg" hidden="{{loginModelHidden}}" catchtouchmove="true"></view>

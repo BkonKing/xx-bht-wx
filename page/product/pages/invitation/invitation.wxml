@@ -1,0 +1,86 @@
+<topbar id="topbar" customtitle="invitation-topbar-title" bar-obj="{{barObj}}"></topbar>
+<image src="https://bhtdevelop.mhshjy.com/library/img/invitation/bg.png" class="container"></image>
+
+<view class="block">
+  <image class="title-image" src="https://bhtdevelop.mhshjy.com/library/img/invitation/text.png"></image>
+  <view class="title-box">
+    <image class="title-box-border" src="https://bhtdevelop.mhshjy.com/library/img/invitation/border.png"></image>
+    <view class="caption-1">
+      <text lines="1" class="title">好友入会仅需</text>
+      <text lines="1" class="num">{{info.setting_price}}</text>
+      <text lines="1" class="caption">元(<text class="former-text">{{info.vip_price}}元</text>)</text>
+    </view>
+    <view class="caption-1">再送好友{{info.send_copywriting}}</view>
+  </view>
+  <view class="main">
+    <view class="title-2">每邀请1位好友成为会员</view>
+    <view class="title-2 caption-2">您得{{info.invitees_price}}元</view>
+    <view class="container-inner-3">
+      <view wx:for="{{info.discount}}" wx:key="index" class="title-3">
+        {{item.order_desc}}抵用金{{item.reduce_price}}元（满{{item.threshold_price}}即用）
+      </view>
+      <view class="title-3">仅需邀请1位好友即可解锁</view>
+      <image class="card-bg" src="https://bhtdevelop.mhshjy.com/library/img/invitation/card.png"></image>
+    </view>
+    <image class="floor-bg" src="https://bhtdevelop.mhshjy.com/library/img/invitation/card-footer.png" />
+  </view>
+</view>
+<view class="tabbar-list-1-v-2">
+  <view class="tabbar-item step-box" style="margin-top: 0;">
+    <image class="tabbar-item-tag" src="https://bhtdevelop.mhshjy.com/library/img/invitation/step.png"></image>
+    <view class="step-item">
+      <image src="https://bhtdevelop.mhshjy.com/library/img/invitation/share.png" class="step-image" />
+      <view class="step-text">分享链接</view>
+      <view class="step-text">给好友</view>
+    </view>
+    <view class="step-item">
+      <image src="https://bhtdevelop.mhshjy.com/library/img/invitation/sign.png" class="step-image" />
+      <view class="step-text">好友注册</view>
+    </view>
+    <view class="step-item step-item-3">
+      <image src="https://bhtdevelop.mhshjy.com/library/img/invitation/vip.png" class="step-image" />
+      <view class="step-text" style="width:192rpx;text-align: center;">好友成为会员并</view>
+      <view class="step-text" style="width:192rpx;text-align: center;">获得新人抵用金</view>
+    </view>
+    <view class="step-item">
+      <image src="https://bhtdevelop.mhshjy.com/library/img/invitation/complete.png" class="step-image" />
+      <view class="step-text">邀请达成</view>
+      <view class="step-text">获得奖励</view>
+    </view>
+  </view>
+  <view class="tabbar-item achievement-box">
+    <image class="tabbar-item-tag" src="https://bhtdevelop.mhshjy.com/library/img/invitation/achievement.png"></image>
+    <view class="order-box">
+      <view class="order-item">
+        <view class="wrapper-inner-1">
+          <text lines="1" class="num-1">{{invite_total}}</text>
+          <text lines="1" class="caption-4">人</text>
+        </view>
+        <view class="tag-2">已成功邀请</view>
+      </view>
+      <view class="vertical-line-1" />
+      <view class="order-item">
+        <view class="wrapper-inner-1">
+          <text lines="1" class="num-1">{{reward}}</text>
+          <text lines="1" class="caption-4">元</text>
+        </view>
+        <view class="tag-2">已获得奖励</view>
+      </view>
+      <image class="order-footer-bg" src="https://bhtdevelop.mhshjy.com/library/img/invitation/bg-footer.png"></image>
+    </view>
+  </view>
+  <view class="tabbar-item user-list">
+    <image class="tabbar-item-tag" src="https://bhtdevelop.mhshjy.com/library/img/invitation/order.png"></image>
+    <view wx:if="{{record && record.length}}" class="user-ul">
+      <view wx:for="{{record}}" wx:key="index" class="user-item">
+        <image src="{{item.avatar}}" class="user-avatar" />
+        <text lines="1" class="user-name">{{item.nickname}}</text>
+      </view>
+    </view>
+    <view wx:else style="width: 100%;text-align: center;">暂无记录</view>
+  </view>
+  <view class="footer">
+    <button open-type="share" class="caption-6">分享微信好友</button>
+    <button bindtap="goInvitaionPoster" class="title-7">生成海报</button>
+  </view>
+</view>

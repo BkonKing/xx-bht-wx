@@ -1,0 +1,15 @@
+
+<topbar id="topbar" bar-obj="{{barObj}}"></topbar>
+
+<view class="logon-root">
+  <view class="login-top">
+    <view class="login-logo"><image class="width-100" src="https://bht.liwushijian.com/library/img/xcx_img/logo2.png"></image></view>
+    <view class="login-name">不荒唐</view>
+  </view>
+  <view class="logon-action">该程序将获取以下授权：</view>
+  <view class="logon-word">· 绑定您的手机号码</view>
+  <view class="btn-block">
+    <view class="login-btn" catchtap="goback">拒绝</view>
+    <button class="login-btn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">允许</button>
+  </view>
+</view>

@@ -1,0 +1,76 @@
+<view class="body-block {{!wordsShow&&resShopList.length>0 ? 'body-fff' : ''}}">
+  <topbar id="topbar" bar-obj="{{barObj}}"></topbar>
+  <view class="search-top-box" style="top:{{headerArr.height + 44}}px;">
+    <view class="search-top">
+      <image class="search-icon" src="/resource/images/search_icon2.png"></image>
+      <input class="search-input" type="text" placeholder='输入关键词' confirm-type="search" adjust-position="false"
+        bindfocus="focus" bindblur="blur" bindconfirm="compSearch" bindinput="getInputVal" focus="{{wordsShow}}"
+        value='{{search_val}}' />
+      <view wx:if="{{search_val}}" class="input-del" catchtap="inputDel">
+        <image src="https://bht.liwushijian.com/library/library/img/xcx_img/close_04.png"></image>
+      </view>
+    </view>
+  </view>
+  <view class="search-kong" style="top:{{headerArr.height + 44}}px;"></view>
+
+  <block wx:if="{{wordsShow}}">
+    <view class="search-words">
+      <view class="search-block" wx:if="{{hotWordsList.length > 0}}">
+        <view class="search-tit">热门搜索</view>
+        <view class="search-list">
+          <block wx:for="{{hotWordsList}}" wx:key="id">
+            <view class="search-item" bindtap="wordsSearch" data-words="{{item.search_word}}">{{item.search_word}}
+            </view>
+          </block>
+        </view>
+      </view>
+      <view class="search-block" wx:if="{{searchList.length > 0}}">
+        <view class="search-tit">历史搜索<view class="search-del" bindtap="delSearch">
+            <image class="width-100" src="/resource/images/icon_del.png"></image>
+          </view>
+        </view>
+        <view class="search-list">
+          <block wx:for="{{searchList}}" wx:key="*this">
+            <view class="search-item" bindtap="wordsSearch" data-words="{{item}}">{{item}}</view>
+          </block>
+        </view>
+      </view>
+    </view>
+  </block>
+  <block wx:if="{{!wordsShow}}">
+    <view class="product-list">
+      <block wx:for="{{resShopList}}" wx:key="index">
+        <navigator class="product-item {{item.vip_status ? 'product-vip-item' : ''}}" hover-class="none"
+          url="/page/product/pages/goods-details/goods-details?goods_id={{item.id}}">
+          <view class="product-pic">
+            <image wx:if="{{item.sign_url}}" class="product-icon width-100" src="{{item.sign_url}}"></image>
+            <image class="product-pic width-100" src="{{item.thumb}}" mode="aspectFill"></image>
+          </view>
+          <view class="product-cont">
+            <view class="product-name p-nowrap">{{item.goods_name}}</view>
+            <view class="product-words p-nowrap">{{item.sub_title}}</view>
+            <view class="product-line"></view>
+            <block wx:if="{{item.vip_status == 3}}">
+              <view class="product-vprice product-only-price">{{item.buying_roles == 1 ? '仅限会员：' :
+                '仅限非会员：'}}￥<text>{{item.buying_roles == 1 ? item.vip_price : item.sell_price}}</text></view>
+                <!-- <view class="product-vprice"></view> -->
+            </block>
+            <block wx:else>
+              <view class="product-vprice" wx:if="{{item.vip_status}}">会员优享：￥<text>{{item.enjoy_price}}</text></view>
+              <view class="product-vprice" wx:else>会员：￥<text>{{item.vip_price}}</text></view>
+              <view class="product-price">非会员：￥<text>{{item.sell_price}}</text></view>
+            </block>
+          </view>
+        </navigator>
+      </block>
+    </view>
+
+
+    <view class="empty-none" hidden="{{noneHidden}}">
+      <image src="https://bht.liwushijian.com/library/img/xcx_img/empty_02.png"></image>
+      <view>无搜索结果</view>
+    </view>
+    <import src="/templates/nomore.wxml" />
+    <template is="tempNoMore" data="{{noMoreHidden}}" />
+  </block>
+</view>

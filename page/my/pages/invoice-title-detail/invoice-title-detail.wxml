@@ -1,0 +1,54 @@
+<!--page/my/pages/invoice-title-detail/invoice-title-detail.wxml-->
+<topbar id="topbar" bar-obj="{{barObj}}"></topbar>
+
+<view class="form-list">
+  <view class="form-item">
+    <view class="item-name">抬头类型</view>
+    <view class="itemt-text line text-right">
+      {{info.rise_type_name}}
+    </view>
+  </view>
+  <view class="form-item">
+    <view class="item-name">发票抬头</view>
+    <view class="itemt-text {{info.rise_type === '2' ? 'line' : ''}}">
+      {{info.rise}}
+    </view>
+  </view>
+  <view wx:if="{{info.rise_type === '2'}}" class="form-item">
+    <view class="item-name">税号</view>
+    <view class="itemt-text">
+      {{info.duty_paragraph}}
+    </view>
+  </view>
+</view>
+<view wx:if="{{info.rise_type === '2'}}" class="form-list">
+  <view class="form-item">
+    <view class="item-name">开户银行</view>
+    <view class="itemt-text line">
+      {{info.bank || '--'}}
+    </view>
+  </view>
+  <view class="form-item">
+    <view class="item-name">银行账号</view>
+    <view class="itemt-text line">
+      {{info.bank_card || '--'}}
+    </view>
+  </view>
+  <view class="form-item">
+    <view class="item-name">企业地址</view>
+    <view class="itemt-text line">
+      {{info.address || '--'}}
+    </view>
+  </view>
+  <view class="form-item">
+    <view class="item-name">企业电话</view>
+    <view class="itemt-text">
+      {{info.phone || '--'}}
+    </view>
+  </view>
+</view>
+
+<view class="btn-kong"></view>
+<view class="btn-box">
+  <view class="sure-btn" bindtap="goEdit">编辑</view>
+</view>

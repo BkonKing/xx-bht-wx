@@ -1,0 +1,122 @@
+.modal-session {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cont {
+  width: 540rpx;
+  /* min-height: 590rpx; */
+  border-radius: 4rpx;
+  font-size: 30rpx;
+  position: relative;
+  padding-bottom: 40rpx;
+  background: url('https://bht.liwushijian.com/library/img/xcx_img/coupon_bg2.png') center center /100% 100%;
+  box-shadow: 4rpx 0 12rpx rgba(101, 96, 95, 0.3);
+  margin-top: 90rpx;
+}
+.modal-icon {
+  width: 142rpx;
+  height: 162rpx;
+  position: absolute;
+  display: flex;
+  top: -81rpx;
+  left: 50%;
+  margin-left: -71rpx;
+}
+.modal-icon image {
+  width: 100%;
+  height: 100%;
+}
+.modal-tit {
+  height: 169rpx;
+  padding-top: 85rpx;
+  line-height: 84rpx;
+  font-size: 34rpx;
+  color: #222222;
+  font-weight: bold;
+  text-align: center;
+}
+.copon-list-block {
+  position: relative;
+}
+.copon-mask-img {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 53rpx;
+}
+.copon-list {
+  width: 460rpx;
+  max-height: 340rpx;
+  overflow-y: auto;
+  margin: 0 auto;
+}
+.coupon-item {
+  height: 100rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  background: url('https://bht.liwushijian.com/library/img/xcx_img/coupon_icon_02.png') center center /100% 100%;
+}
+.coupon-item:last-child {
+  margin-bottom: 0;
+}
+.copon-left {
+  height: 100%;
+  width: 170rpx;
+  font-size: 48rpx;
+  color: #ffffff;
+  font-weight: bold;
+  text-align: center;
+  line-height: 100rpx;
+}
+.copon-left text {
+  font-weight: normal;
+  font-size: 30rpx;
+}
+.copon-right {
+  width: 290rpx;
+  display: flex;
+  align-items: center;
+  padding-left: 20rpx;
+}
+.copon-info {
+  height: 72rpx;
+  flex-wrap: wrap;
+}
+.copon-right view {
+  line-height: 36rpx;
+  width: 100%;
+}
+.copon-name {
+  font-size: 24rpx;
+  color: #212124;
+}
+.copon-time {
+  font-size: 20rpx;
+  color: #b8babf;
+}
+.link-block {
+  height: 84rpx;
+  line-height: 84rpx;
+  text-align: center;
+}
+.go-link {
+  color: #9e6f5d;
+  font-size: 24rpx;
+  display: inline;
+}
+.go-link text {
+  text-decoration: underline;
+}
+.modal-sure {
+  width: 420rpx;
+  height: 73rpx;
+  line-height: 73rpx;
+  text-align: center;
+  color: #ffffff;
+  font-size: 30rpx;
+  margin: 0 auto;
+  border-radius: 2rpx;
+  background-image: radial-gradient(#4a4944, #383836, #212124);
+}

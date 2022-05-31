@@ -1,0 +1,164 @@
+<topbar id="topbar" bar-obj="{{barObj}}"></topbar>
+<view class="shop-session">
+  <view class="shop-tit">
+    <view>{{refundData.status_string}}</view>
+    <view>{{refundData.status_tip}}</view>
+  </view>
+  <view class="bht-session list-session">
+    <view class="shop-list">
+      <block wx:for="{{refundData.goods_list}}" wx:key="index">
+        <navigator hover-class="none" class="shop-item" url="/page/product/pages/goods-details/goods-details?goods_id={{item.goods_id}}">
+          <view class="shop-pic"><image class="width-100" mode="aspectFill" src="{{item.specs_img}}"></image></view>
+          <view class="shop-info">
+            <view class="shop-name p-nowrap">{{item.goods_name}}</view>
+            <view class="shop-specs p-nowrap">{{item.specs_name}}</view>
+            <view class="shop-price">
+              <view class="now-price"><text>￥</text>{{item.z_price}}</view>
+            </view>
+          </view>
+          <view class="shop-refund-tip">{{item.type_txt}}</view>
+        </navigator>
+      </block>
+    </view>
+    <view class="shop-tip"><image src="/resource/images/tip_01.png"></image>{{refundData.buy_tip}}</view>
+  </view>
+</view>
+
+<view class="bht-session price-session">
+  <view class="tip-list">
+    <view class="tip-item"><text>换货原因</text><text>{{refundData.refund_reason}}</text></view>
+    <view class="tip-item"><text>换货编号</text><text>{{refundData.no_num}}</text></view>
+    <view class="tip-item"><text>申请时间</text><text>{{refundData.ctime}}</text></view>
+    <view class="tip-item" wx:if="{{refundData.qxtime}}"><text>取消时间</text><text>{{refundData.qxtime}}</text></view>
+    <view class="tip-item" wx:if="{{refundData.ftime && !refundData.qxtime}}"><text>完成时间</text><text>{{refundData.ftime}}</text></view>
+  </view>
+  <view class="tip-total">共 {{refundData.goods_list.length}} 件</view>
+</view>
+
+<view class="logistics-tit" wx:if="{{refundData.order_status<2}}">预约快递员上门取件
+  <view wx:if="{{refundData.status_val==1 && !isClick}}" class="edit-btn" bindtap="editFunc"><image src="/resource/images/address_01.png"></image></view>
+</view>
+<view class="express-kong" wx:else></view>
+<!-- 退货中未选择取件时间和地址 -->
+<block wx:if="{{refundData.order_status<2}}">
+  <view class="bht-session select-session">
+    <view class="select-list">
+      <view class="select-item link-item" catchtap="{{refundData.status_val==0 || (refundData.status_val==1 && isClick) ? 'pickerTime' : ''}}">
+        <view class="link-left">上门揽退</view>
+        <view class="link-middle take-time">{{refundData.m_time_val}}<text wx:if="{{!refundData.cltime}}">(待取件)</text></view>
+        <view class="link-icon" wx:if="{{refundData.status_val==0 || (refundData.status_val==1 && isClick)}}"><image src="/resource/images/right.png"></image></view>
+      </view>
+      <view class="select-item link-item address-item" bindtap="{{refundData.status_val==0 || refundData.status_val==1 && isClick ? 'linkFunc' : ''}}" data-url="/page/my/pages/address/address?page_type=1">
+        <view class="link-left">取件地址</view>
+        <view class="link-middle">
+          <view class="user-info"><view class="p-nowrap">{{refundData.take_name}}</view><view>{{refundData.take_mobile}}</view></view>
+          <view class="user-address p-nowrap">{{refundData.take_address}}</view>
+        </view>
+        <view class="link-icon" wx:if="{{refundData.status_val==0 || (refundData.status_val==1 && isClick)}}"><image src="/resource/images/right.png"></image></view>
+      </view>
+      <view class="select-item link-item">
+        <view class="link-left">其他说明</view>
+        <view class="link-middle" wx:if="{{refundData.status_val==0 || (refundData.status_val==1 && isClick)}}"><input type="text" placeholder-style="color:#b8babf" placeholder="请输入内容" value="{{refundData.other_explain}}" bindinput="explainFunc"></input></view>
+        <view class="link-middle" wx:else>{{refundData.other_explain ? refundData.other_explain : '无'}}</view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{refundData.status_val==0 || (refundData.status_val==1 && isClick)}}" class="btn-d edit-submit" bindtap="editSubmit">提交</view>
+</block>
+<block wx:if="{{refundData.order_status == 2 || refundData.order_status == 3}}">
+  <view class="bht-session logistics-session">
+    <view class="select-list ">
+      <navigator class="link-item address-item logistics-item bottom-line" hover-class="none" url="/page/product/pages/logistics/logistics?logistics_id={{refundData.go_logistice_id}}&order_id={{refundData.common_id}}">
+        <view class="link-left">换货物流</view>
+        <view class="link-middle">
+          <view class="user-info"><view>{{refundData.logistice_name}}</view></view>
+          <view class="logistics-info"><view class="p-nowrap">{{refundData.logistice_new.context}}</view><view>{{refundData.logistice_new.time}}</view></view>
+        </view>
+        <view class="link-icon"><image src="/resource/images/right.png"></image></view>
+      </navigator>
+      <view class="tip-list">
+        <view class="tip-item"><text>取件时间</text><text>{{refundData.logistice_time}}</text></view>
+      </view>
+    </view>
+  </view>
+</block>
+<!-- 已寄出 -->
+<block wx:if="{{refundData.order_status == 4 || refundData.order_status == 5}}">
+  <view class="bht-session select-session">
+    <view class="select-list">
+      <view class="select-item link-item address-item">
+        <view class="link-left">收货地址</view>
+        <view class="link-middle">
+          <view class="user-info"><view class="p-nowrap">{{refundData.take_name}}</view><view>{{refundData.take_mobile}}</view></view>
+          <view class="user-address p-nowrap">{{refundData.take_address}}</view>
+        </view>
+      </view>
+      <block wx:if="{{refundData.mail_logistice_id&&refundData.mail_logistice_id!=0}}">
+        <navigator wx:if="{{refundData.order_status == 4}}" class="link-item select-item address-item logistics-item" hover-class="none" url="/page/product/pages/logistics/logistics?logistics_id={{refundData.mail_logistice_id}}&order_id={{refundData.common_id}}">
+          <view class="link-left">收货物流</view>
+          <view class="link-middle">
+            <view class="user-info"><view>{{refundData.logistice_name2}}</view></view>
+            <view class="logistics-info"><view class="p-nowrap">{{refundData.logistice_new2.context}}</view><view>{{refundData.logistice_new2.time}}</view></view>
+          </view>
+          <view class="link-icon"><image src="/resource/images/right.png"></image></view>
+        </navigator>
+        <navigator wx:else class="select-item link-item" hover-class="none" url="/page/product/pages/logistics/logistics?logistics_id={{refundData.mail_logistice_id}}&order_id={{refundData.common_id}}">
+          <view class="link-left">收货物流</view>
+          <view class="link-middle">
+            <view><text class="color-60646b">{{refundData.logistice_name2}}</text>（已签收）</view>
+          </view>
+          <view class="link-icon"><image src="/resource/images/right.png"></image></view>
+        </navigator>
+      </block>
+      <block wx:else>
+        <navigator class="select-item link-item" hover-class="none" url="/page/product/pages/logistics/logistics?logistics_id={{refundData.mail_logistice_id}}&order_id={{refundData.common_id}}&logistice_type=1&order_mark=1">
+          <view class="link-left">收货方式</view>
+          <view class="link-middle">
+            <view><text class="color-60646b">上门自提</text>（已提货）</view>
+          </view>
+          <view class="link-icon"><image src="/resource/images/right.png"></image></view>
+        </navigator>
+      </block>
+    </view>
+  </view>
+  <view wx:if="{{refundData.mail_logistice_id&&refundData.mail_logistice_id!=0 && refundData.is_wxjh == 0}}" class="bht-session logistics-session">
+    <view class="select-list ">
+      <block wx:if="{{refundData.go_logistice_id&&refundData.go_logistice_id!=0}}">
+        <navigator class="select-item link-item padding-zero" hover-class="none" url="/page/product/pages/logistics/logistics?logistics_id={{refundData.go_logistice_id}}&order_id={{refundData.common_id}}">
+          <view class="link-left">换货物流</view>
+          <view class="link-middle">
+            <view><text class="color-60646b">{{refundData.logistice_name}}</text>（已签收）</view>
+          </view>
+          <view class="link-icon"><image src="/resource/images/right.png"></image></view>
+        </navigator>
+      </block>
+      <block wx:else>
+        <navigator class="select-item link-item padding-zero" hover-class="none" url="/page/product/pages/logistics/logistics?logistics_id={{refundData.go_logistice_id}}&order_id={{refundData.common_id}}&logistice_type=3&order_mark=1">
+          <view class="link-left">退货方式</view>
+          <view class="link-middle">
+            <view><text class="color-60646b">上门退货</text>（已退货）</view>
+          </view>
+          <view class="link-icon"><image src="/resource/images/right.png"></image></view>
+        </navigator>
+      </block>
+      <view class="tip-list">
+        <view class="tip-item"><text>取件时间</text><text>{{refundData.logistice_time}}</text></view>
+      </view>
+    </view>
+  </view>
+</block>
+<!-- 退货中选择了取件时间和地址但未联系快递员 -->
+
+<view class="bottom-empty"></view>
+
+<picker-module id="picker-module" picker-obj="{{pickerObj}}" select-val="{{selectVal}}" picker-show="{{pickerShow}}" bind:pickerFunc="pickerCall"></picker-module>
+
+
+
+  
+
+
+
+
+
+

@@ -1,0 +1,123 @@
+<topbar id="topbar" bar-obj="{{barObj}}"></topbar>
+<view class="shop-session">
+  <view class="address-session">
+    <view class="address-tit">收货地址</view>
+    <view class="bht-session address-info" wx:if="{{addressInfo}}" bindtap="linkFunc"
+      data-url="/page/my/pages/address/address?page_type=1">
+      <view class="address-text">
+        <view class="address-user">
+          <view class="address-name p-nowrap">{{addressInfo.uname}}</view>
+          <view class="address-tel">{{addressInfo.utel}}</view>
+          <view class="link-icon">
+            <image src="/resource/images/right.png"></image>
+          </view>
+        </view>
+        <view class="address-detail">
+          <view class="address-default" wx:if="{{addressInfo.is_default == 1}}">默认</view>
+          <view class="p-nowrap">{{addressInfo.userAddress}}</view>
+        </view>
+      </view>
+    </view>
+    <block wx:else>
+      <view wx:if="{{userData.mobile}}" class="bht-session address-info no-address" bindtap="linkFunc"
+        data-url="/page/my/pages/address/address?page_type=1">
+        <view class="no-address-text">请选择收货地址</view>
+        <view class="link-icon">
+          <image src="/resource/images/right.png"></image>
+        </view>
+      </view>
+      <button wx:else class="bht-session address-info no-address" hover-class="none" open-type="getPhoneNumber"
+        bindgetphonenumber="getPhoneNumber">
+        <view class="no-address-text">请选择收货地址</view>
+        <view class="link-icon">
+          <image src="/resource/images/right.png"></image>
+        </view>
+      </button>
+    </block>
+  </view>
+  <view class="bht-session list-session">
+    <view class="shop-list">
+      <navigator class="shop-item" hover-class="none" wx:for="{{carts}}" wx:key="index"
+        url="/page/product/pages/goods-details/goods-details?goods_id={{item.goods_id}}">
+        <view class="shop-pic">
+          <image class="width-100" mode="aspectFill" src="{{item.specs_img}}"></image>
+        </view>
+        <view class="shop-info">
+          <view class="shop-name">
+            <view class="p-nowrap">{{item.goods_name}}</view>
+            <view><text>X </text>{{item.count}}</view>
+          </view>
+          <view class="shop-specs p-nowrap">
+            <view class="p-nowrap">{{item.specs_name}}</view>
+            <view wx:if="{{item.vip_status==1}}">￥{{item.s_price}}</view>
+            <view wx:elif="{{item.vip_status==2}}">￥{{item.vip_price}}</view>
+          </view>
+          <view class="shop-list-tip">
+            <view class="item-tip">七天退换</view>
+            <view class="shop-price" wx:if="{{item.vip_status==0}}">
+              <view class="now-price"><text>￥</text>{{item.s_price}}</view>
+            </view>
+            <view class="shop-price" wx:elif="{{item.vip_status==1}}">
+              <view class="vip-label">会员价:</view>
+              <view class="now-price"><text>￥</text>{{item.vip_price}}</view>
+            </view>
+            <view class="shop-price" wx:elif="{{item.vip_status==2}}">
+              <view class="vip-icon">会员优享价</view>
+              <view class="now-price"><text>￥</text>{{item.e_price}}</view>
+            </view>
+            <view class="shop-price" wx:else>
+              <view class="now-price"><text>￥</text>{{item.s_price}}</view>
+            </view>
+          </view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+</view>
+
+<view class="bht-session coupon-session link-item" bindtap="linkFunc"
+  data-url="/page/product/pages/coupons-select/coupons-select?coupon_id={{couponInfo.user_coupon_id}}&page_type=1&prev_page={{prev_page}}">
+  <view class="link-left">优惠券</view>
+  <view class="link-middle {{priceInfo.coupon_money&&priceInfo.coupon_money!='0.00' ? '' : 'color-gray'}}">
+    {{priceInfo.coupon_money&&priceInfo.coupon_money!='0.00' ? couponInfo.coupon_text : '无可用优惠券'}}</view>
+  <view class="link-icon">
+    <image src="/resource/images/right.png"></image>
+  </view>
+</view>
+
+<view class="bht-session">
+  <view class="tip-list" style="display:flex;flex-direction:column;">
+    <view class="tip-item"><text>商品总价</text><text>￥{{priceInfo.sell_total}}</text></view>
+    <view class="tip-item"><text>运费</text><text>￥0.00</text></view>
+    <view class="tip-item" wx:if="{{priceInfo.total_vip_money&&priceInfo.total_vip_money!='0.00'}}">
+      <text>会员折扣</text><text>-￥{{priceInfo.total_vip_money}}</text></view>
+    <view class="tip-item" wx:if="{{priceInfo.total_e_money&&priceInfo.total_e_money!='0.00'}}">
+      <text>会员优享</text><text>-￥{{priceInfo.total_e_money}}</text></view>
+    <view class="tip-item" wx:if="{{priceInfo.total_reduce_money&&priceInfo.total_reduce_money!='0.00'}}" style="order: {{listOrder[3]}}">
+      <text>满件优惠</text><text class="tip-text-red"><text>{{priceInfo.full_text}}</text>-￥{{priceInfo.total_reduce_money}}</text></view>
+    <view class="tip-item" wx:if="{{priceInfo.activity_money&&priceInfo.activity_money!='0.00'}}" style="order: {{listOrder[2]}}">
+      <text>满额优惠</text><text class="tip-text-red"><text>{{priceInfo.activity_text}}</text>-￥{{priceInfo.activity_money}}</text></view>
+    <view class="tip-item" wx:if="{{priceInfo.coupon_money&&priceInfo.coupon_money!='0.00'}}" style="order: {{listOrder[1]}}">
+      <text>优惠券</text><text class="tip-text-red"><text>{{priceInfo.coupon_text}}</text>-￥{{priceInfo.coupon_money}}</text></view>
+  </view>
+  <view class="tip-total"><text>共{{goodsNum}}件</text>总计支付：￥{{priceInfo.total_price}}</view>
+</view>
+
+<view class="bht-session">
+  <view class="link-item">
+    <view class="link-left">订单备注：</view>
+    <view class="link-middle"><input placeholder="有什么需求请备注告诉我们~" bindinput="remarksFunc" value="{{remarks}}"
+        placeholder-style="color:#b8babf" type="text" /></view>
+  </view>
+</view>
+
+
+<view class="fixed-empty"></view>
+<view class="bottom-fixed">
+  <view class="bottom-info">
+    <view class="bottom-num">￥{{priceInfo.total_price}}</view>
+    <view class="bottom-btn btn-d" wx:if="{{userData.mobile}}" catchtap="payFunc">付款</view>
+    <button class="bottom-btn btn-d" wx:else hover-class="none" open-type="getPhoneNumber"
+      bindgetphonenumber="getPhoneNumber">付款</button>
+  </view>
+</view>
